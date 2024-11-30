@@ -44,7 +44,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 12rem;
+  height: 10rem;
   width: 100%;
   padding: 0 10%;
   overflow: hidden;
@@ -98,10 +98,9 @@ nav a:hover {
 .background {
   border-radius: var(--border-radius-lg);
   background: linear-gradient(180deg, #101010, transparent);
-  padding: 20px;
   max-width: 90%;
   height: 100vh;
-  margin: 5% auto;
+  margin: 1% auto;
 }
 
 /* -- Sobre -- */
@@ -113,7 +112,7 @@ nav a:hover {
   text-align: center;
   width: 50%;
   height: 60%;
-  margin: auto;
+  margin: 5rem auto 1rem auto;
   gap: 30px;
   color: var(--cor-whi);
 }
@@ -132,13 +131,14 @@ nav a:hover {
 /* -- Botão Contratar -- */
 .contratar button {
   font-family: "Oxanium", sans-serif;
-  font-size: 1.2vw;
+  font-size: 1.2rem;
   font-weight: 500;
-  width: 16vw;
-  height: 4vw;
+  width: 16rem;
+  height: 4rem;
   border: none;
   border-radius: 100px;
   transition: var(--transition);
+  margin-top: 5rem;
 }
 
 .contratar button:hover {
