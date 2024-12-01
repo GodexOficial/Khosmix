@@ -29,7 +29,7 @@ html {
   padding: 0;
   box-sizing: border-box;
 }
-
+/* Configurações do Body */
 body {
   font-family: "Quicksand", sans-serif;
   height: 100vh;
@@ -39,7 +39,7 @@ body {
   justify-content: center;
 }
 
-/* -- Header -- */
+/* -- Header / Cabeçalho -- */
 header {
   display: flex;
   align-items: center;
@@ -50,7 +50,7 @@ header {
   overflow: hidden;
 }
 
-/* -- Navegação -- */
+/* -- Navegação do Header-- */
 nav {
   display: flex;
   gap: var(--spacing-md);
@@ -77,7 +77,7 @@ nav a:hover {
   cursor: pointer;
 }
 
-/* -- Logo -- */
+/* -- Logo do header -- */
 .logo {
   display: flex;
   align-items: center;
@@ -94,7 +94,7 @@ nav a:hover {
   cursor: pointer;
 }
 
-/* -- Background -- */
+/* -- Background section 1 (Sobre)-- */
 .background {
   border-radius: var(--border-radius-lg);
   background: linear-gradient(180deg, #101010, transparent);
@@ -103,7 +103,7 @@ nav a:hover {
   margin: 0.5rem auto;
 }
 
-/* -- Sobre -- */
+/* -- section 1 Sobre -- */
 .sobre {
   display: flex;
   align-items: center;
@@ -128,7 +128,7 @@ nav a:hover {
   font-weight: 100;
 }
 
-/* -- Botão Contratar -- */
+/* -- section 1 Botão Contratar (Sobre) -- */
 .contratar button {
   font-family: "Oxanium", sans-serif;
   font-size: 1.2rem;
