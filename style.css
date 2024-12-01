@@ -99,7 +99,7 @@ nav a:hover {
   border-radius: var(--border-radius-lg);
   background: linear-gradient(180deg, #101010, transparent);
   max-width: 90%;
-  height: 100vh;
+  height: 90vh;
   margin: 0.5rem auto;
 }
 
