@@ -1,35 +1,35 @@
-/* -- Fonts Import -- */
+/* ---------------- Fonts Import ------------------- */
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&family=Quicksand:wght@300..700&display=swap");
 
-/* -- Variáveis Globais -- */
+/* ---------------------------Variáveis Globais ------------------------ */
 :root {
-  /* Cores */
+  /*--------------------------------- Cores------------------- */
   --cor-rox: #cb75ff; /* Roxo */
   --cor-gre: #57ffb8; /* Verde */
   --cor-whi: #fff; /* Branco */
 
-  /* Tamanhos */
+  /* -----------------------Tamanhos-------------------- */
   --border-radius-lg: 35px;
   --spacing-md: 10px;
 
-  /* Transição */
+  /* --------------------Transição ----------------*/
   --transition: ease 0.4s;
 }
 
-/* -- Reset e Estilo Global -- */
-/* Suaviza o comportamento do scroll */
+/* ---------------------- Reset e Estilo Global ----------------- */
+/* ------------------Suaviza o comportamento do scroll---------------- */
 html {
   scroll-behavior: smooth;
 }
 
-/* Reseta os estilos básicos */
+/* -------------------Reseta os estilos básicos------------------ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-/* Configurações do Body */
+/* ------------Configurações do Body------------------ */
 body {
   font-family: "Quicksand", sans-serif;
   height: 100vh;
@@ -39,7 +39,7 @@ body {
   justify-content: center;
 }
 
-/* -- Header / Cabeçalho -- */
+/* ------------------- Header / Cabeçalho ------------------- */
 header {
   display: flex;
   align-items: center;
@@ -50,7 +50,7 @@ header {
   overflow: hidden;
 }
 
-/* -- Navegação do Header-- */
+/* ---------------- Navegação do Header------------------- */
 nav {
   display: flex;
   gap: var(--spacing-md);
@@ -77,7 +77,7 @@ nav a:hover {
   cursor: pointer;
 }
 
-/* -- Logo do header -- */
+/* ---------------------- Logo do header -------------------- */
 .logo {
   display: flex;
   align-items: center;
@@ -94,7 +94,7 @@ nav a:hover {
   cursor: pointer;
 }
 
-/* -- Background section 1 (Sobre)-- */
+/* ------------------ Background section 1 (Sobre)------------------- */
 .background {
   border-radius: var(--border-radius-lg);
   background: linear-gradient(180deg, #101010, transparent);
@@ -103,7 +103,7 @@ nav a:hover {
   margin: 0.5rem auto;
 }
 
-/* -- section 1 Sobre -- */
+/* -- --------------------------section 1 Sobre--------------------- -- */
 .sobre {
   display: flex;
   align-items: center;
@@ -116,19 +116,19 @@ nav a:hover {
   gap: 30px;
   color: var(--cor-whi);
 }
-
+/* -- --------------------------section 1 Sobre H1--------------------- -- */
 .sobre h1 {
   font-weight: 300;
   font-size: 2vw;
 }
-
+/* -- --------------------------section 1 Sobre P--------------------- -- */
 .sobre p {
   font-size: 1.2vw;
   text-align: justify;
   font-weight: 100;
 }
 
-/* -- section 1 Botão Contratar (Sobre) -- */
+/* --------------------- section 1 Botão Contratar (Sobre) ---------------------- */
 .contratar button {
   font-family: "Oxanium", sans-serif;
   font-size: 1.2rem;
