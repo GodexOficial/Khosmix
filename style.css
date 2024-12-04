@@ -31,12 +31,9 @@ html {
 }
 /* ------------Configurações do Body------------------ */
 body {
-  font-family: "Quicksand", sans-serif;
-  height: 100vh;
+  font-family: "Quicksand";
   width: 100%;
   background-color: #040008;
-  display: flex;
-  justify-content: center;
 }
 
 /* ------------------- Header / Cabeçalho ------------------- */
@@ -63,7 +60,7 @@ nav a {
   border-radius: 100px;
   align-items: center;
   justify-content: center;
-  font-family: "Oxanium", sans-serif;
+  font-family: "Oxanium", "Quicksand";
   font-weight: 300;
   color: var(--cor-gre);
   text-decoration: none;
@@ -130,7 +127,7 @@ nav a:hover {
 
 /* --------------------- section 1 Botão Contratar (Sobre) ---------------------- */
 .contratar button {
-  font-family: "Oxanium", sans-serif;
+  font-family: "Quicksand";
   font-size: 1.2rem;
   font-weight: 500;
   width: 16rem;
@@ -145,4 +142,138 @@ nav a:hover {
   cursor: pointer;
   color: var(--cor-whi);
   background-color: var(--cor-rox);
+}
+/*-------------------------------Footer principal--------------------------*/
+.footerpro {
+  display: flex;
+  background-color: #040008;
+  color: #fff;
+  text-align: center;
+  padding-top: 14rem;
+  font-family: "Quicksand", sans-serif;
+  height: 100vh;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/*----------------------------Container do footer------------------------*/
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/*-------------------------Parte superior (título) Footer-------------------------*/
+.footer-top h2 {
+  font-size: 1.6rem;
+}
+.subfooter p {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+.subfooter {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+/*----------------------------Botão de contactar Footer------------------------*/
+.contact-btn {
+  font-family: Quicksand;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 40px;
+  background-color: var(--cor-gre);
+  color: black;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-btn:hover {
+  background-color: var(--cor-rox);
+  color: #fff;
+}
+
+/*----------------------------Parte inferior Footer-----------------------*/
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.footer-item {
+  flex: 1;
+  min-width: 200px;
+}
+/*-----------------------------título "H3" e "p" Footer blocks Footer-----------------------*/
+.footer-item h3 {
+  position: relative;
+  text-align: left;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.footer-item h3::after {
+  content: "";
+  display: block;
+  width: 200px;
+  height: 2px;
+  background-color: var(--cor-whi);
+}
+.footer-item p {
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+  text-align: left;
+}
+
+/*----------------------------Ícones sociais Footer----------------------*/
+.social-icons {
+  display: flex;
+  gap: 0.5rem;
+}
+.social-icons a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #040008;
+  padding: 10px 15px;
+  border-radius: 50%;
+}
+.social-icons .icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  color: black;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.social-icons .icon:hover {
+  background-color: var(--cor-rox);
+  color: var(--cor-whi);
+}
+
+/*--------------------Copyright Footer----------------------*/
+.footer-copyright {
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
 }
