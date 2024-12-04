@@ -149,6 +149,9 @@ nav a:hover {
 /*------------------------Fim Section 1 --------------------------*/
 /*---------------------- Section 2 Background-----------------------*/
 .backgroundnet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 90%;
   margin: 80px auto;
   height: 95vh;
@@ -233,7 +236,7 @@ nav a:hover {
   justify-content: center;
   align-items: center;
   gap: 5px;
-  margin: 70px 0;
+  margin-top: 70px;
 }
 .contratar2:hover,
 .maisinfo:hover {
@@ -251,6 +254,28 @@ nav a:hover {
   height: auto;
   transition: filter 0.3s ease;
   filter: invert(0) brightness(1);
+}
+/*---------------------- Section 2 Netflix CARROSSEL AQUIIIIIIIIII-----------------------*/
+.container-carrossel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.item-car {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  cursor: pointer;
+  background-color: white;
+  width: 15rem;
+  height: 7rem;
+  border-radius: 20px;
+}
+.container-carrossel:hover > :not(:hover) {
+  opacity: 0.4;
+  transform: scale(0.8);
 }
 /*---------------------- Section 2 Netflix FIM-----------------------*/
 /*-------------------------------Footer principal--------------------------*/
