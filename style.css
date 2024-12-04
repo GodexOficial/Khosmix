@@ -310,7 +310,7 @@ nav a:hover {
 
 .trabalhos::before {
   left: 0; /* Corrigido para "0" */
-  background: linear-gradient(to right, #2f0093, #1100567e, transparent);
+  background: linear-gradient(to right, #2f0093, #1100566e, transparent);
 }
 
 .trabalhos::after {
