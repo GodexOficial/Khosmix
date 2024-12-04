@@ -260,7 +260,7 @@ nav a:hover {
   transition: filter 0.3s ease;
   filter: invert(0) brightness(1);
 }
-/*---------------------- Section 2 Netflix CARROSSEL AQUIIIIIIIIII-----------------------*/
+/*---------------------- Section 2 Netflix CARROSSEL-----------------------*/
 .trabalhos {
   display: flex;
   justify-content: space-between;
@@ -294,7 +294,7 @@ nav a:hover {
 
 .trabalhos.job:not(:hover) {
   flex: 1;
-  transform: scale(1); /* Retorna ao tamanho original */
+  transform: scale(1);
   z-index: 1;
 }
 .trabalhos::before,
@@ -304,17 +304,17 @@ nav a:hover {
   top: 0;
   bottom: 0;
   width: 150px;
-  pointer-events: none; /* O mouse passa direto pelo gradiente */
+  pointer-events: none;
   z-index: 3;
 }
 
 .trabalhos::before {
-  left: 0; /* Corrigido para "0" */
+  left: 0;
   background: linear-gradient(to right, #2f0093, #1100566e, transparent);
 }
 
 .trabalhos::after {
-  right: 0; /* Corrigido para "0" */
+  right: 0;
   background: linear-gradient(to left, #2f0093a9, #11005680, transparent);
 }
 /*---------------------- Section 2 Netflix FIM-----------------------*/
