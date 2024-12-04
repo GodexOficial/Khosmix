@@ -3,46 +3,69 @@
 @import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&family=Quicksand:wght@300..700&display=swap");
 /*--Fonts import--*/
 
-/*--Area de Root Colors--*/
+/*-- Root Colors --*/
 :root {
-  --cor-rox: #cb75ff; /* Roxo */
-  --cor-gre: #57ffb8; /* green */
-  --cor-whi: #fff; /* Branco */
+  /* Cores */
+  --cor-rox: #cb75ff;  /* Roxo */
+  --cor-gre: #57ffb8;  /* Verde */
+  --cor-whi: #fff;     /* Branco */
+  --cor-preto: #040008; /* Preto */
+
+  /* Fontes e Tamanhos */
+  --font-size-h1: 2vw;
+  --font-size-h2: 1.5vw;
+  --font-size-p: 1.2vw;
+  --font-size-button: 1.2vw;
+  --font-size-nav: 14px;
+
+  /* Espaçamento */
+  --padding-default: 5%;
+  --padding-header: 0% 10%;
+  --padding-button: 16vw;
+
+  /* Transições */
+  --transition-default: 0.4s ease;
+  --transition-hover: 0.2s ease;
 }
-/* Suaviza o comportamento do scroll */
+
+/*-- Suaviza o comportamento do scroll --*/
 html {
   scroll-behavior: smooth;
 }
-/* Reseta os estilos básicos */
+
+/*-- Reseta os estilos básicos --*/
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/*-- Body --*/
 body {
   font-family: "Quicksand";
+  background-color: var(--cor-preto);
   height: 100vh;
   width: 100%;
   justify-content: center;
-  background-color: #040008;
 }
-/*--header--*/
+
+/*-- Header --*/
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 12rem;
   width: 100%;
-  padding: 0% 10%;
+  padding: var(--padding-header);
   overflow: hidden;
 }
-/*-- header--*/
-/*-- navegação--*/
+
+/*-- Navegação --*/
 nav {
   display: flex;
   gap: 10px;
 }
+
 nav a {
   display: flex;
   width: 140px;
@@ -54,104 +77,97 @@ nav a {
   font-weight: 300;
   color: var(--cor-gre);
   text-decoration: none;
-  font-size: 14px;
-  transition: ease, 0.4s;
+  font-size: var(--font-size-nav);
+  transition: var(--transition-default);
 }
+
 nav a:hover {
   background-color: #1f1f1f79;
   color: var(--cor-rox);
   cursor: pointer;
 }
-/*-- navegação--*/
-/*-- logo div--*/
+
+/*-- Logo --*/
 .logo {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 300px;
-  height: auto;
 }
-/*-- logo div--*/
-/*-- logo--*/
+
 .logo a img {
   width: 150px;
   height: auto;
-}
-.logo a img:hover {
   cursor: pointer;
 }
-/*-- logo--*/
 
-/*-- background--*/
+/*-- Background --*/
 .background {
   border-radius: 35px 35px 0px 0px;
   background: linear-gradient(180deg, #101010, #00000000);
   padding: 20px;
-  max-width: 90%; /*-- Largura Maxima background--*/
-  height: 100vh; /*-- Altura background--*/
-  margin: 5% auto; /*-- Margem interna Background--*/
+  max-width: 90%;
+  height: 100vh;
+  margin: var(--padding-default) auto;
 }
-/*-- background--*/
-/*-- sobre--*/
+
+/*-- Seção Sobre --*/
 .sobre {
-  display: flex; /*-- Tipo de Display sobre--*/
-  align-items: center; /*-- Alihamento vertical sobre--*/
-  justify-content: center; /*-- Alinhamento horizontal sobre--*/
-  flex-direction: column; /*-- organização conteúdo sobre--*/
-  text-align: center; /*-- alinhar texto--*/
-  width: 50%; /*-- largura sobre--*/
-  height: 60%; /*--Altura sobre--*/
-  margin: auto; /*-- Margem interna de Sobre--*/
-  overflow: hidden; /*-- Manter conteúdo dentro de sobre--*/
-  gap: 30px; /*-- Espaçamento entre o sobre--*/
-  color: var(--cor-whi); /*-- Cores do texto sobre--*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  width: 50%;
+  height: 60%;
+  margin: auto;
+  overflow: hidden;
+  gap: 30px;
+  color: var(--cor-whi);
 }
+
 .sobre h1 {
-  text-align: center; /*-- alinhamento da fonte--*/
-  font-weight: 300; /*-- espessura da fonte--*/
-  font-size: 2vw;
+  font-size: var(--font-size-h1);
+  font-weight: 300;
 }
+
 .sobre p {
-  font-size: 1.2vw;
-  text-align: justify; /*-- tipo de quebra de texto--*/
-  font-weight: 100; /*-- espessura da fonte--*/
+  font-size: var(--font-size-p);
+  text-align: justify;
+  font-weight: 100;
 }
-/*-- sobre--*/
-/*-- button--*/
+
+/*-- Button --*/
 .contratar button {
   font-family: Oxanium;
-  font-size: 1.2vw;
+  font-size: var(--font-size-button);
   font-weight: 500;
-  width: 16vw;
+  width: var(--padding-button);
   height: 4vw;
   border: none;
   border-radius: 100px;
-  transition: ease, 0.4s;
+  transition: var(--transition-default);
 }
+
 .contratar button:hover {
   cursor: pointer;
   color: var(--cor-whi);
   background-color: var(--cor-rox);
 }
-/*-- button--*/
 
-/*--section 2--*/
+/*-- Seção 2 --*/
 .backgroundnet {
   display: flex;
   flex-direction: column;
   border-radius: 35px;
-  background: radial-gradient(
-    circle at center,
-    #2f0093,
-    #110056
-  ); /*-- color graient background--*/
+  background: radial-gradient(circle at center, #2f0093, #110056);
   height: 80vh;
-  padding: 5%; /*-- Padding interno background--*/
+  padding: var(--padding-default);
   width: 90%;
-  max-width: 100%; /*-- Largura Maxima background--*/
-  margin: auto; /*-- Margem interna Background--*/
+  margin: auto;
   overflow: hidden;
 }
+
 .netflix {
   width: 100%;
   height: 40vh;
@@ -160,57 +176,230 @@ nav a:hover {
   color: var(--cor-whi);
   gap: 40px;
 }
+
 .title {
   display: flex;
   flex-direction: column;
   gap: 0.01rem;
 }
+
 .netflix h1 {
   font-size: 32px;
   font-weight: 400;
 }
+
 .netflix h2 {
   font-size: 24px;
   font-weight: 300;
 }
+
 .icons {
   display: flex;
   gap: 15px;
 }
+
 .icons a {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
-  font-weight: 600;
   width: 40px;
   height: 40px;
-  padding: 10px;
-  border-radius: 5px;
-  text-decoration: none;
 }
+
+.icons .icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.icons a:hover .icon {
+  transform: scale(1.2);
+  filter: brightness(1.2);
+}
+
 .netflix p {
   width: 330px;
   text-align: justify;
 }
-.buttonsnetflix {
-  visibility: hidden;
-}
+
 .painels {
   width: 100%;
   height: 10%;
   display: flex;
   gap: 50px;
 }
+
 .square1 {
   width: 320px;
   height: 160px;
   background-color: var(--cor-rox);
 }
+
+/*-- Botões no Netflix --*/
+.buttonsnetflix {
+  display: flex;
+  gap: 15px;
+}
+
+/*-- Botão --*/
+.contratar, .maisinfo {
+  font-family: Oxanium;
+  font-size: 1.5ch;
+  font-weight: 500;
+  width: 13rem;
+  height: 3rem;
+  border: none;  /* SEM BORDA DESGRAÇAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA */
+  border-radius: 1000px;  /* Bordas arredondadas */
+  color: var(--cor-preto);  /* Fonte preta */
+  background-color: var(--cor-whi);  /* Preenchimento branco */
+  transition: var(--transition-default);
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Quando o mouse passa por cima do botão */
+.contratar:hover, .maisinfo:hover {
+  border-color: var(--cor-rox);  /* Cor da borda para roxo */
+  color: var(--cor-whi);  /* Cor da fonte para branca */
+  background-color: var(--cor-rox);  /* Fundo roxo */
+  transform: scale(1.05); /* Efeito de zoom suave ao passar o mouse */
+}
+
+/* Ícone de Informação */
+.infoicon {
+  width: 20px;
+  height: auto;
+  transition: filter 0.3s ease; /* Suaviza a transição da cor */
+  filter: invert(0) brightness(1); /* Não aplicar nenhum efeito por padrão */
+}
+
+/* Quando o mouse passa por cima do botão, afeta também o ícone */
+.contratar:hover .infoicon, .maisinfo:hover .infoicon {
+  filter: invert(1) brightness(2); /* Inverte a cor para branco e aumenta o brilho */
+}
+
+/*-- Seção Netflix --*/
+.backgroundnet {
+  display: flex;
+  flex-direction: column;
+  border-radius: 35px;
+  background: radial-gradient(circle at center, #2f0093, #110056);
+  height: 80vh;
+  padding: var(--padding-default);
+  width: 90%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.netflix {
+  width: 100%;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  color: var(--cor-whi);
+  gap: 40px;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.01rem;
+}
+
+.netflix h1 {
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.netflix h2 {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.icons {
+  display: flex;
+  gap: 15px;
+}
+
+.icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.icons .icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.icons a:hover .icon {
+  transform: scale(1.2);
+  filter: brightness(1.2);
+}
+
+.netflix p {
+  width: 330px;
+  text-align: justify;
+}
+
+/*-- Botões --*/
+.buttonsnetflix {
+  display: flex;
+  gap: 15px;
+}
+
+.buttonsnetflix a {
+  text-decoration: none;
+}
+
+.contratar, .maisinfo {
+  font-family: Oxanium;
+  font-size: 1.5ch;
+  font-weight: 500;
+  width: 13rem;
+  height: 3rem;
+  border: none;  /* SEM BORDA DESGRAÇAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA */
+  border-radius: 1000px;  /* Bordas arredondadas */
+  color: var(--cor-preto);  /* Fonte preta */
+  background-color: var(--cor-whi);  /* Preenchimento branco */
+  transition: var(--transition-default);
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+/*-- Painéis --*/
+.painels {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  gap: 50px;
+}
+
+.square1 {
+  width: 320px;
+  height: 160px;
+  background-color: var(--cor-rox);
+}
+
+
+/*-- Backgroundtime --*/
 .backgroundtime {
   display: flex;
   flex-direction: column;
-  width: 100%; /*-- Largura Maxima background--*/
+  width: 100%;
   padding: 0 120px;
   height: 100vh;
   justify-content: center;
@@ -219,30 +408,25 @@ nav a:hover {
   background-position: center;
   background-size: cover;
 }
+
+/*-- Blur Container --*/
 .blur-container {
   display: flex;
   flex-direction: column;
-  width: 200px; /* Ajuste para o tamanho do seu elemento */
-  height: 600px; /* Ajuste para o tamanho do seu elemento */
+  width: 200px;
+  height: 600px;
   padding: 20px;
-  border-radius: 15px; /* Bordas arredondadas */
+  border-radius: 15px;
   justify-content: space-between;
-
-  /* Fundo com transparência */
   background: rgba(255, 255, 255, 0.1);
-
-  /* Efeito de desfoque no fundo */
   backdrop-filter: blur(10px);
-
-  /* Contorno sutil (opcional) */
-  border: 1px solid rgba(255, 255, 255, 0.3);
-
-  /* Estilo do texto interno */
+  border: 2px solid rgba(255, 255, 255, 0.3);
   color: white;
   font-family: "Arial", sans-serif;
   text-align: center;
 }
-/* -- Footer --*/
+
+/*-- Footer --*/
 footer {
   display: block;
   align-content: center;
