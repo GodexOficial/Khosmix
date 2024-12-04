@@ -8,6 +8,9 @@
   --cor-rox: #cb75ff; /* Roxo */
   --cor-gre: #57ffb8; /* Verde */
   --cor-whi: #fff; /* Branco */
+  --cor-gradiente-start: rgba(43, 0, 99, 1);
+  --cor-gradiente-end: rgba(20, 20, 20, 0);
+  --cor-modal-bg: rgba(0, 0, 0, 0.8);
 
   /* -----------------------Tamanhos-------------------- */
   --border-radius-lg: 35px;
@@ -147,7 +150,7 @@ nav a:hover {
 /*---------------------- Section 2 Background-----------------------*/
 .backgroundnet {
   width: 90%;
-  margin: 70px auto;
+  margin: 80px auto;
   height: 95vh;
   overflow: hidden;
   border-radius: 35px;
@@ -249,37 +252,6 @@ nav a:hover {
   transition: filter 0.3s ease;
   filter: invert(0) brightness(1);
 }
-/*---------------------- Section 2 Netflix Painels-----------------------*/
-
-.carousel-container {
-  position: relative;
-  width: 100%; /* Ajuste conforme o layout */
-  overflow: hidden; /* Oculta os itens fora da área visível */
-}
-
-.painels {
-  display: flex;
-  gap: 10px;
-  transition: transform 0.3s ease; /* Suaviza a rolagem ao soltar */
-  cursor: grab; /* Cursor para indicar que é possível arrastar */
-}
-
-.painels:active {
-  cursor: grabbing; /* Troca o cursor ao arrastar */
-}
-
-.job {
-  text-decoration: none;
-}
-
-.square1 {
-  width: 320px;
-  height: 160px;
-  background-color: var(--cor-whi);
-  flex-shrink: 0; /* Evita que os itens encolham */
-  border-radius: 5px; /* Para bordas arredondadas */
-}
-
 /*---------------------- Section 2 Netflix FIM-----------------------*/
 /*-------------------------------Footer principal--------------------------*/
 .footerpro {
