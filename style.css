@@ -297,25 +297,16 @@ nav a:hover {
   transform: scale(1);
   z-index: 1;
 }
-.trabalhos::before,
-.trabalhos::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 150px;
-  pointer-events: none;
-  z-index: 3;
+.fade-out {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.trabalhos::before {
-  left: 0;
-  background: linear-gradient(to right, #2f0093, #1100566e, transparent);
-}
-
-.trabalhos::after {
-  right: 0;
-  background: linear-gradient(to left, #2f0093a9, #11005680, transparent);
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 /*---------------------- Section 2 Netflix FIM-----------------------*/
 /*-------------------------------Footer principal--------------------------*/
