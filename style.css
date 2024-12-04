@@ -1,56 +1,69 @@
-/* ---------------- Fonts Import ------------------- */
+/*--Fonts import--*/
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&family=Quicksand:wght@300..700&display=swap");
+/*--Fonts import--*/
 
-/* ---------------------------Variáveis Globais ------------------------ */
+/*-- Root Colors --*/
 :root {
-  /*--------------------------------- Cores------------------- */
-  --cor-rox: #cb75ff; /* Roxo */
-  --cor-gre: #57ffb8; /* Verde */
-  --cor-whi: #fff; /* Branco */
+  /* Cores */
+  --cor-rox: #cb75ff;  /* Roxo */
+  --cor-gre: #57ffb8;  /* Verde */
+  --cor-whi: #fff;     /* Branco */
+  --cor-preto: #040008; /* Preto */
 
-  /* -----------------------Tamanhos-------------------- */
-  --border-radius-lg: 35px;
-  --spacing-md: 10px;
+  /* Fontes e Tamanhos */
+  --font-size-h1: 2vw;
+  --font-size-h2: 1.5vw;
+  --font-size-p: 1.2vw;
+  --font-size-button: 1.2vw;
+  --font-size-nav: 14px;
 
-  /* --------------------Transição ----------------*/
-  --transition: ease 0.4s;
+  /* Espaçamento */
+  --padding-default: 5%;
+  --padding-header: 0% 10%;
+  --padding-button: 16vw;
+
+  /* Transições */
+  --transition-default: 0.4s ease;
+  --transition-hover: 0.2s ease;
 }
 
-/* ---------------------- Reset e Estilo Global ----------------- */
-/* ------------------Suaviza o comportamento do scroll---------------- */
+/*-- Suaviza o comportamento do scroll --*/
 html {
   scroll-behavior: smooth;
 }
 
-/* -------------------Reseta os estilos básicos------------------ */
+/*-- Reseta os estilos básicos --*/
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-/* ------------Configurações do Body------------------ */
+
+/*-- Body --*/
 body {
   font-family: "Quicksand";
+  background-color: var(--cor-preto);
+  height: 100vh;
   width: 100%;
-  background-color: #040008;
+  justify-content: center;
 }
 
-/* ------------------- Header / Cabeçalho ------------------- */
+/*-- Header --*/
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 10rem;
+  height: 12rem;
   width: 100%;
-  padding: 0 10%;
+  padding: var(--padding-header);
   overflow: hidden;
 }
 
-/* ---------------- Navegação do Header------------------- */
+/*-- Navegação --*/
 nav {
   display: flex;
-  gap: var(--spacing-md);
+  gap: 10px;
 }
 
 nav a {
@@ -60,21 +73,21 @@ nav a {
   border-radius: 100px;
   align-items: center;
   justify-content: center;
-  font-family: "Oxanium", "Quicksand";
+  font-family: Oxanium;
   font-weight: 300;
   color: var(--cor-gre);
   text-decoration: none;
-  font-size: 14px;
-  transition: var(--transition);
+  font-size: var(--font-size-nav);
+  transition: var(--transition-default);
 }
 
 nav a:hover {
-  background-color: rgba(31, 31, 31, 0.47);
+  background-color: #1f1f1f79;
   color: var(--cor-rox);
   cursor: pointer;
 }
 
-/* ---------------------- Logo do header -------------------- */
+/*-- Logo --*/
 .logo {
   display: flex;
   align-items: center;
@@ -84,23 +97,21 @@ nav a:hover {
 
 .logo a img {
   width: 150px;
-  transition: var(--transition);
-}
-
-.logo a img:hover {
+  height: auto;
   cursor: pointer;
 }
 
-/* ------------------ Background section 1 (Sobre)------------------- */
+/*-- Background --*/
 .background {
-  border-radius: var(--border-radius-lg);
-  background: linear-gradient(180deg, #101010, transparent);
+  border-radius: 35px 35px 0px 0px;
+  background: linear-gradient(180deg, #101010, #00000000);
+  padding: 20px;
   max-width: 90%;
-  height: 90vh;
-  margin: 0.5rem auto;
+  height: 100vh;
+  margin: var(--padding-default) auto;
 }
 
-/* -- --------------------------section 1 Sobre--------------------- -- */
+/*-- Seção Sobre --*/
 .sobre {
   display: flex;
   align-items: center;
@@ -109,33 +120,33 @@ nav a:hover {
   text-align: center;
   width: 50%;
   height: 60%;
-  margin: 5rem auto 1rem auto;
+  margin: auto;
+  overflow: hidden;
   gap: 30px;
   color: var(--cor-whi);
 }
-/* -- --------------------------section 1 Sobre H1--------------------- -- */
+
 .sobre h1 {
+  font-size: var(--font-size-h1);
   font-weight: 300;
-  font-size: 2vw;
 }
-/* -- --------------------------section 1 Sobre P--------------------- -- */
+
 .sobre p {
-  font-size: 1.2vw;
+  font-size: var(--font-size-p);
   text-align: justify;
   font-weight: 100;
 }
 
-/* --------------------- section 1 Botão Contratar (Sobre) ---------------------- */
+/*-- Button --*/
 .contratar button {
-  font-family: "Quicksand";
-  font-size: 1.2rem;
+  font-family: Oxanium;
+  font-size: var(--font-size-button);
   font-weight: 500;
-  width: 16rem;
-  height: 4rem;
+  width: var(--padding-button);
+  height: 4vw;
   border: none;
   border-radius: 100px;
-  transition: var(--transition);
-  margin-top: 5rem;
+  transition: var(--transition-default);
 }
 
 .contratar button:hover {
@@ -143,9 +154,8 @@ nav a:hover {
   color: var(--cor-whi);
   background-color: var(--cor-rox);
 }
-/* --------------------- section 1  FIM ---------------------- */
 
-/*---------------------- Section 2 Background-----------------------*/
+/*-- Seção 2 --*/
 .backgroundnet {
   display: flex;
   flex-direction: column;
@@ -157,7 +167,7 @@ nav a:hover {
   margin: auto;
   overflow: hidden;
 }
-/*---------------------- Section 2 Netflix-----------------------*/
+
 .netflix {
   width: 100%;
   height: 40vh;
@@ -166,7 +176,7 @@ nav a:hover {
   color: var(--cor-whi);
   gap: 40px;
 }
-/*---------------------- Section 2 Title-----------------------*/
+
 .title {
   display: flex;
   flex-direction: column;
@@ -182,7 +192,7 @@ nav a:hover {
   font-size: 24px;
   font-weight: 300;
 }
-/*---------------------- Section 2 Icons-----------------------*/
+
 .icons {
   display: flex;
   gap: 15px;
@@ -207,7 +217,7 @@ nav a:hover {
   transform: scale(1.2);
   filter: brightness(1.2);
 }
-/*---------------------- Section 2 Netflix Painels-----------------------*/
+
 .netflix p {
   width: 330px;
   text-align: justify;
@@ -226,23 +236,23 @@ nav a:hover {
   background-color: var(--cor-rox);
 }
 
-/*------------------------ Botões no Netflix ----------------------*/
+/*-- Botões no Netflix --*/
 .buttonsnetflix {
   display: flex;
   gap: 15px;
 }
 
-.contratar,
-.maisinfo {
+/*-- Botão --*/
+.contratar, .maisinfo {
   font-family: Oxanium;
   font-size: 1.5ch;
   font-weight: 500;
   width: 13rem;
   height: 3rem;
-  border: none;
-  border-radius: 1000px;
-  color: var(--cor-preto);
-  background-color: var(--cor-whi);
+  border: none;  /* SEM BORDA DESGRAÇAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA */
+  border-radius: 1000px;  /* Bordas arredondadas */
+  color: var(--cor-preto);  /* Fonte preta */
+  background-color: var(--cor-whi);  /* Preenchimento branco */
   transition: var(--transition-default);
   cursor: pointer;
   text-align: center;
@@ -252,30 +262,28 @@ nav a:hover {
   gap: 5px;
 }
 
-/* -------------------Quando o mouse passa por cima do botão--------------------- */
-.contratar:hover,
-.maisinfo:hover {
-  border-color: var(--cor-rox);
-  color: var(--cor-whi);
-  background-color: var(--cor-rox);
-  transform: scale(1.05);
+/* Quando o mouse passa por cima do botão */
+.contratar:hover, .maisinfo:hover {
+  border-color: var(--cor-rox);  /* Cor da borda para roxo */
+  color: var(--cor-whi);  /* Cor da fonte para branca */
+  background-color: var(--cor-rox);  /* Fundo roxo */
+  transform: scale(1.05); /* Efeito de zoom suave ao passar o mouse */
 }
 
-/*---------------------------------- Ícone de Informação ----------------------------------*/
+/* Ícone de Informação */
 .infoicon {
   width: 20px;
   height: auto;
-  transition: filter 0.3s ease;
-  filter: invert(0) brightness(1);
+  transition: filter 0.3s ease; /* Suaviza a transição da cor */
+  filter: invert(0) brightness(1); /* Não aplicar nenhum efeito por padrão */
 }
 
 /* Quando o mouse passa por cima do botão, afeta também o ícone */
-.contratar:hover .infoicon,
-.maisinfo:hover .infoicon {
+.contratar:hover .infoicon, .maisinfo:hover .infoicon {
   filter: invert(1) brightness(2); /* Inverte a cor para branco e aumenta o brilho */
 }
 
-/*------------------------------------------- Background 2 Netflix ---------------------------------*/
+/*-- Seção Netflix --*/
 .backgroundnet {
   display: flex;
   flex-direction: column;
@@ -287,7 +295,7 @@ nav a:hover {
   margin: auto;
   overflow: hidden;
 }
-/*---------------------- Section 2 Netflix-----------------------*/
+
 .netflix {
   width: 100%;
   height: 40vh;
@@ -296,7 +304,7 @@ nav a:hover {
   color: var(--cor-whi);
   gap: 40px;
 }
-/*---------------------- Section 2 Netflix Title-----------------------*/
+
 .title {
   display: flex;
   flex-direction: column;
@@ -312,7 +320,7 @@ nav a:hover {
   font-size: 24px;
   font-weight: 300;
 }
-/*---------------------- Section 2 Netflix Icons-----------------------*/
+
 .icons {
   display: flex;
   gap: 15px;
@@ -337,12 +345,12 @@ nav a:hover {
   transform: scale(1.2);
   filter: brightness(1.2);
 }
-/*---------------------- Section 2 Netflix Text-----------------------*/
+
 .netflix p {
   width: 330px;
   text-align: justify;
 }
-/*---------------------- Section 2 Netflix Buttons-----------------------*/
+
 /*-- Botões --*/
 .buttonsnetflix {
   display: flex;
@@ -353,17 +361,16 @@ nav a:hover {
   text-decoration: none;
 }
 
-.contratar,
-.maisinfo {
+.contratar, .maisinfo {
   font-family: Oxanium;
   font-size: 1.5ch;
   font-weight: 500;
   width: 13rem;
   height: 3rem;
-  border: none; /* SEM BORDA DESGRAÇAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA */
-  border-radius: 1000px; /* Bordas arredondadas */
-  color: var(--cor-preto); /* Fonte preta */
-  background-color: var(--cor-whi); /* Preenchimento branco */
+  border: none;  /* SEM BORDA DESGRAÇAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA */
+  border-radius: 1000px;  /* Bordas arredondadas */
+  color: var(--cor-preto);  /* Fonte preta */
+  background-color: var(--cor-whi);  /* Preenchimento branco */
   transition: var(--transition-default);
   cursor: pointer;
   text-align: center;
@@ -372,138 +379,62 @@ nav a:hover {
   align-items: center;
   gap: 5px;
 }
-/*---------------------- Section 2 Netflix FIM-----------------------*/
-/*-------------------------------Footer principal--------------------------*/
-.footerpro {
-  display: flex;
-  background-color: #040008;
-  color: #fff;
-  text-align: center;
-  padding-top: 14rem;
-  font-family: "Quicksand", sans-serif;
-  height: 100vh;
+
+/*-- Painéis --*/
+.painels {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  height: 10%;
+  display: flex;
+  gap: 50px;
 }
 
-/*----------------------------Container do footer------------------------*/
-.footer-container {
+.square1 {
+  width: 320px;
+  height: 160px;
+  background-color: var(--cor-rox);
+}
+
+
+/*-- Backgroundtime --*/
+.backgroundtime {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
   width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-/*-------------------------Parte superior (título) Footer-------------------------*/
-.footer-top h2 {
-  font-size: 1.6rem;
-}
-.subfooter p {
-  font-size: 1.6rem;
-  font-weight: 600;
-}
-.subfooter {
-  display: flex;
-  gap: 10px;
-  align-items: center;
+  padding: 0 120px;
+  height: 100vh;
   justify-content: center;
+  overflow: hidden;
+  background: url("Khosmix Assets/Images/background.jpg") no-repeat;
+  background-position: center;
+  background-size: cover;
 }
-/*----------------------------Botão de contactar Footer------------------------*/
-.contact-btn {
-  font-family: Quicksand;
+
+/*-- Blur Container --*/
+.blur-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 180px;
-  height: 40px;
-  background-color: var(--cor-gre);
-  color: black;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 30px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.contact-btn:hover {
-  background-color: var(--cor-rox);
-  color: #fff;
-}
-
-/*----------------------------Parte inferior Footer-----------------------*/
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-.footer-item {
-  flex: 1;
-  min-width: 200px;
-}
-/*-----------------------------título "H3" e "p" Footer blocks Footer-----------------------*/
-.footer-item h3 {
-  position: relative;
-  text-align: left;
-  font-size: 1.2rem;
-  margin-bottom: 5px;
-}
-
-.footer-item h3::after {
-  content: "";
-  display: block;
+  flex-direction: column;
   width: 200px;
-  height: 2px;
-  background-color: var(--cor-whi);
-}
-.footer-item p {
-  font-size: 0.9rem;
-  line-height: 1.5rem;
-  text-align: left;
-}
-
-/*----------------------------Ícones sociais Footer----------------------*/
-.social-icons {
-  display: flex;
-  gap: 0.5rem;
-}
-.social-icons a {
-  text-decoration: none;
-  cursor: pointer;
-  color: #040008;
-  padding: 10px 15px;
-  border-radius: 50%;
-}
-.social-icons .icon {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffffff;
-  color: black;
-  border-radius: 50%;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
-  cursor: pointer;
+  height: 600px;
+  padding: 20px;
+  border-radius: 15px;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  font-family: "Arial", sans-serif;
+  text-align: center;
 }
 
-.social-icons .icon:hover {
-  background-color: var(--cor-rox);
+/*-- Footer --*/
+footer {
+  display: block;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
   color: var(--cor-whi);
-}
-
-/*--------------------Copyright Footer----------------------*/
-.footer-copyright {
-  margin-top: 2rem;
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #050209;
 }
