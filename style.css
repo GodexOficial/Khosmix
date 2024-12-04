@@ -163,34 +163,7 @@ nav a:hover {
   gap: 40px;
   padding: 35px 50px;
 }
-/*---------------------- Section 2 Title-----------------------*/
-.title {
-  display: flex;
-  flex-direction: column;
-  gap: 0.01rem;
-}
-
-.netflix .title h1 {
-  font-size: 2.5rem;
-  font-weight: 400;
-}
-
-.netflix .title h2 {
-  font-size: 1rem;
-  font-weight: 300;
-}
-/*---------------------- Section 2 Netflix-----------------------*/
-.netflix {
-  width: 100%;
-  color: var(--cor-whi);
-  gap: 40px;
-}
 /*---------------------- Section 2 Netflix Title-----------------------*/
-.title {
-  display: flex;
-  flex-direction: column;
-  gap: 0.01rem;
-}
 
 .netflix h1 {
   font-size: 32px;
@@ -206,8 +179,6 @@ nav a:hover {
   text-align: justify;
 }
 /*---------------------- Section 2 Netflix Icons-----------------------*/
-/*---------------------- Section 2 Icons-----------------------*/
-
 .icons a {
   display: flex;
   align-items: center;
@@ -271,7 +242,7 @@ nav a:hover {
 .maisinfo:hover .infoicon {
   filter: invert(1) brightness(2);
 }
-/*---------------------------------- Ícone de Informação ----------------------------------*/
+/*---------------------------------- Ícone de Informação Button ----------------------------------*/
 .infoicon {
   width: 20px;
   height: auto;
@@ -280,18 +251,35 @@ nav a:hover {
 }
 /*---------------------- Section 2 Netflix Painels-----------------------*/
 
+.carousel-container {
+  position: relative;
+  width: 100%; /* Ajuste conforme o layout */
+  overflow: hidden; /* Oculta os itens fora da área visível */
+}
+
 .painels {
-  width: 100%;
-  height: 10%;
   display: flex;
-  gap: 50px;
+  gap: 10px;
+  transition: transform 0.3s ease; /* Suaviza a rolagem ao soltar */
+  cursor: grab; /* Cursor para indicar que é possível arrastar */
+}
+
+.painels:active {
+  cursor: grabbing; /* Troca o cursor ao arrastar */
+}
+
+.job {
+  text-decoration: none;
 }
 
 .square1 {
   width: 320px;
   height: 160px;
   background-color: var(--cor-whi);
+  flex-shrink: 0; /* Evita que os itens encolham */
+  border-radius: 5px; /* Para bordas arredondadas */
 }
+
 /*---------------------- Section 2 Netflix FIM-----------------------*/
 /*-------------------------------Footer principal--------------------------*/
 .footerpro {
