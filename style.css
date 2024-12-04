@@ -143,7 +143,156 @@ nav a:hover {
   color: var(--cor-whi);
   background-color: var(--cor-rox);
 }
+/*------------------------Fim Section 1 --------------------------*/
+/*---------------------- Section 2 Background-----------------------*/
+.backgroundnet {
+  width: 90%;
+  margin: 70px auto;
+  height: 80vh;
+  overflow: hidden;
+  border-radius: 35px;
+  background: radial-gradient(circle at center, #2f0093, #110056);
+}
+/*---------------------- Section 2 Netflix-----------------------*/
+.netflix {
+  display: flex;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  color: var(--cor-whi);
+  gap: 40px;
+  padding: 35px 50px;
+}
+/*---------------------- Section 2 Title-----------------------*/
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.01rem;
+}
 
+.netflix .title h1 {
+  font-size: 2.5rem;
+  font-weight: 400;
+}
+
+.netflix .title h2 {
+  font-size: 1rem;
+  font-weight: 300;
+}
+/*---------------------- Section 2 Netflix-----------------------*/
+.netflix {
+  width: 100%;
+  color: var(--cor-whi);
+  gap: 40px;
+}
+/*---------------------- Section 2 Netflix Title-----------------------*/
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.01rem;
+}
+
+.netflix h1 {
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.netflix h2 {
+  font-size: 24px;
+  font-weight: 300;
+}
+.netflix p {
+  width: 330px;
+  text-align: justify;
+}
+/*---------------------- Section 2 Netflix Icons-----------------------*/
+/*---------------------- Section 2 Icons-----------------------*/
+
+.icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.icons .icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.icons a:hover .icon {
+  transform: scale(1.2);
+  filter: brightness(1.2);
+}
+.icons {
+  display: flex;
+  gap: 15px;
+}
+/*------------------------ Botões no Netflix ----------------------*/
+.buttonsnetflix {
+  display: flex;
+  width: 84%;
+  gap: 15px;
+  color: black;
+}
+.buttonsnetflix a {
+  text-decoration: none;
+  color: black;
+}
+.contratar2,
+.maisinfo {
+  font-family: "Quicksand";
+  font-size: 1.5ch;
+  font-weight: 500;
+  width: 13rem;
+  height: 3rem;
+  border: none;
+  border-radius: 1000px;
+  color: var(--cor-preto);
+  background-color: var(--cor-whi);
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin: 70px 0;
+}
+.contratar2:hover,
+.maisinfo:hover {
+  border-color: var(--cor-rox);
+  color: var(--cor-whi);
+  background-color: var(--cor-rox);
+}
+.contratar2:hover .infoicon,
+.maisinfo:hover .infoicon {
+  filter: invert(1) brightness(2);
+}
+/*---------------------------------- Ícone de Informação ----------------------------------*/
+.infoicon {
+  width: 20px;
+  height: auto;
+  transition: filter 0.3s ease;
+  filter: invert(0) brightness(1);
+}
+/*---------------------- Section 2 Netflix Painels-----------------------*/
+
+.painels {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  gap: 50px;
+}
+
+.square1 {
+  width: 320px;
+  height: 160px;
+  background-color: var(--cor-whi);
+}
+/*---------------------- Section 2 Netflix FIM-----------------------*/
 /*-------------------------------Footer principal--------------------------*/
 .footerpro {
   display: flex;
