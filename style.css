@@ -272,6 +272,7 @@ nav a:hover {
   margin: 0 auto;
   gap: 10px;
   overflow: hidden;
+  position: relative;
 }
 .job {
   width: 620px;
@@ -295,6 +296,26 @@ nav a:hover {
   flex: 1;
   transform: scale(1); /* Retorna ao tamanho original */
   z-index: 1;
+}
+.trabalhos::before,
+.trabalhos::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 150px;
+  pointer-events: none; /* O mouse passa direto pelo gradiente */
+  z-index: 3;
+}
+
+.trabalhos::before {
+  left: 0; /* Corrigido para "0" */
+  background: linear-gradient(to right, #2f0093, #1100567e, transparent);
+}
+
+.trabalhos::after {
+  right: 0; /* Corrigido para "0" */
+  background: linear-gradient(to left, #2f0093a9, #11005680, transparent);
 }
 /*---------------------- Section 2 Netflix FIM-----------------------*/
 /*-------------------------------Footer principal--------------------------*/
