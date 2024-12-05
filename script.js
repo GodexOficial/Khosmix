@@ -61,3 +61,53 @@ document.querySelectorAll(".job").forEach((item, index) => {
     if (selected) updateContent(selected);
   });
 });
+
+// Iniciando evento de clique no botão veja mais
+
+function openDetails(id) {
+  // Ocultar os cards
+  document.querySelector(".cards-container").style.display = "none";
+
+  // Mostrar o modal de detalhes
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.classList.remove("hidden");
+  }
+}
+
+function closeDetails() {
+  // Ocultar os modais de detalhes
+  document.querySelectorAll(".details-modal").forEach((modal) => {
+    modal.classList.add("hidden");
+  });
+
+  // Mostrar os cards novamente
+  document.querySelector(".cards-container").style.display = "flex";
+}
+
+/*
+function openDetails(id) {
+  // Ocultar todos os modais de detalhes
+  document.querySelectorAll(".details-card").forEach((card) => {
+    card.style.display = "none";
+  });
+
+  // Mostrar o modal do membro selecionado
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.style.display = "flex";
+  }
+
+  // Mostrar a seção de detalhes
+  document.getElementById("details-section").style.display = "flex";
+}
+
+function closeDetails() {
+  // Ocultar a seção de detalhes
+  document.getElementById("details-section").style.display = "none";
+
+  // Mostrar todos os cards novamente
+  document.querySelectorAll(".cards-container").forEach((card) => {
+    card.style.display = "flex";
+  });
+}*/

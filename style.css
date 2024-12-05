@@ -309,54 +309,324 @@ nav a:hover {
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 /*---------------------- Section 2 Netflix FIM-----------------------*/
+
 /*---------------------- Section 3 Time Inicio-----------------------*/
+/*-------------------------------------------Sessão principal----------------------------------*/
 .timesection {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
   height: 100vh;
-  background: url(images/background.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  margin: 0 auto;
-}
-.teamcontent {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 50px;
-  margin: 0 auto;
-  gap: 120px;
+  background: url(images/background.jpg) no-repeat center center/cover;
+  position: relative;
 }
 
-.team {
+/* Cards Container */
+.cards-container {
+  display: flex;
+  gap: 20px;
+}
+
+/* Estilos dos Cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.skills-icons img {
+  width: 30px;
+  margin: 5px;
+}
+
+.see-more {
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.see-more:hover {
+  background: #0056b3;
+}
+
+/* Modal de Detalhes */
+.details-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+.glass-small,
+.glass-large {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.glass-small {
+  width: 200px;
+}
+
+.glass-large {
+  width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 13rem;
-  height: 24rem;
-  background-color: #040008;
-  border-radius: 15px;
-  padding: 10px;
-  transition: 0.3s all ease-in-out;
 }
-.team:hover {
-  transform: scale(1.2, 1.2);
+
+.profile-pic-large {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.skills .skill {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.skills .progress-bar {
+  width: 100%;
+  height: 10px;
+  background: #e0e0e0;
+  margin-left: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.skills .progress {
+  height: 100%;
+  background: #007bff;
+  border-radius: 5px;
+}
+
+/* Botão de Voltar */
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.back-button:hover {
+  background: black;
+  color: white;
+}
+/*.timesection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  position: relative;
+  background: linear-gradient(
+      to bottom,
+      rgb(04, 00, 08),
+      rgba(98, 0, 255, 0),
+      rgba(98, 0, 255, 0),
+      rgb(04, 00, 08)
+    ),
+    url("images/background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Cards Container
+.cards-container {
+  flex: 1 1 220px;
+  margin: 15px;
+}
+.details-container {
+  display: none; /* Mantém a seção de detalhes oculta por padrão
+}
+
+.details-card {
+  display: none; /* Inicialmente, todos os cards de detalhes estão ocultos
+}
+/* Estilos dos Cards
+.glass-card {
+  background: linear-gradient(#09266023, #1a047021); /* Glass effect
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+.glass-card:hover {
+  transform: scale(1.05);
   cursor: pointer;
 }
-.team h2 {
+/* Estilos dos H3 Cards
+.glass-card h3 {
   font-family: "Quicksand";
-  font-size: 1rem;
+  font-weight: 200;
+  font-size: 1.1rem;
   color: #fff;
-  font-weight: 400;
 }
-.imageteam {
-  width: 10rem;
-  height: 10rem;
-  border-radius: 1000%;
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
 }
+
+.skills-icons img {
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+}
+
+.buttonveja {
+  padding: 10px 20px;
+  background: var(--cor-whi);
+  color: var(--cor-rox);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-family: "Quicksand";
+  font-weight: 200;
+}
+
+.buttonveja:hover {
+  background: #6200b3;
+}
+
+/* Modal de Detalhes
+.details-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+.glass-small,
+.glass-large {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 10px;
+}
+
+.glass-small {
+  width: 200px;
+}
+
+.glass-large {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-pic-large {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.skills .skill {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.skills .progress-bar {
+  width: 100%;
+  height: 10px;
+  background: #e0e0e0;
+  margin-left: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.skills .progress {
+  height: 100%;
+  background: #007bff;
+  border-radius: 5px;
+}
+
+/* Botão de Voltar
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-family: "Quicksand";
+  font-weight: 200;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.back-button:hover {
+  background: black;
+  color: white;
+}*/
 /*---------------------- Section 3 Time Fim-----------------------*/
 /*-------------------------------Footer principal--------------------------*/
 .footerpro {
