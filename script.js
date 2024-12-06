@@ -117,3 +117,22 @@ function closeDetails() {
     card.style.display = "flex";
   });
 }*/
+// Referência ao botão
+const backToTopButton = document.getElementById("backToTop");
+
+// Mostra o botão ao rolar para baixo
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    backToTopButton.classList.add("show");
+  } else {
+    backToTopButton.classList.remove("show");
+  }
+});
+
+// Função para rolar suavemente ao topo
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+}
