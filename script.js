@@ -196,47 +196,53 @@ function smoothScrollTo(targetSelector) {
 
 //--------------------------------------------------------------------------//
 // Evento para mostrar/esconder o formulário
-document.getElementById('openForm').addEventListener('click', function() {
-  var formContainer = document.getElementById('formContainer');
-  if (formContainer.style.display === 'none' || formContainer.style.display === '') {
-    formContainer.style.display = 'block';
+document.getElementById("openForm").addEventListener("click", function () {
+  var formContainer = document.getElementById("formContainer");
+  if (formContainer.style.display === "none" || formContainer.style.display === "") {
+    formContainer.style.display = "flex";
   } else {
-    formContainer.style.display = 'none';
+    formContainer.style.display = "none";
+  }
+});
+document.getElementById("closeForm").addEventListener("click", function () {
+  var formContainer = document.getElementById("formContainer");
+  if (formContainer.style.display === "none" || formContainer.style.display === "") {
+    formContainer.style.display = "flex";
+  } else {
+    formContainer.style.display = "none";
   }
 });
 
 // Evento de submissão do formulário
-document.getElementById('contractForm').addEventListener('submit', function(event) {
+document.getElementById("contractForm").addEventListener("submit", function (event) {
   event.preventDefault();
 
   // Obtendo os dados do formulário
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const service = document.getElementById('service').value;
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const service = document.getElementById("service").value;
 
   // Criando o objeto de dados a serem armazenados
   const formData = {
     name,
     email,
-    service
+    service,
   };
 
   // Convertendo o objeto para uma string JSON
   const jsonData = JSON.stringify(formData);
 
   // Armazenando os dados em um arquivo no diretório "clientes"
-  const blob = new Blob([jsonData], { type: 'application/json' });
-  const link = document.createElement('a');
+  const blob = new Blob([jsonData], { type: "application/json" });
+  const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
   link.download = `clientes/formulario_${new Date().toISOString()}.json`;
   link.click();
 
   // Mostrando a mensagem de confirmação
-  document.getElementById('confirmationMessage').style.display = 'block';
+  document.getElementById("confirmationMessage").style.display = "block";
 
   // Limpar o formulário após o envio
-  document.getElementById('contractForm').reset();
+  document.getElementById("contractForm").reset();
 });
 //--------------------------------------------------------------------------//
-
-

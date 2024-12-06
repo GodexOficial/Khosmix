@@ -8,9 +8,11 @@
   --cor-rox: #cb75ff; /* Roxo */
   --cor-gre: #57ffb8; /* Verde */
   --cor-whi: #fff; /* Branco */
+  --cor-gradient-job: linear-gradient(#30044d3a, #12012738);
   --cor-gradiente-start: rgba(43, 0, 99, 1);
   --cor-gradiente-end: rgba(20, 20, 20, 0);
   --cor-modal-bg: rgba(0, 0, 0, 0.8);
+  --img-astronaut: url(images/Astronaut.jpg);
 
   /* -----------------------Tamanhos-------------------- */
   --border-radius-lg: 35px;
@@ -197,20 +199,24 @@ nav a:hover {
 }
 
 /* ----------------------- Estilização do formulário ------------------------- */
+#formContainer {
+  width: 70%;
+  height: 95%;
+  position: fixed;
+  margin: 0 auto;
+}
 .background-form {
-  position: absolute; /* Tornando o formulário um elemento posicionado */
-  top: 50%; /* Centralizando o formulário na metade da tela verticalmente */
+  position: flex;
+  top: 50%;
   left: 50%; /* Centralizando o formulário na metade da tela horizontalmente */
   transform: translate(-50%, -50%); /* Movendo o formulário para o centro */
-  background: rgba(255, 255, 255, 0.2); /* Vidro fosco com desfoque */
-  backdrop-filter: blur(30px); /* Desfoque do fundo */
-  padding: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Traçado branco com transparência */
-  border-radius: 10px;
-  max-width: 500px;
+  background: var(--cor-gradient-job);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
   display: none; /* Inicia com o formulário escondido */
   z-index: 1000; /* Certificando-se de que o formulário sobreponha outros elementos */
-  position: relative; /* Garantir que o botão de fechar esteja dentro da posição do formulário */
+  position: absolute; /* Garantir que o botão de fechar esteja dentro da posição do formulário */
 }
 
 .form-content {
@@ -219,14 +225,17 @@ nav a:hover {
 
 /* Botão de fechar formulário */
 .close-btn {
+  width: 30px;
+  height: 30px;
   position: absolute;
   top: 10px;
   right: 10px;
-  background: none;
+  background: white;
   border: none;
+  border-radius: 1000px;
   font-size: 1.5rem;
   cursor: pointer;
-  color: #fff;
+  color: black;
 }
 
 /* Estilização do conteúdo do formulário */
@@ -243,7 +252,7 @@ textarea {
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 20px;
   font-size: 1rem;
   box-sizing: border-box;
 }
@@ -256,16 +265,17 @@ textarea {
 .submit-btn {
   background-color: var(--cor-rox);
   color: white;
-  padding: 10px 20px;
+  padding: 10px 50px;
   border: none;
-  border-radius: 5px;
+  border-radius: 1000px;
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .submit-btn:hover {
-  background-color: var(--cor-rox-escuro);
+  background-color: var(--cor-gre);
+  color: black;
 }
 
 /* Mensagem de confirmação */
@@ -408,7 +418,7 @@ textarea {
   width: 720px;
   height: 140px;
   flex: 1;
-  background-image: url(images/Astronaut.jpg);
+  background-image: var(--img-astronaut);
   background-size: cover;
   background-position: center;
   transition: flex 0.4s ease, transform 0.4s ease, margin 0.4s ease; /* Adicionando transições de margin */
