@@ -55,7 +55,7 @@ function startAutoScroll() {
   autoScrollInterval = setInterval(() => {
     currentIndex = (currentIndex + 1) % jobs.length;
     selectJob(currentIndex);
-  }, 5000); // Troca a cada 5 segundos
+  }, 6000); // Troca a cada 6 segundos
 }
 
 function stopAutoScroll() {
@@ -65,8 +65,8 @@ function stopAutoScroll() {
 function resetInactivityTimer() {
   clearTimeout(inactivityTimer);
   inactivityTimer = setTimeout(() => {
-    startAutoScroll(); // Retorna a rotação automática após 30 segundos
-  }, 30000); // 30 segundos de inatividade
+    startAutoScroll(); // Retorna a rotação automática após 20 segundos
+  }, 20000); // 20 segundos de inatividade
 }
 
 // Adicionar eventos de clique aos itens
