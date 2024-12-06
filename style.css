@@ -163,11 +163,13 @@ nav a:hover {
   gap: 30px;
   color: var(--cor-whi);
 }
+
 /* -- --------------------------section 1 Sobre H1--------------------- -- */
 .sobre h1 {
   font-weight: 300;
   font-size: 2vw;
 }
+
 /* -- --------------------------section 1 Sobre P--------------------- -- */
 .sobre p {
   font-size: 1.2vw;
@@ -193,6 +195,88 @@ nav a:hover {
   color: var(--cor-whi);
   background-color: var(--cor-rox);
 }
+
+/* ----------------------- Estilização do formulário ------------------------- */
+.background-form {
+  position: absolute; /* Tornando o formulário um elemento posicionado */
+  top: 50%; /* Centralizando o formulário na metade da tela verticalmente */
+  left: 50%; /* Centralizando o formulário na metade da tela horizontalmente */
+  transform: translate(-50%, -50%); /* Movendo o formulário para o centro */
+  background: rgba(255, 255, 255, 0.2); /* Vidro fosco com desfoque */
+  backdrop-filter: blur(30px); /* Desfoque do fundo */
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Traçado branco com transparência */
+  border-radius: 10px;
+  max-width: 500px;
+  display: none; /* Inicia com o formulário escondido */
+  z-index: 1000; /* Certificando-se de que o formulário sobreponha outros elementos */
+  position: relative; /* Garantir que o botão de fechar esteja dentro da posição do formulário */
+}
+
+.form-content {
+  text-align: center;
+}
+
+/* Botão de fechar formulário */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+/* Estilização do conteúdo do formulário */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+textarea {
+  height: 100px;
+}
+
+/* Estilização do botão de envio */
+.submit-btn {
+  background-color: var(--cor-rox);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: var(--cor-rox-escuro);
+}
+
+/* Mensagem de confirmação */
+#confirmationMessage {
+  display: none;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: var(--cor-rox-escuro);
+}
+
 /*------------------------Fim Section 1 --------------------------*/
 /*---------------------- Section 2 Background-----------------------*/
 .backgroundnet {

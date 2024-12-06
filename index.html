@@ -28,34 +28,49 @@
           </nav>
         </header>
       </div>
-      <!---------------------------- Sobre section 1 --------------------->
-      <section class="sobre">
-        <h1>Sobre a Khosmix</h1>
-        <p>
-          Em um mundo cada vez mais interconectado, nossa empresa se destaca como uma força
-          unificadora no cenário criativo contemporâneo. Somos uma agência de gestão de mídias e
-          talentos, dedicada a elevar e promover os profissionais mais talentosos em uma ampla gama
-          de disciplinas criativas.
-        </p>
-        <p>
-          Com um foco incansável na excelência e na inovação, nossa equipe trabalha arduamente para
-          oferecer serviços de qualidade incomparável. Somos o catalisador que impulsiona o sucesso
-          de influencers artistas e Empresas, fornecendo as ferramentas, estratégias e suporte
-          necessários para alcançar suas metas e potencial máximo.
-        </p>
-        <!---------------------------- Contratar Button section 1 --------------------->
-        <div class="contratar">
-          <a
-            href="mailto:khosmixstudio@gmail.com?subject=
-        Quero contratar seus serviços&body=Olá, gostaria 
-        de saber mais sobre seus serviços."
-            class="botao-contratar"
-          >
-            <button class="input">Contratar</button>
-          </a>
-        </div>
-      </section>
+<!-- ---------------------------- Sobre section 1 --------------------->
+<section class="sobre">
+  <h1>Sobre a Khosmix</h1>
+  <p>
+    Em um mundo cada vez mais interconectado, nossa empresa se destaca como uma força
+    unificadora no cenário criativo contemporâneo. Somos uma agência de gestão de mídias e
+    talentos, dedicada a elevar e promover os profissionais mais talentosos em uma ampla gama
+    de disciplinas criativas.
+  </p>
+  <p>
+    Com um foco incansável na excelência e na inovação, nossa equipe trabalha arduamente para
+    oferecer serviços de qualidade incomparável. Somos o catalisador que impulsiona o sucesso
+    de influencers artistas e Empresas, fornecendo as ferramentas, estratégias e suporte
+    necessários para alcançar suas metas e potencial máximo.
+  </p>
+  <!-- ---------------------------- Contratar Button section 1 --------------------->
+  <div class="contratar">
+    <button id="openForm" class="input">Contratar</button>
+  </div>
+</section>
+
+<!-- Formulário de contratação -->
+<div id="formContainer" class="sobre background-form">
+  <button id="closeForm" class="close-btn">&times;</button> <!-- Botão de fechar -->
+  <div class="form-content">
+    <h2>Preencha o Formulário para Contratar</h2>
+    <form id="contractForm">
+      <label for="name">Nome:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="service">Descrição do Serviço:</label>
+      <textarea id="service" name="service" required></textarea>
+
+      <button type="submit" class="submit-btn">Enviar</button>
+    </form>
+    <div id="confirmationMessage" class="hidden">
+      <p>Formulário enviado com sucesso!</p>
     </div>
+  </div>
+</div>
     <!------------------------------Netflix Content------------------------->
     <div class="backgroundnet" id="trabalhos">
       <section class="netflix">
@@ -216,11 +231,11 @@
       <!-- Detalhes Julio -->
       <div class="details-modal hidden" id="julio">
         <div class="glass-small">
-          <img src="" alt="Julio" class="profile-pic-large" />
+          <img src="images/Astronaut.jpg" alt="Julio" class="profile-pic-large" />
           <h2>Julio</h2>
           <div class="skills">
             <div class="skill">
-              <img src="alt="" />
+              <img src="" alt="" />
               <div class="progress-bar">
                 <div class="progress" style="width: 85%"></div>
               </div>
@@ -237,18 +252,18 @@
               criativo...
             </p>
           </div>
-          <img src="e2.png" alt="Julio" class="large-image" />
+          <img src="images/Astronaut.png" alt="Julio" class="large-image" />
         </div>
       </div>
 
       <!-- Detalhes Eliabe -->
       <div class="details-modal hidden" id="eliabe">
         <div class="glass-small">
-          <img src="" alt="Eliabe" class="profile-pic-large" />
+          <img src="images/Astronaut.jpg" alt="Eliabe" class="profile-pic-large" />
           <h2>Eliabe</h2>
           <div class="skills">
             <div class="skill">
-              <img src="alt="" />
+              <img src="" alt="" />
               <div class="progress-bar">
                 <div class="progress" style="width: 75%"></div>
               </div>
@@ -265,18 +280,18 @@
               experiências únicas...
             </p>
           </div>
-          <img src="e3.png" alt="Eliabe" class="large-image" />
+          <img src="images/Astronaut.png" alt="Eliabe" class="large-image" />
         </div>
       </div>
 
       <!--------------------------- Detalhes Luan -------------------------->
       <div class="details-modal hidden" id="luan">
         <div class="glass-small">
-          <img src="" alt="Luan" class="profile-pic-large" />
+          <img src="images/Astronaut.jpg" alt="Luan" class="profile-pic-large" />
           <h2>Luan</h2>
           <div class="skills">
             <div class="skill">
-              <img src="alt="" />
+              <img src="" alt="" />
               <div class="progress-bar">
                 <div class="progress" style="width: 80%"></div>
               </div>
@@ -293,7 +308,7 @@
               desafios...
             </p>
           </div>
-          <img src="e4.png" alt="Luan" class="large-image" />
+          <img src="images/Astronaut.png" alt="Luan" class="large-image" />
         </div>
       </div>
     </div>
