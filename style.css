@@ -21,6 +21,21 @@
 }
 
 /* ---------------------- Reset e Estilo Global ----------------- */
+@media (prefers-reduced-motion: no-preference) {
+  .animacao {
+    animation: fadeIn 1s ease-in-out;
+  }
+}
+.scroll-container {
+  scroll-snap-type: y mandatory; /* Ativa o snap na rolagem vertical */
+  overflow-y: scroll; /* Certifica-se de que a rolagem vertical está ativada */
+  height: 100vh; /* Limita o container */
+}
+
+.scroll-item {
+  scroll-snap-align: start; /* Cada item se alinha ao início do container */
+  height: 100vh; /* Cada item ocupa a altura total da viewport */
+}
 /* ------------------Suaviza o comportamento do scroll---------------- */
 html {
   scroll-behavior: smooth;

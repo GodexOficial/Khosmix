@@ -20,7 +20,6 @@ const data = {
     text: "Transformamos ideias em identidades visuais marcantes que se destacam no mercado.",
   },
 };
-
 // Referências dos elementos que serão alterados
 const title = document.querySelector(".netflix h1");
 const subtitle = document.querySelector(".netflix h2");
@@ -67,7 +66,9 @@ document.querySelectorAll(".job").forEach((item, index) => {
     if (selected) updateContent(selected);
   });
 });
+//--------------------------------------------------------------------------//
 
+//--------------------------------------------------------------------------//
 // Iniciando evento de clique no botão veja mais
 
 function openDetails(id) {
@@ -90,34 +91,9 @@ function closeDetails() {
   // Mostrar os cards novamente
   document.querySelector(".cards-container").style.display = "flex";
 }
+//--------------------------------------------------------------------------//
 
-/*
-function openDetails(id) {
-  // Ocultar todos os modais de detalhes
-  document.querySelectorAll(".details-card").forEach((card) => {
-    card.style.display = "none";
-  });
-
-  // Mostrar o modal do membro selecionado
-  const modal = document.getElementById(id);
-  if (modal) {
-    modal.style.display = "flex";
-  }
-
-  // Mostrar a seção de detalhes
-  document.getElementById("details-section").style.display = "flex";
-}
-
-function closeDetails() {
-  // Ocultar a seção de detalhes
-  document.getElementById("details-section").style.display = "none";
-
-  // Mostrar todos os cards novamente
-  document.querySelectorAll(".cards-container").forEach((card) => {
-    card.style.display = "flex";
-  });
-}*/
-// Referência ao botão
+//--------------------------------------------------------------------------//
 const backToTopButton = document.getElementById("backToTop");
 
 // Mostra o botão ao rolar para baixo
@@ -128,7 +104,9 @@ window.addEventListener("scroll", () => {
     backToTopButton.classList.remove("show");
   }
 });
+//--------------------------------------------------------------------------//
 
+//--------------------------------------------------------------------------//
 // Função para rolar suavemente ao topo
 function scrollToTop() {
   window.scrollTo({
@@ -136,3 +114,47 @@ function scrollToTop() {
     behavior: "smooth",
   });
 }
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.querySelector(".container");
+  const sections = document.querySelectorAll(".section");
+
+  // Escuta o evento de rolagem
+  let isScrolling;
+
+  container.addEventListener("scroll", () => {
+    window.clearTimeout(isScrolling);
+
+    // Aguarda um pequeno intervalo para evitar repetição contínua
+    isScrolling = setTimeout(() => {
+      const scrollPosition = container.scrollTop;
+      let closestSection = sections[0];
+      let closestDistance = Math.abs(scrollPosition - sections[0].offsetTop);
+
+      // Encontra a seção mais próxima
+      sections.forEach((section) => {
+        const distance = Math.abs(scrollPosition - section.offsetTop);
+        if (distance < closestDistance) {
+          closestSection = section;
+          closestDistance = distance;
+        }
+      });
+
+      // Alinha o scroll à seção mais próxima
+      closestSection.scrollIntoView({ behavior: "smooth" });
+    }, 150); // Tempo em ms para detectar "parada" no scroll
+  });
+});
+//--------------------------------------------------------------------------//
+
+//--------------------------------------------------------------------------//
+function smoothScrollTo(targetSelector) {
+  const targetElement = document.querySelector(targetSelector);
+
+  if (targetElement) {
+    targetElement.scrollIntoView({
+      behavior: "smooth", // Força o scroll suave
+      block: "start", // Alinha o topo do elemento
+    });
+  }
+}
+//--------------------------------------------------------------------------//
