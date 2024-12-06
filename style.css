@@ -45,14 +45,13 @@ body {
   right: 20px;
   width: 50px;
   height: 50px;
-  background-color: #dadada; /* Fundo do botão */
+  background-color: var(--cor-gre);
   border: none;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -65,7 +64,7 @@ body {
 }
 
 #backToTop:hover {
-  background-color: #555; /* Alteração da cor no hover */
+  filter: invert(1);
 }
 
 #backToTop.show {
@@ -132,7 +131,7 @@ nav a:hover {
   border-radius: var(--border-radius-lg);
   background: linear-gradient(180deg, #101010, transparent);
   max-width: 90%;
-  height: 90vh;
+  height: 100vh;
   margin: 0.5rem auto;
 }
 
@@ -186,12 +185,10 @@ nav a:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 90%;
-  margin: 80px auto;
-  height: 95vh;
+  width: 100%;
+  margin: 0 auto;
+  height: 100vh;
   overflow: hidden;
-  border-radius: 35px;
-  background: radial-gradient(circle at center, #2f0093, #110056);
 }
 /*---------------------- Section 2 Netflix-----------------------*/
 .netflix {
@@ -199,13 +196,14 @@ nav a:hover {
   align-items: left;
   justify-content: space-between;
   width: 90%;
-  height: 100%;
-  max-height: 1200px;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   color: var(--cor-whi);
   gap: 40px;
   padding: 35px 50px;
+  border-radius: 35px;
+  background: radial-gradient(circle at center, #2f0093, #110056);
 }
 /*---------------------- Section 2 Netflix Title-----------------------*/
 
