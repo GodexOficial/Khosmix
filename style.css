@@ -336,7 +336,7 @@ nav a:hover {
 
 .job.selected {
   flex: 2;
-  transform: scale(1.1, 1.1);
+  transform: scale(1.2, 1.4);
   z-index: 2;
   margin: 0 30px; /* Maior margem para o item selecionado */
 }
