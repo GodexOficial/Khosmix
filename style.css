@@ -336,7 +336,7 @@ nav a:hover {
   width: 220px;
   height: 350px;
   background: linear-gradient(#30044d3a, #12012738);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
   border-radius: 15px;
   padding: 20px;
   text-align: center;
@@ -401,10 +401,8 @@ nav a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(10px);
   background: rgba(0, 0, 0, 0.5);
-  transition: opacity 0.3s ease;
-  backdrop-filter: blur(15px);
+  transition: opacity 0.3s ease-in-out;
 }
 
 .hidden {
@@ -413,29 +411,63 @@ nav a:hover {
 
 .glass-small,
 .glass-large {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 15px;
+  backdrop-filter: blur(20px);
+  background: linear-gradient(#17449e4f, #3213af3b);
+  border-radius: 25px;
   padding: 20px;
   margin: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .glass-small {
-  width: 200px;
-}
-
-.glass-large {
-  width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 200px;
+  height: 570px;
+}
+.glass-small h2 {
+  font-family: "Quicksand";
+  font-weight: 200;
+  font-size: 1.2rem;
+  color: #fff;
 }
 
+.glass-large {
+  width: 850px;
+  height: 570px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.infolarge {
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 80px;
+}
+.infolarge h2 {
+  font-size: 2.3rem;
+  font-weight: 400;
+  font-family: "Quicksand";
+  color: #fff;
+}
+.infolarge p {
+  font-weight: 200;
+  width: 300px;
+  color: #fff;
+  text-align: justify;
+}
 .profile-pic-large {
   width: 150px;
   height: 150px;
-  border-radius: 50%;
+  border-radius: 1000px;
   margin-bottom: 10px;
+}
+.large-image {
+  width: 400px;
+  height: auto;
+  border-radius: 10%;
 }
 
 .skills .skill {
@@ -463,19 +495,27 @@ nav a:hover {
 /* Botão de Voltar */
 .back-button {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 5%;
+  left: 87%;
+  z-index: 3;
   background: rgba(255, 255, 255, 0.7);
   color: black;
   border: none;
   padding: 10px 20px;
   border-radius: 50px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease-in-out;
   font-size: 14px;
   font-weight: bold;
 }
-
+@media (max-width: 768px) {
+  .back-button {
+    top: 5%; /* Ajusta posição em telas menores */
+    left: 80%;
+    font-size: 14px; /* Reduz o tamanho da fonte */
+    padding: 8px 16px; /* Ajusta o espaçamento */
+  }
+}
 .back-button:hover {
   background: black;
   color: white;
