@@ -338,6 +338,7 @@ nav a:hover {
   height: 350px;
   background: linear-gradient(#30044d3a, #12012738);
   backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.219);
   border-radius: 15px;
   padding: 20px;
   text-align: center;

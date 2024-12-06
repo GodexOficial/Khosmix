@@ -1,4 +1,3 @@
-// Dados que serão exibidos
 const data = {
   design: {
     title: "Design",
@@ -49,6 +48,13 @@ function updateContent(selected) {
     title.classList.add("fade-in");
     subtitle.classList.add("fade-in");
     text.classList.add("fade-in");
+
+    // Remove a classe fade-in após a animação
+    setTimeout(() => {
+      title.classList.remove("fade-in");
+      subtitle.classList.remove("fade-in");
+      text.classList.remove("fade-in");
+    }, 500); // Tempo igual ao da transição (sincronizado com o CSS)
   }, 500); // Tempo em ms (sincronizado com o CSS)
 }
 
