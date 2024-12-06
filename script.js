@@ -20,52 +20,72 @@ const data = {
     text: "Transformamos ideias em identidades visuais marcantes que se destacam no mercado.",
   },
 };
-// Referências dos elementos que serão alterados
+
 const title = document.querySelector(".netflix h1");
 const subtitle = document.querySelector(".netflix h2");
 const text = document.querySelector(".netflix p");
+const jobs = document.querySelectorAll(".job");
 
-// Função para aplicar a transição
-function updateContent(selected) {
-  // Adiciona a classe fade-out para o conteúdo atual
-  title.classList.add("fade-out");
-  subtitle.classList.add("fade-out");
-  text.classList.add("fade-out");
+let currentIndex = 0;
+let autoScrollInterval;
+let inactivityTimer;
 
-  // Aguarda o tempo da transição de saída antes de atualizar o conteúdo
-  setTimeout(() => {
-    // Atualiza o conteúdo
+function updateContent(selectedKey) {
+  const selected = data[selectedKey];
+
+  if (selected) {
     title.textContent = selected.title;
     subtitle.textContent = selected.subtitle;
     text.textContent = selected.text;
-
-    // Remove fade-out e aplica fade-in para o novo conteúdo
-    title.classList.remove("fade-out");
-    subtitle.classList.remove("fade-out");
-    text.classList.remove("fade-out");
-
-    title.classList.add("fade-in");
-    subtitle.classList.add("fade-in");
-    text.classList.add("fade-in");
-
-    // Remove a classe fade-in após a animação
-    setTimeout(() => {
-      title.classList.remove("fade-in");
-      subtitle.classList.remove("fade-in");
-      text.classList.remove("fade-in");
-    }, 500); // Tempo igual ao da transição (sincronizado com o CSS)
-  }, 500); // Tempo em ms (sincronizado com o CSS)
+  }
 }
 
-// Adicionando evento de clique aos itens do carrossel
-document.querySelectorAll(".job").forEach((item, index) => {
-  item.addEventListener("click", () => {
-    const keys = Object.keys(data); // ["design", "modelagem", "musica", "identidade"]
-    const selected = data[keys[index % keys.length]];
+function selectJob(index) {
+  jobs.forEach((job, i) => {
+    if (i === index) {
+      job.classList.add("selected");
+      updateContent(job.dataset.key);
+    } else {
+      job.classList.remove("selected");
+    }
+  });
+}
 
-    if (selected) updateContent(selected);
+function startAutoScroll() {
+  autoScrollInterval = setInterval(() => {
+    currentIndex = (currentIndex + 1) % jobs.length;
+    selectJob(currentIndex);
+  }, 5000); // Troca a cada 5 segundos
+}
+
+function stopAutoScroll() {
+  clearInterval(autoScrollInterval);
+}
+
+function resetInactivityTimer() {
+  clearTimeout(inactivityTimer);
+  inactivityTimer = setTimeout(() => {
+    startAutoScroll(); // Retorna a rotação automática após 30 segundos
+  }, 30000); // 30 segundos de inatividade
+}
+
+// Adicionar eventos de clique aos itens
+jobs.forEach((job, index) => {
+  job.addEventListener("click", () => {
+    stopAutoScroll();
+    currentIndex = index;
+    selectJob(currentIndex);
+    resetInactivityTimer(); // Reseta o temporizador de inatividade
   });
 });
+
+// Iniciar rotação automática
+startAutoScroll();
+
+// Resetar o temporizador ao interagir com qualquer parte da página
+document.addEventListener("mousemove", resetInactivityTimer);
+document.addEventListener("keydown", resetInactivityTimer);
+
 //--------------------------------------------------------------------------//
 
 //--------------------------------------------------------------------------//
