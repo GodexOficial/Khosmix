@@ -317,8 +317,7 @@ nav a:hover {
   height: 200px;
   border-radius: 10px;
   margin: 0 auto;
-  gap: 10px; /* Aumenta o espaçamento entre os itens */
-  position: relative;
+  gap: 2px; /* Aumenta o espaçamento entre os itens */
 }
 
 .job {
@@ -331,21 +330,22 @@ nav a:hover {
   transition: flex 0.4s ease, transform 0.4s ease, margin 0.4s ease; /* Adicionando transições de margin */
   cursor: pointer;
   border-radius: 8px;
-  margin: 0 10px; /* Define margem entre os itens */
+  margin: 0 2px; /* Define margem entre os itens */
 }
 
 .job.selected {
   flex: 2;
-  transform: scale(1.2, 1.4);
-  z-index: 2;
-  margin: 0 30px; /* Maior margem para o item selecionado */
+  width: 720px;
+  height: 160px;
+  background-size: 110%;
+  z-index: 5;
+  margin: 0 10px;
 }
 
 .job:not(.selected):not(:hover) {
   flex: 1;
-  transform: scale(1);
+  background-size: cover; /* Tamanho padrão */
   z-index: 1;
-  margin: 0 10px; /* Margem normal para itens não selecionados */
 }
 
 .fade-out {

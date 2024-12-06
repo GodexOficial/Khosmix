@@ -29,6 +29,7 @@ const jobs = document.querySelectorAll(".job");
 let currentIndex = 0;
 let autoScrollInterval;
 let inactivityTimer;
+let debounceTimer;
 
 function updateContent(selectedKey) {
   const selected = data[selectedKey];
@@ -51,31 +52,45 @@ function selectJob(index) {
   });
 }
 
-function startAutoScroll() {
-  autoScrollInterval = setInterval(() => {
+function autoScroll(timestamp) {
+  if (!lastTimestamp || timestamp - lastTimestamp >= 6000) {
+    // 6 segundos
     currentIndex = (currentIndex + 1) % jobs.length;
     selectJob(currentIndex);
-  }, 6000); // Troca a cada 6 segundos
+    lastTimestamp = timestamp;
+  }
+  autoScrollInterval = requestAnimationFrame(autoScroll);
+}
+
+function startAutoScroll() {
+  stopAutoScroll(); // Garante que não há múltiplos loops ativos
+  lastTimestamp = performance.now();
+  autoScrollInterval = requestAnimationFrame(autoScroll);
 }
 
 function stopAutoScroll() {
-  clearInterval(autoScrollInterval);
+  cancelAnimationFrame(autoScrollInterval);
 }
 
 function resetInactivityTimer() {
   clearTimeout(inactivityTimer);
   inactivityTimer = setTimeout(() => {
-    startAutoScroll(); // Retorna a rotação automática após 20 segundos
-  }, 20000); // 20 segundos de inatividade
+    startAutoScroll(); // Retorna à rotação automática após 20 segundos de inatividade
+  }, 20000);
+}
+
+function debounceResetInactivity() {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(resetInactivityTimer, 100); // Limita a frequência com debounce
 }
 
 // Adicionar eventos de clique aos itens
 jobs.forEach((job, index) => {
   job.addEventListener("click", () => {
-    stopAutoScroll();
+    stopAutoScroll(); // Pausa a rotação automática
     currentIndex = index;
-    selectJob(currentIndex);
-    resetInactivityTimer(); // Reseta o temporizador de inatividade
+    selectJob(currentIndex); // Atualiza imediatamente
+    resetInactivityTimer(); // Reinicia o temporizador de inatividade
   });
 });
 
@@ -83,8 +98,8 @@ jobs.forEach((job, index) => {
 startAutoScroll();
 
 // Resetar o temporizador ao interagir com qualquer parte da página
-document.addEventListener("mousemove", resetInactivityTimer);
-document.addEventListener("keydown", resetInactivityTimer);
+document.addEventListener("mousemove", debounceResetInactivity);
+document.addEventListener("keydown", debounceResetInactivity);
 
 //--------------------------------------------------------------------------//
 
