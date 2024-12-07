@@ -246,3 +246,39 @@ document.getElementById("contractForm").addEventListener("submit", function (eve
   document.getElementById("contractForm").reset();
 });
 //--------------------------------------------------------------------------//
+
+//--------------------------------------------------------------------------//
+const dots = document.querySelectorAll('.dot');
+const sections = document.querySelectorAll('.section');
+
+// Função para ativar o ponto correspondente
+function activateDot(index) {
+  dots.forEach(dot => dot.classList.remove('active'));
+  dots[index].classList.add('active');
+}
+
+// Adicionar evento de clique aos pontos
+dots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    const targetId = dot.dataset.target;
+    const targetSection = document.querySelector(targetId);
+
+    // Rola suavemente até a seção correspondente
+    targetSection.scrollIntoView({ behavior: 'smooth' });
+
+    // Atualiza o estado ativo manualmente
+    const index = Array.from(dots).indexOf(dot);
+    activateDot(index);
+  });
+});
+
+// Detectar a seção visível ao rolar
+window.addEventListener('scroll', () => {
+  sections.forEach((section, index) => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top >= 0 && rect.top < window.innerHeight / 2) {
+      activateDot(index);
+    }
+  });
+});
+//--------------------------------------------------------------------------//

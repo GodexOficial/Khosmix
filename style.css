@@ -813,3 +813,38 @@ textarea {
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.5);
 }
+/*--------------------BOTÕES DE NAVEGAÇÃO ENTRE SESSÕES-----------------*/
+/* Navegação por pontos */
+.dot-navigation {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 1000;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: gray;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dot.active {
+  background-color: var(--cor-rox); /* Cor para o ponto ativo */
+  transform: scale(1.5); /* Aumenta o tamanho do ponto ativo */
+}
+
+.section {
+  height: 100vh; /* Altura de uma viewport para cada seção */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: white;
+}
