@@ -246,3 +246,82 @@ document.getElementById("contractForm").addEventListener("submit", function (eve
   document.getElementById("contractForm").reset();
 });
 //--------------------------------------------------------------------------//
+
+//--------------------------------------------------------------------------//
+const trabalhos = document.querySelector(".trabalhos");
+const prevButton = document.getElementById("prevBtn");
+const nextButton = document.getElementById("nextBtn");
+
+// Função para mover o carrossel
+function scrollCarousel(direction) {
+  const scrollAmount = 300; // Ajuste o valor conforme necessário
+  trabalhos.scrollBy({
+    left: direction === "next" ? scrollAmount : -scrollAmount,
+    behavior: "smooth",
+  });
+}
+
+// Evento nos botões de navegação
+prevButton.addEventListener("click", () => scrollCarousel("prev"));
+nextButton.addEventListener("click", () => scrollCarousel("next"));
+
+// Suporte ao scroll do mouse (desktop)
+trabalhos.addEventListener("wheel", (e) => {
+  e.preventDefault(); // Evita o comportamento padrão do scroll vertical
+  trabalhos.scrollBy({
+    left: e.deltaY > 0 ? 300 : -300, // Rola para a direita ou esquerda
+    behavior: "smooth",
+  });
+});
+//--------------------------------------------------------------------------//
+
+//--------------------------------------------CHAT BOT---------------------------------------//
+
+// Seleção dos elementos
+const chatboxContainer = document.getElementById("chatbox-container");
+const openChatboxButton = document.getElementById("open-chatbox");
+const closeChatboxButton = document.getElementById("close-chatbox");
+const chatboxMessages = document.getElementById("chatbox-messages");
+const chatboxText = document.getElementById("chatbox-text");
+const sendMessageButton = document.getElementById("send-message");
+
+// Abrir o chatbox
+openChatboxButton.addEventListener("click", () => {
+  chatboxContainer.style.display = "flex";
+  openChatboxButton.style.display = "none";
+});
+
+// Fechar o chatbox
+closeChatboxButton.addEventListener("click", () => {
+  chatboxContainer.style.display = "none";
+  openChatboxButton.style.display = "block";
+});
+
+// Enviar mensagem
+sendMessageButton.addEventListener("click", sendMessage);
+chatboxText.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") sendMessage();
+});
+
+function sendMessage() {
+  const message = chatboxText.value.trim();
+  if (message) {
+    // Adicionar a mensagem do usuário
+    addMessage("Você", message);
+
+    // Placeholder para a resposta da IA
+    setTimeout(() => {
+      addMessage("Atendimento", "Aguarde, estamos processando sua solicitação...");
+    }, 500);
+  }
+  chatboxText.value = "";
+}
+
+// Adicionar mensagem ao chatbox
+function addMessage(sender, text) {
+  const messageElement = document.createElement("div");
+  messageElement.innerHTML = `<strong>${sender}:</strong> ${text}`;
+  chatboxMessages.appendChild(messageElement);
+  chatboxMessages.scrollTop = chatboxMessages.scrollHeight;
+}
+//--------------------------------------------CHAT BOT---------------------------------------//

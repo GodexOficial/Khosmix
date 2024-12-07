@@ -55,6 +55,91 @@ body {
   width: 100%;
   background-color: #040008;
 }
+/* --------------------------------- CHAT BOT ---------------------------- */
+/* Botão de abrir o chatbox */
+#open-chatbox {
+  position: fixed;
+  bottom: 100px;
+  right: 15px;
+  background-color: #2f0093;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#open-chatbox:hover {
+  background-color: #110056;
+}
+
+/* Container do chatbox */
+#chatbox-container {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  max-height: 400px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+/* Cabeçalho do chatbox */
+#chatbox-header {
+  background-color: #2f0093;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Área de mensagens */
+#chatbox-messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  background-color: #f7f7f7;
+}
+
+/* Campo de entrada */
+#chatbox-input {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+#chatbox-text {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#send-message {
+  background-color: #2f0093;
+  color: white;
+  border: none;
+  margin-left: 5px;
+  padding: 8px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#send-message:hover {
+  background-color: #110056;
+}
+
+/* --------------------------------- CHAT BOT -----------------------------*/
 /* ------------------- Botão de voltar para o topo ------------------- */
 #backToTop {
   position: fixed;
@@ -400,7 +485,6 @@ textarea {
   transition: filter 0.3s ease;
   filter: invert(0) brightness(1);
 }
-/*---------------------- Section 2 Netflix CARROSSEL-----------------------*/
 /*---------------------- Section 2 Netflix CARROSSEL-----------------------*/
 .trabalhos {
   display: flex;

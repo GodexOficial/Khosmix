@@ -8,6 +8,24 @@
     <link rel="shortcut icon" href="Khosmix Assets\Icon\favicon-32x32.png" type="image/x-icon" />
   </head>
   <body>
+    <!-----------------------------CHAT BOT INICIO------------------------>
+    <div id="chatbox-container">
+      <div id="chatbox-header">
+        <span>Atendimento</span>
+        <button id="close-chatbox">✕</button>
+      </div>
+      <div id="chatbox-messages"></div>
+      <div id="chatbox-input">
+        <input type="text" id="chatbox-text" placeholder="Digite sua mensagem..." />
+        <button id="send-message">Enviar</button>
+      </div>
+    </div>
+    
+    <!-- Botão para abrir o chatbox -->
+    <button id="open-chatbox">Chat</button>
+    <!--Carregar arquivo js chatbox-->
+    <script src="chatbox.js"></script>
+     <!-------------------------CHAT BOT FIM-------------------------->
     <button id="backToTop" onclick="scrollToTop()">
       <img src="https://cdn-icons-png.flaticon.com/512/992/992703.png" alt="Voltar ao Topo" />
     </button>
@@ -114,9 +132,7 @@
           doloremque culpa, unde ratione commodi quae alias nesciunt.
         </p>
         <div class="buttonsnetflix">
-          <a
-            href="mailto:khosmixstudio@gmail.com?subject=Quero contratar seus serviços&body=Olá, gostaria de saber mais sobre seus serviços."
-          >
+          <a href="">
             <button class="contratar2">Contratar</button>
           </a>
           <button class="maisinfo">
@@ -133,7 +149,7 @@
           <div class="job" data-key="modelagem"></div>
           <div class="job" data-key="musica"></div>
           <div class="job" data-key="identidade"></div>
-        </div>
+        </div>       
       </section>
     </div>
     <!-----------------------Fim Netflix------------------------->
