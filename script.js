@@ -1,3 +1,8 @@
+document.addEventListener("DOMContentLoaded", () => {
+  jobs[0].classList.add("selected"); // Adiciona a classe 'selected' ao primeiro item
+  updateContent(jobs[0].dataset.key); // Atualiza o conteúdo com base no primeiro item
+});
+
 const data = {
   design: {
     title: "Design",
@@ -249,7 +254,12 @@ document.getElementById("contractForm").addEventListener("submit", function (eve
 
 //--------------------------------------------------------------------------//
 const dots = document.querySelectorAll('.dot');
-const sections = document.querySelectorAll('.section');
+const sections = [
+  document.querySelector('#sectionsobre'), // Sessão Sobre
+  document.querySelector('#trabalhos'), // Sessão Trabalhos
+  document.querySelector('#nossotime'), // Sessão Nosso Time
+  document.querySelector('#rodape')     // Sessão Rodapé
+];
 
 // Função para ativar o ponto correspondente
 function activateDot(index) {
@@ -258,16 +268,14 @@ function activateDot(index) {
 }
 
 // Adicionar evento de clique aos pontos
-dots.forEach(dot => {
+dots.forEach((dot, index) => {
   dot.addEventListener('click', () => {
-    const targetId = dot.dataset.target;
-    const targetSection = document.querySelector(targetId);
-
+    const targetSection = sections[index];
+    
     // Rola suavemente até a seção correspondente
     targetSection.scrollIntoView({ behavior: 'smooth' });
-
+    
     // Atualiza o estado ativo manualmente
-    const index = Array.from(dots).indexOf(dot);
     activateDot(index);
   });
 });
@@ -276,9 +284,21 @@ dots.forEach(dot => {
 window.addEventListener('scroll', () => {
   sections.forEach((section, index) => {
     const rect = section.getBoundingClientRect();
+    // Verifica se a seção está visível na tela (mais de 50% dela)
     if (rect.top >= 0 && rect.top < window.innerHeight / 2) {
       activateDot(index);
     }
   });
 });
+
+// Inicializa a ativação do primeiro dot quando a página carregar
+window.addEventListener("DOMContentLoaded", () => {
+  sections.forEach((section, index) => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top >= 0 && rect.top < window.innerHeight / 2) {
+      activateDot(index);
+    }
+  });
+});
+
 //--------------------------------------------------------------------------//
