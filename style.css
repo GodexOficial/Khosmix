@@ -55,13 +55,15 @@ html {
 body {
   font-family: "Quicksand";
   width: 100%;
+  height: 400vh;
   background-color: #040008;
+  height: 400vh;
 }
 /* ------------------- Botão de voltar para o topo ------------------- */
 #backToTop {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 10%;
+  right: 15px;
   width: 50px;
   height: 50px;
   background-color: var(--cor-gre);
@@ -146,10 +148,10 @@ nav a:hover {
 }
 
 /* ------------------ Background section 1 (Sobre)------------------- */
-.background {
+.backgroundsobre {
+  width: 90%;
   border-radius: var(--border-radius-lg);
   background: linear-gradient(180deg, #101010, transparent);
-  max-width: 90%;
   height: 100vh;
   margin: 0.5rem auto;
 }
@@ -304,6 +306,7 @@ textarea {
 }
 /*---------------------- Section 2 Netflix-----------------------*/
 .netflix {
+  position: relative;
   display: flex;
   align-items: left;
   justify-content: space-between;
@@ -315,7 +318,29 @@ textarea {
   gap: 40px;
   padding: 35px 50px;
   border-radius: 35px;
-  background: radial-gradient(circle at center, #2f0093, #110056);
+  overflow: hidden;
+  background: none;
+}
+
+.netflix::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover; /* Garante que a imagem preencha o fundo */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: var(--background-image); /* Configurado dinamicamente via JS */
+  opacity: 0.2; /* Define a opacidade */
+  transform: scale(1); /* Estado inicial sem zoom */
+  transition: transform 5s ease; /* Animação suave de zoom */
+  z-index: -1; /* Mantém atrás do conteúdo */
+}
+
+.netflix.zooming::before {
+  transform: scale(1.1); /* Aplica o zoom na imagem */
 }
 /*---------------------- Section 2 Netflix Title-----------------------*/
 
@@ -404,7 +429,6 @@ textarea {
   filter: invert(0) brightness(1);
 }
 /*---------------------- Section 2 Netflix CARROSSEL-----------------------*/
-/*---------------------- Section 2 Netflix CARROSSEL-----------------------*/
 .trabalhos {
   display: flex;
   justify-content: space-between;
@@ -417,11 +441,30 @@ textarea {
   gap: 2px; /* Aumenta o espaçamento entre os itens */
 }
 
+#designkhosmix {
+  background: url(images/Miniatura\ Design.jpg);
+  background-size: cover;
+  background-position: center;
+}
+#modelagemnkhosmix {
+  background: url(images/Miniaturas\ Modelagem.jpg);
+  background-size: cover;
+  background-position: center;
+}
+#musicakhosmix {
+  background: url(images/Miniaturas\ PROD.jpg);
+  background-size: cover;
+  background-position: center;
+}
+#idvkhosmix {
+  background: url(images/Miniaturas\ IDV.jpg);
+  background-size: cover;
+  background-position: center;
+}
 .job {
   width: 720px;
   height: 140px;
   flex: 1;
-  background-image: var(--img-astronaut);
   background-size: cover;
   background-position: center;
   transition: flex 0.4s ease, transform 0.4s ease, margin 0.4s ease; /* Adicionando transições de margin */
@@ -456,10 +499,9 @@ textarea {
   transform: translateY(0);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
-/*---------------------- Section 2 Netflix FIM-----------------------*/
+/*---------------------- SECTION 2 Netflix FIM-----------------------*/
 
-/*---------------------- Section 3 Time Inicio-----------------------*/
-/*-------------------------------------------Section 3 Times----------------------------------*/
+/*-------------------------------------------SECTION 3 Times----------------------------------*/
 .timesection {
   display: flex;
   justify-content: center;
@@ -804,4 +846,39 @@ textarea {
   margin-top: 2rem;
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.5);
+}
+/*--------------------BOTÕES DE NAVEGAÇÃO ENTRE SESSÕES-----------------*/
+/* Navegação por pontos */
+.dot-navigation {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 1000;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: gray;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dot.active {
+  background-color: var(--cor-rox); /* Cor para o ponto ativo */
+  transform: scale(1.5); /* Aumenta o tamanho do ponto ativo */
+}
+
+.section {
+  height: 100vh; /* Altura de uma viewport para cada seção */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: white;
 }
