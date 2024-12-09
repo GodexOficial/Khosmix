@@ -311,7 +311,6 @@ textarea {
   justify-content: space-between;
   width: 90%;
   height: 90vh;
-  display: flex;
   flex-direction: column;
   color: var(--cor-whi);
   gap: 40px;
@@ -319,9 +318,28 @@ textarea {
   border-radius: 35px;
   overflow: hidden;
   background: none;
-  background-position: center center;
   background-size: cover;
-  transition: 0.3s ease-in;
+  background-position: center;
+  transition: background-size 5s ease;
+}
+
+/* Camada de escurecimento */
+.netflix::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Ajuste a opacidade para escurecer */
+  z-index: 1; /* Certifique-se de que está abaixo dos itens */
+  pointer-events: none; /* Evita interferir nas interações dos elementos acima */
+}
+
+/* Garantir que os conteúdos fiquem acima do overlay */
+.netflix > * {
+  position: relative;
+  z-index: 2;
 }
 
 /*---------------------- Section 2 Netflix Title-----------------------*/
@@ -449,7 +467,7 @@ textarea {
   flex: 1;
   background-size: cover;
   background-position: center;
-  transition: flex 0.4s ease, transform 0.4s ease, margin 0.4s ease; /* Adicionando transições de margin */
+  transition: flex 0.4s ease, transform 0.4s ease, margin 0.4s ease, 0.5s all ease-in-out; /* Adicionando transições de margin */
   cursor: pointer;
   border-radius: 8px;
   margin: 0 2px; /* Define margem entre os itens */
@@ -468,6 +486,7 @@ textarea {
   flex: 1;
   background-size: cover; /* Tamanho padrão */
   z-index: 1;
+  scale: 95%;
 }
 
 .fade-out {
@@ -498,7 +517,11 @@ textarea {
 /*----------------------Cards Container-----------------------------*/
 .cards-container {
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 90px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 /*----------------------Estilos dos Cards--------------------------*/

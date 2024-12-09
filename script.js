@@ -121,7 +121,7 @@ jobs.forEach((job, index) => {
   });
 
   // Adiciona o evento de passar o mouse
-  job.addEventListener("mouseover", (event) => {
+  job.addEventListener("click", (event) => {
     stopAutoScroll();
     selectJob(index);
     resetInactivityTimer();
@@ -132,28 +132,8 @@ jobs.forEach((job, index) => {
 startAutoScroll();
 
 // Resetar o temporizador ao interagir com qualquer parte da página
-document.addEventListener("mousemove", debounceResetInactivity);
+document.addEventListener("click", debounceResetInactivity);
 document.addEventListener("keydown", debounceResetInactivity);
-
-function updateContent(selectedKey) {
-  const selected = data[selectedKey];
-
-  if (selected) {
-    // Atualiza o conteúdo do texto
-    title.textContent = selected.title;
-    subtitle.textContent = selected.subtitle;
-    text.textContent = selected.text;
-
-    // Atualiza a imagem de fundo dinamicamente
-    netflixSection.style.backgroundImage = selected.background;
-
-    // Força a reinicialização da animação de zoom
-    netflixSection.classList.remove("zooming"); // Remove a classe para reiniciar a animação
-    setTimeout(() => {
-      netflixSection.classList.add("zooming"); // Reaplica a classe após um pequeno atraso
-    }, 10); // 10ms é suficiente para reiniciar a animação
-  }
-}
 //--------------------------------------------------------------------------//
 
 //--------------------------------------------------------------------------//
@@ -321,7 +301,14 @@ dots.forEach((dot, index) => {
     const targetSection = sections[index];
 
     // Rola suavemente até a seção correspondente
-    targetSection.scrollIntoView({ behavior: "smooth" });
+    if (index == 0) {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    } else {
+      targetSection.scrollIntoView({ behavior: "smooth" });
+    }
 
     // Atualiza o estado ativo manualmente
     activateDot(index);
