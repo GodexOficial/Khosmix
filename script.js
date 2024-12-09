@@ -135,26 +135,6 @@ startAutoScroll();
 document.addEventListener("mousemove", debounceResetInactivity);
 document.addEventListener("keydown", debounceResetInactivity);
 
-function updateContent(selectedKey) {
-  const selected = data[selectedKey];
-
-  if (selected) {
-    // Atualiza o conteúdo do texto
-    title.textContent = selected.title;
-    subtitle.textContent = selected.subtitle;
-    text.textContent = selected.text;
-
-    // Atualiza a imagem de fundo dinamicamente
-    netflixSection.style.setProperty("--background-image", selected.background);
-
-    // Força a reinicialização da animação
-    netflixSection.classList.remove("zooming"); // Remove a classe de animação
-    setTimeout(() => {
-      netflixSection.classList.add("zooming"); // Reaplica a classe de animação após um pequeno atraso
-    }, 10); // 10ms é suficiente para reiniciar a animação
-  }
-}
-
 //--------------------------------------------------------------------------//
 
 //--------------------------------------------------------------------------//
@@ -272,14 +252,14 @@ document.getElementById("contractForm").addEventListener("submit", function (eve
   event.preventDefault();
 
   // Obtendo os dados do formulário
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
+  const name = document.getElementById("nameform").value;
+  const email = document.getElementById("emailform").value;
   const service = document.getElementById("service").value;
 
   // Criando o objeto de dados a serem armazenados
   const formData = {
-    name,
-    email,
+    nameform,
+    emailform,
     service,
   };
 
