@@ -2,47 +2,65 @@ document.addEventListener("DOMContentLoaded", () => {
   jobs[0].classList.add("selected"); // Adiciona a classe 'selected' ao primeiro item
   updateContent(jobs[0].dataset.key); // Atualiza o conteúdo com base no primeiro item
 });
-
+//-------------------------------------------------------------------------------------------------------------//
 const data = {
   design: {
     title: "Design",
     subtitle: "Social Media, Identidade Visual",
     text: "Aqui você encontra nossos projetos de design, incluindo branding, layouts para redes sociais, e muito mais.",
+    background: "url('images/design.jpg')", // Caminho para o fundo do Design
   },
   modelagem: {
     title: "Modelagem 3D",
     subtitle: "Criação de Personagens, Cenários",
     text: "Projetos em 3D que englobam modelagem, texturização e animações incríveis para jogos e vídeos.",
+    background: "url('images/3d.jpg')", // Caminho para o fundo da Modelagem 3D
   },
   musica: {
     title: "Produção Musical",
     subtitle: "Composições, Mixagens",
     text: "Descubra trilhas sonoras exclusivas e designs de som criados por nossa equipe talentosa.",
+    background: "url('images/producer.jpg')", // Caminho para o fundo da Música
   },
   identidade: {
     title: "Identidade Visual",
     subtitle: "Criação de Logotipos, Branding",
     text: "Transformamos ideias em identidades visuais marcantes que se destacam no mercado.",
+    background: "url('images/idv.jpg')", // Caminho para o fundo da Identidade Visual
   },
 };
 
 const title = document.querySelector(".netflix h1");
 const subtitle = document.querySelector(".netflix h2");
 const text = document.querySelector(".netflix p");
+const netflixSection = document.querySelector(".netflix");
 const jobs = document.querySelectorAll(".job");
 
 let currentIndex = 0;
 let autoScrollInterval;
 let inactivityTimer;
 let debounceTimer;
+let lastTimestamp;
 
 function updateContent(selectedKey) {
   const selected = data[selectedKey];
 
   if (selected) {
+    // Atualiza o conteúdo do texto
     title.textContent = selected.title;
     subtitle.textContent = selected.subtitle;
     text.textContent = selected.text;
+
+    // Atualiza o background da seção "netflix"
+    netflixSection.style.backgroundImage = selected.background;
+
+    // Adiciona a classe de animação
+    netflixSection.classList.add("background-animate");
+
+    // Remove a classe após o tempo necessário para reiniciar a animação
+    setTimeout(() => {
+      netflixSection.classList.remove("background-animate");
+    }, 5000); // Tempo de animação (sincronizado com o CSS)
   }
 }
 
@@ -89,13 +107,24 @@ function debounceResetInactivity() {
   debounceTimer = setTimeout(resetInactivityTimer, 100); // Limita a frequência com debounce
 }
 
-// Adicionar eventos de clique aos itens
+// Adicionar eventos aos itens
 jobs.forEach((job, index) => {
+  const keys = Object.keys(data); // ["design", "modelagem", "musica", "identidade"]
+  job.dataset.key = keys[index % keys.length];
+
+  // Adiciona o evento de clique
   job.addEventListener("click", () => {
-    stopAutoScroll(); // Pausa a rotação automática
+    stopAutoScroll();
     currentIndex = index;
-    selectJob(currentIndex); // Atualiza imediatamente
-    resetInactivityTimer(); // Reinicia o temporizador de inatividade
+    selectJob(currentIndex);
+    resetInactivityTimer();
+  });
+
+  // Adiciona o evento de passar o mouse
+  job.addEventListener("mouseover", (event) => {
+    stopAutoScroll();
+    selectJob(index);
+    resetInactivityTimer();
   });
 });
 
@@ -105,6 +134,26 @@ startAutoScroll();
 // Resetar o temporizador ao interagir com qualquer parte da página
 document.addEventListener("mousemove", debounceResetInactivity);
 document.addEventListener("keydown", debounceResetInactivity);
+
+function updateContent(selectedKey) {
+  const selected = data[selectedKey];
+
+  if (selected) {
+    // Atualiza o conteúdo do texto
+    title.textContent = selected.title;
+    subtitle.textContent = selected.subtitle;
+    text.textContent = selected.text;
+
+    // Atualiza a imagem de fundo dinamicamente
+    netflixSection.style.setProperty("--background-image", selected.background);
+
+    // Força a reinicialização da animação
+    netflixSection.classList.remove("zooming"); // Remove a classe de animação
+    setTimeout(() => {
+      netflixSection.classList.add("zooming"); // Reaplica a classe de animação após um pequeno atraso
+    }, 10); // 10ms é suficiente para reiniciar a animação
+  }
+}
 
 //--------------------------------------------------------------------------//
 
@@ -238,10 +287,10 @@ document.getElementById("contractForm").addEventListener("submit", function (eve
   const jsonData = JSON.stringify(formData);
 
   // Armazenando os dados em um arquivo no diretório "clientes"
-  const blob = new Blob([jsonData], { type: "application/json" });
+  const blob = new Blob([jsonData], { type: "application/txt" });
   const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
-  link.download = `clientes/formulario_${new Date().toISOString()}.json`;
+  link.download = `clientes/formulario_${new Date().toISOString()}.txt`;
   link.click();
 
   // Mostrando a mensagem de confirmação
@@ -253,35 +302,35 @@ document.getElementById("contractForm").addEventListener("submit", function (eve
 //--------------------------------------------------------------------------//
 
 //--------------------------------------------------------------------------//
-const dots = document.querySelectorAll('.dot');
+const dots = document.querySelectorAll(".dot");
 const sections = [
-  document.querySelector('#sectionsobre'), // Sessão Sobre
-  document.querySelector('#trabalhos'), // Sessão Trabalhos
-  document.querySelector('#nossotime'), // Sessão Nosso Time
-  document.querySelector('#rodape')     // Sessão Rodapé
+  document.querySelector("#sectionsobre"), // Sessão Sobre
+  document.querySelector("#trabalhos"), // Sessão Trabalhos
+  document.querySelector("#nossotime"), // Sessão Nosso Time
+  document.querySelector("#rodape"), // Sessão Rodapé
 ];
 
 // Função para ativar o ponto correspondente
 function activateDot(index) {
-  dots.forEach(dot => dot.classList.remove('active'));
-  dots[index].classList.add('active');
+  dots.forEach((dot) => dot.classList.remove("active"));
+  dots[index].classList.add("active");
 }
 
 // Adicionar evento de clique aos pontos
 dots.forEach((dot, index) => {
-  dot.addEventListener('click', () => {
+  dot.addEventListener("click", () => {
     const targetSection = sections[index];
-    
+
     // Rola suavemente até a seção correspondente
-    targetSection.scrollIntoView({ behavior: 'smooth' });
-    
+    targetSection.scrollIntoView({ behavior: "smooth" });
+
     // Atualiza o estado ativo manualmente
     activateDot(index);
   });
 });
 
 // Detectar a seção visível ao rolar
-window.addEventListener('scroll', () => {
+window.addEventListener("scroll", () => {
   sections.forEach((section, index) => {
     const rect = section.getBoundingClientRect();
     // Verifica se a seção está visível na tela (mais de 50% dela)

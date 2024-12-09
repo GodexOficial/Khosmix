@@ -13,6 +13,7 @@
   --cor-gradiente-end: rgba(20, 20, 20, 0);
   --cor-modal-bg: rgba(0, 0, 0, 0.8);
   --img-astronaut: url(images/Astronaut.jpg);
+  --font-Quick: "Quicksand";
 
   /* -----------------------Tamanhos-------------------- */
   --border-radius-lg: 35px;
@@ -53,14 +54,15 @@ html {
 body {
   font-family: "Quicksand";
   width: 100%;
+  height: 400vh;
   background-color: #040008;
   height: 400vh;
 }
 /* ------------------- Botão de voltar para o topo ------------------- */
 #backToTop {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 10%;
+  right: 15px;
   width: 50px;
   height: 50px;
   background-color: var(--cor-gre);
@@ -72,9 +74,7 @@ body {
   cursor: pointer;
   opacity: 0;
   visibility: hidden;
-  transition:
-    opacity 0.3s ease,
-    visibility 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
   z-index: 10;
 }
 
@@ -304,6 +304,7 @@ textarea {
 }
 /*---------------------- Section 2 Netflix-----------------------*/
 .netflix {
+  position: relative;
   display: flex;
   align-items: left;
   justify-content: space-between;
@@ -315,7 +316,29 @@ textarea {
   gap: 40px;
   padding: 35px 50px;
   border-radius: 35px;
-  background: radial-gradient(circle at center, #2f0093, #110056);
+  overflow: hidden;
+  background: none;
+}
+
+.netflix::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover; /* Garante que a imagem preencha o fundo */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: var(--background-image); /* Configurado dinamicamente via JS */
+  opacity: 0.2; /* Define a opacidade */
+  transform: scale(1); /* Estado inicial sem zoom */
+  transition: transform 5s ease; /* Animação suave de zoom */
+  z-index: -1; /* Mantém atrás do conteúdo */
+}
+
+.netflix.zooming::before {
+  transform: scale(1.1); /* Aplica o zoom na imagem */
 }
 /*---------------------- Section 2 Netflix Title-----------------------*/
 
@@ -345,9 +368,7 @@ textarea {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  transition:
-    transform 0.2s,
-    filter 0.2s;
+  transition: transform 0.2s, filter 0.2s;
 }
 
 .icons a:hover .icon {
@@ -418,17 +439,33 @@ textarea {
   gap: 2px; /* Aumenta o espaçamento entre os itens */
 }
 
+#designkhosmix {
+  background: url(images/Miniatura\ Design.jpg);
+  background-size: cover;
+  background-position: center;
+}
+#modelagemnkhosmix {
+  background: url(images/Miniaturas\ Modelagem.jpg);
+  background-size: cover;
+  background-position: center;
+}
+#musicakhosmix {
+  background: url(images/Miniaturas\ PROD.jpg);
+  background-size: cover;
+  background-position: center;
+}
+#idvkhosmix {
+  background: url(images/Miniaturas\ IDV.jpg);
+  background-size: cover;
+  background-position: center;
+}
 .job {
   width: 720px;
   height: 140px;
   flex: 1;
-  background-image: var(--img-astronaut);
   background-size: cover;
   background-position: center;
-  transition:
-    flex 0.4s ease,
-    transform 0.4s ease,
-    margin 0.4s ease; /* Adicionando transições de margin */
+  transition: flex 0.4s ease, transform 0.4s ease, margin 0.4s ease; /* Adicionando transições de margin */
   cursor: pointer;
   border-radius: 8px;
   margin: 0 2px; /* Define margem entre os itens */
@@ -452,17 +489,13 @@ textarea {
 .fade-out {
   opacity: 0;
   transform: translateY(-10px);
-  transition:
-    opacity 0.5s ease,
-    transform 0.5s ease;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .fade-in {
   opacity: 1;
   transform: translateY(0);
-  transition:
-    opacity 0.5s ease,
-    transform 0.5s ease;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 /*---------------------- SECTION 2 Netflix FIM-----------------------*/
 
@@ -473,8 +506,7 @@ textarea {
   align-items: center;
   width: 100%;
   height: 100vh;
-  background:
-    linear-gradient(to bottom, rgb(04, 00, 08), rgba(98, 0, 255, 0), rgb(04, 00, 08)),
+  background: linear-gradient(to bottom, rgb(04, 00, 08), rgba(98, 0, 255, 0), rgb(04, 00, 08)),
     url("images/background.jpg") no-repeat center center/cover;
   position: relative;
 }
