@@ -13,6 +13,8 @@
   --cor-gradiente-end: rgba(20, 20, 20, 0);
   --cor-modal-bg: rgba(0, 0, 0, 0.8);
   --img-astronaut: url(images/Astronaut.jpg);
+  --font-Quick:"Quicksand";
+  --font-Arial:"Arial";
 
   /* -----------------------Tamanhos-------------------- */
   --border-radius-lg: 35px;
@@ -112,7 +114,7 @@ nav a {
   border-radius: 100px;
   align-items: center;
   justify-content: center;
-  font-family: "Oxanium", "Quicksand";
+  font-family: var(--font-Quick);
   font-weight: 300;
   color: var(--cor-gre);
   text-decoration: none;
@@ -282,6 +284,7 @@ textarea {
 #confirmationMessage {
   display: none;
   text-align: center;
+  justify-content: center;
   margin-top: 20px;
   font-size: 1.2rem;
   color: var(--cor-rox-escuro);
