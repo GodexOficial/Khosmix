@@ -344,7 +344,7 @@ textarea {
   background-position: center;
   transition: 5s ease !important;
   animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  webkit-transition: background-size 1500ms linear;
+  -webkit-transition: background-size 1500ms linear;
   -moz-transition: background-size 1500 linear;
   -o-transition: background-size 1500 linear;
   -ms-transition: background-size 1500ms linear;
