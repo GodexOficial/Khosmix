@@ -45,7 +45,7 @@
 /* ---------------------- Reset e Estilo Global ----------------- */
 @media (prefers-reduced-motion: no-preference) {
   .animacao {
-    animation: fadeIn 1s ease-in-out;
+    animation: fadeIn 0.3s ease-in-out;
   }
 }
 .scroll-container {
@@ -359,11 +359,12 @@ textarea {
   left: 0;
   width: 100%;
   height: 100%;
-  -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  -webkit-animation: scale-up-center 0.2s cubic-bezier(0.19, 0.275, 0.365, 1) both;
+  animation: scale-up-center 0.2s cubic-bezier(0.19, 0.275, 0.265, 1) both;
   background: rgba(0, 0, 0, 0.7); /* Ajuste a opacidade para escurecer */
   z-index: 1; /* Certifique-se de que está abaixo dos itens */
   pointer-events: none; /* Evita interferir nas interações dos elementos acima */
+  background-size: cover;
 }
 
 /* Garantir que os conteúdos fiquem acima do overlay */
@@ -497,7 +498,7 @@ textarea {
   flex: 1;
   background-size: cover;
   background-position: center;
-  transition: flex 0.4s ease, transform 0.4s ease, margin 0.4s ease, 0.5s all ease-in-out; /* Adicionando transições de margin */
+  transition: flex 0.4s ease, transform 0.4s ease, margin 0.4s ease, 0.2s all ease-in-out; /* Adicionando transições de margin */
   cursor: pointer;
   border-radius: 8px;
   margin: 0 2px; /* Define margem entre os itens */
@@ -517,20 +518,18 @@ textarea {
   background-size: cover; /* Tamanho padrão */
   z-index: 1;
   scale: 95%;
-  -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
 .fade-out {
   opacity: 0;
   transform: translateY(-10px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .fade-in {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 /*---------------------- SECTION 2 Netflix FIM-----------------------*/
 
