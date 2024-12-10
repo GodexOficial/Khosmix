@@ -327,7 +327,7 @@ textarea {
 
 /*---------------------- Section 2 Netflix-----------------------*/
 .animateBackground {
-  background-size: 150% !important;
+  background-size: 150%;
 }
 /* Seção Netflix */
 .netflix {
