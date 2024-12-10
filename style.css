@@ -3,8 +3,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&family=Quicksand:wght@300..700&display=swap");
 @-webkit-keyframes scale-up-center {
   0% {
-    -webkit-transform: scale(0.5);
-    transform: scale(0.5);
+    -webkit-transform: scale(0.1);
+    transform: scale(0.1);
   }
   100% {
     -webkit-transform: scale(1);
@@ -13,8 +13,8 @@
 }
 @keyframes scale-up-center {
   0% {
-    -webkit-transform: scale(0.5);
-    transform: scale(0.5);
+    -webkit-transform: scale(0.1);
+    transform: scale(0.1);
   }
   100% {
     -webkit-transform: scale(1);
@@ -31,7 +31,6 @@
   --cor-gradiente-start: rgba(43, 0, 99, 1);
   --cor-gradiente-end: rgba(20, 20, 20, 0);
   --cor-modal-bg: rgba(0, 0, 0, 0.8);
-  --img-astronaut: url(images/Astronaut.jpg);
   --font-Quick: "Quicksand";
 
   /* -----------------------Tamanhos-------------------- */
@@ -45,7 +44,7 @@
 /* ---------------------- Reset e Estilo Global ----------------- */
 @media (prefers-reduced-motion: no-preference) {
   .animacao {
-    animation: fadeIn 1s ease-in-out;
+    animation: fadeIn 0.3s ease-in-out;
   }
 }
 .scroll-container {
@@ -329,7 +328,6 @@ textarea {
 .netflix {
   position: relative;
   display: flex;
-  align-items: left;
   justify-content: space-between;
   width: 90%;
   height: 90vh;
@@ -337,13 +335,15 @@ textarea {
   color: var(--cor-whi);
   gap: 40px;
   padding: 35px 50px;
+  padding-bottom: 20rem;
   border-radius: 35px;
   overflow: hidden;
-  background: none;
-  background-size: 130%;
+  background-size: 125%;
+  background-repeat: no-repeat;
   background-position: center;
-  transition: 5s ease !important;
-  webkit-transition: background-size 1500ms linear;
+  transition: background-size 5s ease !important;
+  animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  -webkit-transition: background-size 1500ms linear;
   -moz-transition: background-size 1500 linear;
   -o-transition: background-size 1500 linear;
   -ms-transition: background-size 1500ms linear;
@@ -358,10 +358,10 @@ textarea {
   left: 0;
   width: 100%;
   height: 100%;
-
   background: rgba(0, 0, 0, 0.7); /* Ajuste a opacidade para escurecer */
   z-index: 1; /* Certifique-se de que está abaixo dos itens */
   pointer-events: none; /* Evita interferir nas interações dos elementos acima */
+  background-size: cover;
 }
 
 /* Garantir que os conteúdos fiquem acima do overlay */
@@ -458,17 +458,46 @@ textarea {
 }
 /*---------------------- Section 2 Netflix CARROSSEL-----------------------*/
 .trabalhos {
+  position: absolute;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 1200px;
+  max-width: 100%;
   height: 200px;
+  overflow: auto;
   border-radius: 10px;
   margin: 0 auto;
   gap: 2px; /* Aumenta o espaçamento entre os itens */
+  bottom: 0;
+  left: 0;
+}
+.trabalhos > div {
+  min-width: 620px !important;
+}
+/* -------------------------- Scroll Bar ----------------------*/
+.trabalhos > button {
+  min-width: 500px;
+  height: 50px;
+}
+.trabalhos::-webkit-scrollbar {
+  height: 0px !important;
+  width: 0px !important;
+}
+.trabalhos {
+  scrollbar-width: none;
+  scrollbar-color: #8f54a0 #ffffff;
 }
 
+/* Chrome, Edge, and Safari */
+.trabalhos::-webkit-scrollbar {
+  width: 0px;
+}
+
+.trabalhos::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+/* -------------------------- Scroll Bar ----------------------*/
 #designkhosmix {
   background: url(images/Miniatura\ Design.jpg);
   background-size: cover;
@@ -489,6 +518,16 @@ textarea {
   background-size: cover;
   background-position: center;
 }
+#progkhosmix {
+  background: url(images/Miniaturas\ IDV.jpg);
+  background-size: cover;
+  background-position: center;
+}
+#animakhosmix {
+  background: url(images/Miniaturas\ IDV.jpg);
+  background-size: cover;
+  background-position: center;
+}
 .job {
   width: 720px;
   height: 140px;
@@ -496,7 +535,7 @@ textarea {
   background-size: cover;
   background-position: center;
   transition: flex 0.4s ease, transform 0.4s ease, margin 0.4s ease,
-    0.5s all ease-in-out; /* Adicionando transições de margin */
+    0.2s all ease-in-out; /* Adicionando transições de margin */
   cursor: pointer;
   border-radius: 8px;
   margin: 0 2px; /* Define margem entre os itens */
@@ -521,13 +560,13 @@ textarea {
 .fade-out {
   opacity: 0;
   transform: translateY(-10px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .fade-in {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 /*---------------------- SECTION 2 Netflix FIM-----------------------*/
 

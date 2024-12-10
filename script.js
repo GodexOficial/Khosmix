@@ -5,9 +5,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const netFlixBackground = document.getElementById("netFlixBackground");
 netFlixButton00 = document.getElementsByClassName("job");
+const trabalho = document.getElementById("Trabalhos");
 if (netFlixButton00) {
-  Array.from(netFlixButton00).map((element) =>
+  Array.from(netFlixButton00).map((element, index) =>
     element.addEventListener("click", (event) => {
+      console.log(element.offsetWidth);
+      trabalho.scrollTo({
+        top: 0,
+        left: element.offsetWidth * index + 2 * index - 100,
+        behavior: "smooth",
+      });
       if (netFlixBackground.classList.contains("animateBackground"))
         netFlixBackground.classList.remove("animateBackground");
       else netFlixBackground.classList.add("animateBackground");
