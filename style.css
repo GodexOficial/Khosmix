@@ -473,7 +473,8 @@ textarea {
   left: 0;
 }
 .trabalhos > div {
-  min-width: 620px !important;
+  min-width: 420px !important;
+  max-width: 120px !important;
 }
 /* -------------------------- Scroll Bar ----------------------*/
 .trabalhos > button {
