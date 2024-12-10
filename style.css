@@ -343,7 +343,6 @@ textarea {
   background-size: 130%;
   background-position: center;
   transition: 5s ease !important;
-  animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   webkit-transition: background-size 1500ms linear;
   -moz-transition: background-size 1500 linear;
   -o-transition: background-size 1500 linear;
@@ -359,9 +358,7 @@ textarea {
   left: 0;
   width: 100%;
   height: 100%;
-  -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
-    both;
-  animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+
   background: rgba(0, 0, 0, 0.7); /* Ajuste a opacidade para escurecer */
   z-index: 1; /* Certifique-se de que está abaixo dos itens */
   pointer-events: none; /* Evita interferir nas interações dos elementos acima */
@@ -519,9 +516,6 @@ textarea {
   background-size: cover; /* Tamanho padrão */
   z-index: 1;
   scale: 95%;
-  -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
-    both;
-  animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
 .fade-out {
