@@ -2,6 +2,20 @@ document.addEventListener("DOMContentLoaded", () => {
   jobs[0].classList.add("selected"); // Adiciona a classe 'selected' ao primeiro item
   updateContent(jobs[0].dataset.key); // Atualiza o conteúdo com base no primeiro item
 });
+
+const netFlixBackground = document.getElementById("netFlixBackground");
+netFlixButton00 = document.getElementsByClassName("job");
+if (netFlixButton00) {
+  Array.from(netFlixButton00).map((element) =>
+    element.addEventListener("click", (event) => {
+      if (netFlixBackground.classList.contains("animateBackground"))
+        netFlixBackground.classList.remove("animateBackground");
+      else netFlixBackground.classList.add("animateBackground");
+      console.log(netFlixBackground.classList.contains("animateBackground"));
+    })
+  );
+}
+
 //-------------------------------------------------------------------------------------------------------------//
 const data = {
   design: {
@@ -121,7 +135,7 @@ jobs.forEach((job, index) => {
   });
 
   // Adiciona o evento de passar o mouse
-  job.addEventListener("mouseover", (event) => {
+  job.addEventListener("click", (event) => {
     stopAutoScroll();
     selectJob(index);
     resetInactivityTimer();
@@ -132,29 +146,8 @@ jobs.forEach((job, index) => {
 startAutoScroll();
 
 // Resetar o temporizador ao interagir com qualquer parte da página
-document.addEventListener("mousemove", debounceResetInactivity);
+document.addEventListener("click", debounceResetInactivity);
 document.addEventListener("keydown", debounceResetInactivity);
-
-function updateContent(selectedKey) {
-  const selected = data[selectedKey];
-
-  if (selected) {
-    // Atualiza o conteúdo do texto
-    title.textContent = selected.title;
-    subtitle.textContent = selected.subtitle;
-    text.textContent = selected.text;
-
-    // Atualiza a imagem de fundo dinamicamente
-    netflixSection.style.setProperty("--background-image", selected.background);
-
-    // Força a reinicialização da animação
-    netflixSection.classList.remove("zooming"); // Remove a classe de animação
-    setTimeout(() => {
-      netflixSection.classList.add("zooming"); // Reaplica a classe de animação após um pequeno atraso
-    }, 10); // 10ms é suficiente para reiniciar a animação
-  }
-}
-
 //--------------------------------------------------------------------------//
 
 //--------------------------------------------------------------------------//
@@ -252,7 +245,10 @@ function smoothScrollTo(targetSelector) {
 // Evento para mostrar/esconder o formulário
 document.getElementById("openForm").addEventListener("click", function () {
   var formContainer = document.getElementById("formContainer");
-  if (formContainer.style.display === "none" || formContainer.style.display === "") {
+  if (
+    formContainer.style.display === "none" ||
+    formContainer.style.display === ""
+  ) {
     formContainer.style.display = "flex";
   } else {
     formContainer.style.display = "none";
@@ -260,7 +256,10 @@ document.getElementById("openForm").addEventListener("click", function () {
 });
 document.getElementById("closeForm").addEventListener("click", function () {
   var formContainer = document.getElementById("formContainer");
-  if (formContainer.style.display === "none" || formContainer.style.display === "") {
+  if (
+    formContainer.style.display === "none" ||
+    formContainer.style.display === ""
+  ) {
     formContainer.style.display = "flex";
   } else {
     formContainer.style.display = "none";
@@ -268,37 +267,39 @@ document.getElementById("closeForm").addEventListener("click", function () {
 });
 
 // Evento de submissão do formulário
-document.getElementById("contractForm").addEventListener("submit", function (event) {
-  event.preventDefault();
+document
+  .getElementById("contractForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
 
-  // Obtendo os dados do formulário
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const service = document.getElementById("service").value;
+    // Obtendo os dados do formulário
+    const name = document.getElementById("nameform").value;
+    const email = document.getElementById("emailform").value;
+    const service = document.getElementById("service").value;
 
-  // Criando o objeto de dados a serem armazenados
-  const formData = {
-    name,
-    email,
-    service,
-  };
+    // Criando o objeto de dados a serem armazenados
+    const formData = {
+      nameform,
+      emailform,
+      service,
+    };
 
-  // Convertendo o objeto para uma string JSON
-  const jsonData = JSON.stringify(formData);
+    // Convertendo o objeto para uma string JSON
+    const jsonData = JSON.stringify(formData);
 
-  // Armazenando os dados em um arquivo no diretório "clientes"
-  const blob = new Blob([jsonData], { type: "application/txt" });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = `clientes/formulario_${new Date().toISOString()}.txt`;
-  link.click();
+    // Armazenando os dados em um arquivo no diretório "clientes"
+    const blob = new Blob([jsonData], { type: "application/txt" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `clientes/formulario_${new Date().toISOString()}.txt`;
+    link.click();
 
-  // Mostrando a mensagem de confirmação
-  document.getElementById("confirmationMessage").style.display = "block";
+    // Mostrando a mensagem de confirmação
+    document.getElementById("confirmationMessage").style.display = "block";
 
-  // Limpar o formulário após o envio
-  document.getElementById("contractForm").reset();
-});
+    // Limpar o formulário após o envio
+    document.getElementById("contractForm").reset();
+  });
 //--------------------------------------------------------------------------//
 
 //--------------------------------------------------------------------------//
@@ -322,7 +323,14 @@ dots.forEach((dot, index) => {
     const targetSection = sections[index];
 
     // Rola suavemente até a seção correspondente
-    targetSection.scrollIntoView({ behavior: "smooth" });
+    if (index == 0) {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    } else {
+      targetSection.scrollIntoView({ behavior: "smooth" });
+    }
 
     // Atualiza o estado ativo manualmente
     activateDot(index);

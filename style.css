@@ -1,7 +1,26 @@
 /* ---------------- Fonts Import ------------------- */
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&family=Quicksand:wght@300..700&display=swap");
-
+@-webkit-keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(0.1);
+    transform: scale(0.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(0.1);
+    transform: scale(0.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
 /* ---------------------------Variáveis Globais ------------------------ */
 :root {
   /*--------------------------------- Cores------------------- */
@@ -27,7 +46,7 @@
 /* ---------------------- Reset e Estilo Global ----------------- */
 @media (prefers-reduced-motion: no-preference) {
   .animacao {
-    animation: fadeIn 1s ease-in-out;
+    animation: fadeIn 0.3s ease-in-out;
   }
 }
 .scroll-container {
@@ -305,23 +324,36 @@ textarea {
   overflow: hidden;
 }
 /*---------------------- Section 2 Netflix-----------------------*/
+.animateBackground {
+  background-size: 150% !important;
+}
+/* Seção Netflix */
 .netflix {
   position: relative;
   display: flex;
-  align-items: left;
   justify-content: space-between;
   width: 90%;
   height: 90vh;
-  display: flex;
   flex-direction: column;
   color: var(--cor-whi);
   gap: 40px;
   padding: 35px 50px;
+  padding-bottom: 20rem;
   border-radius: 35px;
   overflow: hidden;
-  background: none;
+  background-size: 125%;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: background-size 5s ease !important;
+  animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  -webkit-transition: background-size 1500ms linear;
+  -moz-transition: background-size 1500 linear;
+  -o-transition: background-size 1500 linear;
+  -ms-transition: background-size 1500ms linear;
+  transition: background-size 1500ms linear;
 }
 
+/* Camada de escurecimento */
 .netflix::before {
   content: "";
   position: absolute;
@@ -329,19 +361,18 @@ textarea {
   left: 0;
   width: 100%;
   height: 100%;
-  background-size: cover; /* Garante que a imagem preencha o fundo */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: var(--background-image); /* Configurado dinamicamente via JS */
-  opacity: 0.2; /* Define a opacidade */
-  transform: scale(1); /* Estado inicial sem zoom */
-  transition: transform 5s ease; /* Animação suave de zoom */
-  z-index: -1; /* Mantém atrás do conteúdo */
+  background: rgba(0, 0, 0, 0.7); /* Ajuste a opacidade para escurecer */
+  z-index: 1; /* Certifique-se de que está abaixo dos itens */
+  pointer-events: none; /* Evita interferir nas interações dos elementos acima */
+  background-size: cover;
 }
 
-.netflix.zooming::before {
-  transform: scale(1.1); /* Aplica o zoom na imagem */
+/* Garantir que os conteúdos fiquem acima do overlay */
+.netflix > * {
+  position: relative;
+  z-index: 2;
 }
+
 /*---------------------- Section 2 Netflix Title-----------------------*/
 
 .netflix h1 {
@@ -381,66 +412,47 @@ textarea {
   display: flex;
   gap: 15px;
 }
-/*------------------------ Botões no Netflix ----------------------*/
-.buttonsnetflix {
-  display: flex;
-  width: 84%;
-  gap: 15px;
-  color: black;
-}
-.buttonsnetflix a {
-  text-decoration: none;
-  color: black;
-}
-.contratar2,
-.maisinfo {
-  font-family: "Quicksand";
-  font-size: 1.5ch;
-  font-weight: 500;
-  width: 13rem;
-  height: 3rem;
-  border: none;
-  border-radius: 1000px;
-  color: var(--cor-preto);
-  background-color: var(--cor-whi);
-  cursor: pointer;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  margin-top: 70px;
-}
-.contratar2:hover,
-.maisinfo:hover {
-  border-color: var(--cor-rox);
-  color: var(--cor-whi);
-  background-color: var(--cor-rox);
-}
-.contratar2:hover .infoicon,
-.maisinfo:hover .infoicon {
-  filter: invert(1) brightness(2);
-}
-/*---------------------------------- Ícone de Informação Button ----------------------------------*/
-.infoicon {
-  width: 20px;
-  height: auto;
-  transition: filter 0.3s ease;
-  filter: invert(0) brightness(1);
-}
+
 /*---------------------- Section 2 Netflix CARROSSEL-----------------------*/
 .trabalhos {
+  position: absolute;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 1200px;
+  max-width: 100%;
   height: 200px;
   border-radius: 10px;
   margin: 0 auto;
   gap: 2px; /* Aumenta o espaçamento entre os itens */
+  bottom: 0;
+}
+.trabalho > div {
+  width: 1000px !important;
+}
+/* -------------------------- Scroll Bar ----------------------*/
+.buttonsContainer > button {
+  min-width: 500px;
+  height: 50px;
+}
+.buttonsContainer::-webkit-scrollbar {
+  height: 0px !important;
+  width: 0px !important;
+}
+.buttonsContainer {
+  scrollbar-width: none;
+  scrollbar-color: #8f54a0 #ffffff;
 }
 
+/* Chrome, Edge, and Safari */
+.buttonsContainer::-webkit-scrollbar {
+  width: 0px;
+}
+
+.buttonsContainer::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+/* -------------------------- Scroll Bar ----------------------*/
 #designkhosmix {
   background: url(images/Miniatura\ Design.jpg);
   background-size: cover;
@@ -461,13 +473,23 @@ textarea {
   background-size: cover;
   background-position: center;
 }
+#progkhosmix {
+  background: url(images/Miniaturas\ IDV.jpg);
+  background-size: cover;
+  background-position: center;
+}
+#animakhosmix {
+  background: url(images/Miniaturas\ IDV.jpg);
+  background-size: cover;
+  background-position: center;
+}
 .job {
   width: 720px;
   height: 140px;
   flex: 1;
   background-size: cover;
   background-position: center;
-  transition: flex 0.4s ease, transform 0.4s ease, margin 0.4s ease; /* Adicionando transições de margin */
+  transition: flex 0.4s ease, transform 0.4s ease, margin 0.4s ease, 0.2s all ease-in-out; /* Adicionando transições de margin */
   cursor: pointer;
   border-radius: 8px;
   margin: 0 2px; /* Define margem entre os itens */
@@ -486,18 +508,19 @@ textarea {
   flex: 1;
   background-size: cover; /* Tamanho padrão */
   z-index: 1;
+  scale: 95%;
 }
 
 .fade-out {
   opacity: 0;
   transform: translateY(-10px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .fade-in {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 /*---------------------- SECTION 2 Netflix FIM-----------------------*/
 
@@ -516,7 +539,11 @@ textarea {
 /*----------------------Cards Container-----------------------------*/
 .cards-container {
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 90px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 /*----------------------Estilos dos Cards--------------------------*/

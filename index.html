@@ -9,10 +9,10 @@
   <link rel="shortcut icon" href="Khosmix Assets\Icon\favicon-32x32.png" type="image/x-icon" />
 </head>
 
-<body id="sectionsobre">
+<body>
   <!-- Background section 1 -->
   <div class="background">
-    <div class="backgroundsobre">
+    <div class="backgroundsobre" id="sectionsobre">
       <!-- Header section 1 -->
       <div class="headermenu">
         <header class="container">
@@ -109,16 +109,19 @@
           </a>
         </span>
         <p>
-          Em um mundo cada vez mais interconectado, nossa empresa se destaca como uma força
-          unificadora no cenário criativo contemporâneo. Somos uma agência de gestão de mídias e
-          talentos, dedicada a elevar e promover os profissionais mais talentosos em uma ampla gama
-          de disciplinas criativas.
+          Em um mundo cada vez mais interconectado, nossa empresa se destaca
+          como uma força unificadora no cenário criativo contemporâneo. Somos
+          uma agência de gestão de mídias e talentos, dedicada a elevar e
+          promover os profissionais mais talentosos em uma ampla gama de
+          disciplinas criativas.
         </p>
         <p>
-          Com um foco incansável na excelência e na inovação, nossa equipe trabalha arduamente para
-          oferecer serviços de qualidade incomparável. Somos o catalisador que impulsiona o sucesso
-          de influencers artistas e Empresas, fornecendo as ferramentas, estratégias e suporte
-          necessários para alcançar suas metas e potencial máximo.
+          Com um foco incansável na excelência e na inovação, nossa equipe
+          trabalha arduamente para oferecer serviços de qualidade
+          incomparável. Somos o catalisador que impulsiona o sucesso de
+          influencers artistas e Empresas, fornecendo as ferramentas,
+          estratégias e suporte necessários para alcançar suas metas e
+          potencial máximo.
         </p>
         <!-- ---------------------------- Contratar Button section 1 --------------------->
         <div class="contratar">
@@ -127,15 +130,16 @@
       </section>
       <!-- Formulário de contratação -->
       <div id="formContainer" class="sobre background-form">
-        <button id="closeForm" class="close-btn">&times;</button> <!-- Botão de fechar -->
+        <button id="closeForm" class="close-btn">&times;</button>
+        <!-- Botão de fechar -->
         <div class="form-content">
           <h2>Preencha o Formulário para Contratar</h2>
           <form id="contractForm">
-            <label for="name">Nome:</label>
-            <input type="text" id="name" name="name" required />
+            <label for="nameform">Nome:</label>
+            <input type="text" id="nameform" name="Seu nome" required />
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required />
+            <label for="emailform">Email:</label>
+            <input type="email" id="emailform" name="Seu e-mail" required />
 
             <label for="service">Descrição do Serviço:</label>
             <textarea id="service" name="service" required></textarea>
@@ -152,21 +156,13 @@
   <!-- Netflix Content -->
   <div class="backgroundnet" id="trabalhos">
     <section class="netflix">
-      <div class="buttonsnetflix">
-        <a href="">
-          <button class="contratar2">Contratar</button>
-        </a>
-        <button class="maisinfo">
-          <img src="https://cdn-icons-png.flaticon.com/512/9504/9504463.png" class="infoicon"
-            alt="Info" />
-          Mais Informações
-        </button>
-      </div>
       <div class="trabalhos">
         <div class="job" id="designkhosmix" data-key="design"></div>
         <div class="job" id="modelagemnkhosmix" data-key="modelagem"></div>
         <div class="job" id="musicakhosmix" data-key="musica"></div>
         <div class="job" id="idvkhosmix" data-key="identidade"></div>
+        <div class="job" id="progkhosmix" data-key="programacao"></div>
+        <div class="job" id="animakhosmix" data-key="animacao"></div>
       </div>
     </section>
   </div>
@@ -247,11 +243,13 @@
         <div class="infolarge">
           <h2>Matheus Da Costa</h2>
           <p>
-            Olá, me chamo Matheus, carrego comigo sete anos de experiência dedicados à Design,
-            Produção musical, Edição de vídeos e imagens, Motions e muito mais. Ao longo da minha
-            jornada, mergulhei em diversas áreas criativas, combinando habilidades técnicas com
-            uma sensibilidade artística única para produzir resultados excepcionais. Permita-me
-            guiá-lo através de minha trajetória e projetos significativos.
+            Olá, me chamo Matheus, carrego comigo sete anos de experiência
+            dedicados à Design, Produção musical, Edição de vídeos e imagens,
+            Motions e muito mais. Ao longo da minha jornada, mergulhei em
+            diversas áreas criativas, combinando habilidades técnicas com uma
+            sensibilidade artística única para produzir resultados
+            excepcionais. Permita-me guiá-lo através de minha trajetória e
+            projetos significativos.
           </p>
         </div>
         <img src="images/Astronaut.png" alt="Matheus" class="large-image" />
@@ -312,8 +310,8 @@
         <div class="infolarge">
           <h2>Eliabe Santos</h2>
           <p>
-            Sou Eliabe, designer visual com paixão por detalhes e soluções criativas. Amo criar
-            experiências únicas...
+            Sou Eliabe, designer visual com paixão por detalhes e soluções
+            criativas. Amo criar experiências únicas...
           </p>
         </div>
         <img src="images/Astronaut.png" alt="Eliabe" class="large-image" />
@@ -340,8 +338,8 @@
         <div class="infolarge">
           <h2>Luan Lopes</h2>
           <p>
-            Sou Luan, desenvolvedor com foco em soluções inovadoras e eficientes. Sempre buscando
-            desafios...
+            Sou Luan, desenvolvedor com foco em soluções inovadoras e
+            eficientes. Sempre buscando desafios...
           </p>
         </div>
         <img src="images/Astronaut.png" alt="Luan" class="large-image" />
@@ -376,7 +374,8 @@
         <div class="footer-item">
           <h3>Contato</h3>
           <p>
-            Khosmixstudio@gmail.com<br />discord/khosmixstudio<br /><br />+00 (00) 0 0000-0000
+            Khosmixstudio@gmail.com<br />discord/khosmixstudio<br /><br />+00
+            (00) 0 0000-0000
           </p>
         </div>
 
