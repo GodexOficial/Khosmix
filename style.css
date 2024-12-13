@@ -323,11 +323,11 @@ textarea {
 #netFlixBackground.animateBackground {
   transition: background-image 5s ease-in-out;
   /* Ou qualquer outra animação que você queira aplicar */
-  background-size: 150%;
 }
 
 /*---------------------- Section 2 Netflix-----------------------*/
 .animateBackground {
+  background-size: 150%;
 }
 /* Seção Netflix */
 .netflix {
