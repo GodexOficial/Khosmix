@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-  jobs[0].classList.add("selected");
-  updateContent(jobs[0].dataset.key);
+  jobs[0].classList.add("selected"); // Adiciona a classe 'selected' ao primeiro item
+  updateContent(jobs[0].dataset.key); // Atualiza o conteúdo com base no primeiro item
 });
 
-const netFlixBackground = document.getElementById("netFlixBackground");
 const netFlixButton00 = document.getElementsByClassName("job");
 const trabalho = document.getElementById("Trabalhos");
+const netFlixBackground = document.getElementById("netFlixBackground");
 
 let isDragging = false; // Flag para identificar o estado de arraste
 let startX; // Coordenada inicial do mouse
