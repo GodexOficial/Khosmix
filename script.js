@@ -1,3 +1,16 @@
+//--------------------------------------------------------------------------//
+function smoothScrollTo(targetSelector) {
+  const targetElement = document.querySelector(targetSelector);
+
+  if (targetElement) {
+    targetElement.scrollIntoView({
+      behavior: "smooth", // Força o scroll suave
+      block: "start", // Alinha o topo do elemento
+    });
+  }
+}
+//--------------------------------------------------------------------------//
+
 document.addEventListener("DOMContentLoaded", () => {
   jobs[0].classList.add("selected"); // Adiciona a classe 'selected' ao primeiro item
   updateContent(jobs[0].dataset.key); // Atualiza o conteúdo com base no primeiro item
@@ -154,7 +167,7 @@ let autoScrollInterval;
 let inactivityTimer;
 let debounceTimer;
 let lastTimestamp;
-
+//----------------- FUNÇÃO SELECTED --------------------------//
 function updateContent(selectedKey) {
   const selected = data[selectedKey];
 
@@ -170,10 +183,14 @@ function updateContent(selectedKey) {
     // Adiciona a classe de animação
     netflixSection.classList.add("background-animate");
 
-    // Remove a classe após o tempo necessário para reiniciar a animação
-    setTimeout(() => {
-      netflixSection.classList.remove("background-animate");
-    }, 5000); // Tempo de animação (sincronizado com o CSS)
+    // Animação de fundo
+    if (netFlixBackground.classList.contains("animateBackground")) {
+      netFlixBackground.classList.remove("animateBackground");
+      netflixSection.style.backgroundImage = selected.background;
+    } else {
+      netflixSection.style.backgroundImage = selected.background;
+      netFlixBackground.classList.add("animateBackground");
+    }
   }
 }
 
@@ -207,12 +224,12 @@ function startAutoScroll() {
 function stopAutoScroll() {
   cancelAnimationFrame(autoScrollInterval);
 }
-
+//----------------- FUNÇÃO RETORNA ROTAÇAO AUTO --------------------------//
 function resetInactivityTimer() {
   clearTimeout(inactivityTimer);
   inactivityTimer = setTimeout(() => {
-    startAutoScroll(); // Retorna à rotação automática após 20 segundos de inatividade
-  }, 20000);
+    startAutoScroll();
+  }, 20000); // Retorna à rotação automática após 20 segundos de inatividade
 }
 
 function debounceResetInactivity() {
@@ -328,19 +345,6 @@ document.addEventListener("DOMContentLoaded", () => {
 //--------------------------------------------------------------------------//
 
 //--------------------------------------------------------------------------//
-function smoothScrollTo(targetSelector) {
-  const targetElement = document.querySelector(targetSelector);
-
-  if (targetElement) {
-    targetElement.scrollIntoView({
-      behavior: "smooth", // Força o scroll suave
-      block: "start", // Alinha o topo do elemento
-    });
-  }
-}
-//--------------------------------------------------------------------------//
-
-//--------------------------------------------------------------------------//
 // Evento para mostrar/esconder o formulário
 document.getElementById("openForm").addEventListener("click", function () {
   var formContainer = document.getElementById("formContainer");
@@ -450,7 +454,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 //--------------------------------------------------------------------------//
-// Lock Scroll
+/* Lock Scroll
 document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll(
     ".background, .backgroundnet, .timesection, .footerpro"
@@ -502,4 +506,4 @@ document.addEventListener("DOMContentLoaded", () => {
       nextSectionIndex = currentSectionIndex - 1; // Seção anterior
     }
   });
-});
+});*/
