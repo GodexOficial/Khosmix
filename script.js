@@ -450,3 +450,56 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 //--------------------------------------------------------------------------//
+// Lock Scroll
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll(
+    ".background, .backgroundnet, .timesection, .footerpro"
+  );
+
+  let isScrolling = false; // Evita conflitos de múltiplas rolagens
+
+  window.addEventListener("wheel", (event) => {
+    if (isScrolling) return; // Ignora eventos de rolagem durante o ajuste
+    isScrolling = true;
+
+    // Impede o comportamento padrão
+    event.preventDefault();
+
+    // Determina a direção do scroll
+    const scrollDirection = event.deltaY > 0 ? "down" : "up";
+
+    // Calcula a seção atual com base na posição de rolagem da página
+    const currentSectionIndex = [...sections].findIndex((section) => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const scrollTop = window.scrollY;
+      return scrollTop >= sectionTop && scrollTop < sectionTop + sectionHeight;
+    });
+
+    // Determina a próxima seção com base na direção
+    let nextSectionIndex =
+      scrollDirection === "down"
+        ? Math.min(currentSectionIndex + 1, sections.length - 1)
+        : Math.max(currentSectionIndex - 1, 0);
+
+    // Rola suavemente para a próxima seção
+    sections[nextSectionIndex].scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+
+    // Aguarda a animação para liberar o scroll
+    setTimeout(() => {
+      isScrolling = false;
+    }, 800); // O tempo aqui deve coincidir com a suavidade desejada
+
+    // Ajuste o limite aqui
+    const limit = window.innerHeight * 0.4; // 40% da altura da janela
+
+    if (scrollDelta > limit && currentSectionIndex < sections.length - 1) {
+      nextSectionIndex = currentSectionIndex + 1; // Próxima seção
+    } else if (scrollDelta < -limit && currentSectionIndex > 0) {
+      nextSectionIndex = currentSectionIndex - 1; // Seção anterior
+    }
+  });
+});
