@@ -1,27 +1,107 @@
 document.addEventListener("DOMContentLoaded", () => {
-  jobs[0].classList.add("selected"); // Adiciona a classe 'selected' ao primeiro item
-  updateContent(jobs[0].dataset.key); // Atualiza o conteúdo com base no primeiro item
+  jobs[0].classList.add("selected");
+  updateContent(jobs[0].dataset.key);
 });
 
 const netFlixBackground = document.getElementById("netFlixBackground");
-netFlixButton00 = document.getElementsByClassName("job");
+const netFlixButton00 = document.getElementsByClassName("job");
 const trabalho = document.getElementById("Trabalhos");
-if (netFlixButton00) {
-  Array.from(netFlixButton00).map((element, index) =>
-    element.addEventListener("click", (event) => {
-      console.log(element.offsetWidth);
-      trabalho.scrollTo({
-        top: 0,
-        left: element.offsetWidth * index + 2 * index - 100,
-        behavior: "smooth",
-      });
-      if (netFlixBackground.classList.contains("animateBackground"))
-        netFlixBackground.classList.remove("animateBackground");
-      else netFlixBackground.classList.add("animateBackground");
-      console.log(netFlixBackground.classList.contains("animateBackground"));
-    })
-  );
+
+let isDragging = false; // Flag para identificar o estado de arraste
+let startX; // Coordenada inicial do mouse
+let scrollStart; // Posição inicial do scroll no container
+
+// Adicionar suporte ao clique em botões
+Array.from(netFlixButton00).forEach((element, index) =>
+  element.addEventListener("click", () => {
+    // Atualizar posição do carrossel ao selecionar um item
+    scrollToJob(index);
+
+    // Animação de fundo
+    if (netFlixBackground.classList.contains("animateBackground"))
+      netFlixBackground.classList.remove("animateBackground");
+    else netFlixBackground.classList.add("animateBackground");
+  })
+);
+
+// Adicionar suporte ao scroll com a roda do mouse
+trabalho.addEventListener("wheel", (event) => {
+  event.preventDefault();
+  trabalho.scrollLeft += event.deltaY; // Deslocamento com base na roda do mouse
+});
+
+// Eventos para clique e arraste
+trabalho.addEventListener("mousedown", (event) => {
+  isDragging = true;
+  startX = event.pageX; // Coordenada inicial do mouse
+  scrollStart = trabalho.scrollLeft; // Posição inicial do scroll
+  trabalho.classList.add("dragging"); // Classe para indicar estado de arraste
+});
+
+trabalho.addEventListener("mousemove", (event) => {
+  if (!isDragging) return; // Não faz nada se não estiver arrastando
+  const x = event.pageX; // Posição atual do mouse
+  const walk = startX - x; // Diferença entre a posição inicial e atual
+  trabalho.scrollLeft = scrollStart + walk; // Atualiza o scroll com base no deslocamento
+});
+
+trabalho.addEventListener("mouseup", () => {
+  stopDragging();
+});
+
+trabalho.addEventListener("mouseleave", () => {
+  if (isDragging) stopDragging();
+});
+
+// Função para parar o arraste
+function stopDragging() {
+  isDragging = false;
+  trabalho.classList.remove("dragging");
 }
+
+// Função para alinhar o carrossel ao item selecionado
+function scrollToJob(index) {
+  const jobWidth = netFlixButton00[0].offsetWidth; // Largura de um item
+  const scrollPosition = jobWidth * index + 2 * index - 100; // Calcula a posição de scroll
+
+  trabalho.scrollTo({
+    top: 0,
+    left: scrollPosition,
+    behavior: "smooth",
+  });
+}
+
+// Monitorar mudanças na classe 'selected' e atualizar o carrossel
+const observer = new MutationObserver(() => {
+  const selectedJob = Array.from(netFlixButton00).find((job) => job.classList.contains("selected"));
+  const selectedIndex = Array.from(netFlixButton00).indexOf(selectedJob);
+  if (selectedIndex !== -1) {
+    scrollToJob(selectedIndex);
+  }
+});
+
+// Configurar o observer para monitorar a adição/remoção da classe 'selected'
+observer.observe(trabalho, {
+  attributes: true,
+  subtree: true,
+  attributeFilter: ["class"],
+});
+
+// Função para atualizar o carrossel e animar o background
+const updateCarousel = (key) => {
+  netFlixBackground.classList.add("hidden"); // Inicia a transição suave
+
+  setTimeout(() => {
+    // Atualiza o conteúdo do background após a opacidade zerar
+    netFlixBackground.style.backgroundImage = data[key].background;
+    netFlixBackground.classList.remove("hidden"); // Mostra novamente com nova imagem
+  }, 500); // Tempo da transição (mesmo valor do CSS)
+
+  // Atualiza o background com animação
+  updateCarousel(element.dataset.key);
+};
+
+//-------------------------------------------------------------------------------------------------------------//
 
 //-------------------------------------------------------------------------------------------------------------//
 const data = {
@@ -48,6 +128,18 @@ const data = {
     subtitle: "Criação de Logotipos, Branding",
     text: "Transformamos ideias em identidades visuais marcantes que se destacam no mercado.",
     background: "url('images/idv.jpg')", // Caminho para o fundo da Identidade Visual
+  },
+  programacao: {
+    title: "Programação",
+    subtitle: "Desenvolvimento Web, Automação",
+    text: "Explore nossos projetos de programação, incluindo sites dinâmicos, sistemas personalizados e soluções automatizadas.",
+    background: "url('images/prog.jpg')", // Caminho para o fundo de Programação
+  },
+  animacao: {
+    title: "Motion Design",
+    subtitle: "Motion Graphics, Animação 2D e 3D",
+    text: "Dê vida às suas ideias com animações impactantes, desde motion graphics até narrativas completas em 2D e 3D.",
+    background: "url('images/blackhole.jpg')", // Caminho para o fundo de Animação
   },
 };
 
@@ -252,10 +344,7 @@ function smoothScrollTo(targetSelector) {
 // Evento para mostrar/esconder o formulário
 document.getElementById("openForm").addEventListener("click", function () {
   var formContainer = document.getElementById("formContainer");
-  if (
-    formContainer.style.display === "none" ||
-    formContainer.style.display === ""
-  ) {
+  if (formContainer.style.display === "none" || formContainer.style.display === "") {
     formContainer.style.display = "flex";
   } else {
     formContainer.style.display = "none";
@@ -263,10 +352,7 @@ document.getElementById("openForm").addEventListener("click", function () {
 });
 document.getElementById("closeForm").addEventListener("click", function () {
   var formContainer = document.getElementById("formContainer");
-  if (
-    formContainer.style.display === "none" ||
-    formContainer.style.display === ""
-  ) {
+  if (formContainer.style.display === "none" || formContainer.style.display === "") {
     formContainer.style.display = "flex";
   } else {
     formContainer.style.display = "none";
@@ -274,39 +360,37 @@ document.getElementById("closeForm").addEventListener("click", function () {
 });
 
 // Evento de submissão do formulário
-document
-  .getElementById("contractForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
+document.getElementById("contractForm").addEventListener("submit", function (event) {
+  event.preventDefault();
 
-    // Obtendo os dados do formulário
-    const name = document.getElementById("nameform").value;
-    const email = document.getElementById("emailform").value;
-    const service = document.getElementById("service").value;
+  // Obtendo os dados do formulário
+  const name = document.getElementById("nameform").value;
+  const email = document.getElementById("emailform").value;
+  const service = document.getElementById("service").value;
 
-    // Criando o objeto de dados a serem armazenados
-    const formData = {
-      nameform,
-      emailform,
-      service,
-    };
+  // Criando o objeto de dados a serem armazenados
+  const formData = {
+    nameform,
+    emailform,
+    service,
+  };
 
-    // Convertendo o objeto para uma string JSON
-    const jsonData = JSON.stringify(formData);
+  // Convertendo o objeto para uma string JSON
+  const jsonData = JSON.stringify(formData);
 
-    // Armazenando os dados em um arquivo no diretório "clientes"
-    const blob = new Blob([jsonData], { type: "application/txt" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = `clientes/formulario_${new Date().toISOString()}.txt`;
-    link.click();
+  // Armazenando os dados em um arquivo no diretório "clientes"
+  const blob = new Blob([jsonData], { type: "application/txt" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = `clientes/formulario_${new Date().toISOString()}.txt`;
+  link.click();
 
-    // Mostrando a mensagem de confirmação
-    document.getElementById("confirmationMessage").style.display = "block";
+  // Mostrando a mensagem de confirmação
+  document.getElementById("confirmationMessage").style.display = "block";
 
-    // Limpar o formulário após o envio
-    document.getElementById("contractForm").reset();
-  });
+  // Limpar o formulário após o envio
+  document.getElementById("contractForm").reset();
+});
 //--------------------------------------------------------------------------//
 
 //--------------------------------------------------------------------------//
@@ -366,3 +450,56 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 //--------------------------------------------------------------------------//
+// Lock Scroll
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll(
+    ".background, .backgroundnet, .timesection, .footerpro"
+  );
+
+  let isScrolling = false; // Evita conflitos de múltiplas rolagens
+
+  window.addEventListener("wheel", (event) => {
+    if (isScrolling) return; // Ignora eventos de rolagem durante o ajuste
+    isScrolling = true;
+
+    // Impede o comportamento padrão
+    event.preventDefault();
+
+    // Determina a direção do scroll
+    const scrollDirection = event.deltaY > 0 ? "down" : "up";
+
+    // Calcula a seção atual com base na posição de rolagem da página
+    const currentSectionIndex = [...sections].findIndex((section) => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const scrollTop = window.scrollY;
+      return scrollTop >= sectionTop && scrollTop < sectionTop + sectionHeight;
+    });
+
+    // Determina a próxima seção com base na direção
+    let nextSectionIndex =
+      scrollDirection === "down"
+        ? Math.min(currentSectionIndex + 1, sections.length - 1)
+        : Math.max(currentSectionIndex - 1, 0);
+
+    // Rola suavemente para a próxima seção
+    sections[nextSectionIndex].scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+
+    // Aguarda a animação para liberar o scroll
+    setTimeout(() => {
+      isScrolling = false;
+    }, 800); // O tempo aqui deve coincidir com a suavidade desejada
+
+    // Ajuste o limite aqui
+    const limit = window.innerHeight * 0.4; // 40% da altura da janela
+
+    if (scrollDelta > limit && currentSectionIndex < sections.length - 1) {
+      nextSectionIndex = currentSectionIndex + 1; // Próxima seção
+    } else if (scrollDelta < -limit && currentSectionIndex > 0) {
+      nextSectionIndex = currentSectionIndex - 1; // Seção anterior
+    }
+  });
+});

@@ -320,9 +320,14 @@ textarea {
   height: 100vh;
   overflow: hidden;
 }
+#netFlixBackground.animateBackground {
+  transition: background-image 1s ease-in-out;
+  /* Ou qualquer outra animação que você queira aplicar */
+}
+
 /*---------------------- Section 2 Netflix-----------------------*/
 .animateBackground {
-  background-size: 150% !important;
+  background-size: 150%;
 }
 /* Seção Netflix */
 .netflix {
@@ -343,11 +348,11 @@ textarea {
   background-position: center;
   transition: background-size 5s ease !important;
   animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  -webkit-transition: background-size 1500ms linear;
-  -moz-transition: background-size 1500 linear;
-  -o-transition: background-size 1500 linear;
-  -ms-transition: background-size 1500ms linear;
-  transition: background-size 1500ms linear;
+  -webkit-transition: background-size 1000ms linear;
+  -moz-transition: background-size 1000 linear;
+  -o-transition: background-size 1000 linear;
+  -ms-transition: background-size 1000ms linear;
+  transition: background-size 1000ms linear;
 }
 
 /* Camada de escurecimento */
@@ -521,12 +526,12 @@ textarea {
   background-position: center;
 }
 #progkhosmix {
-  background: url(images/Miniaturas\ IDV.jpg);
+  background: url(images/Miniaturas\ prog.jpg);
   background-size: cover;
   background-position: center;
 }
-#animakhosmix {
-  background: url(images/Miniaturas\ IDV.jpg);
+#motionkhosmix {
+  background: url(images/Miniaturas\ Motion.jpg);
   background-size: cover;
   background-position: center;
 }
@@ -536,8 +541,7 @@ textarea {
   flex: 1;
   background-size: cover;
   background-position: center;
-  transition: flex 0.4s ease, transform 0.4s ease, margin 0.4s ease,
-    0.2s all ease-in-out; /* Adicionando transições de margin */
+  transition: flex 0.4s ease, transform 0.4s ease, margin 0.4s ease, 0.2s all ease-in-out; /* Adicionando transições de margin */
   cursor: pointer;
   border-radius: 8px;
   margin: 0 2px; /* Define margem entre os itens */
@@ -579,12 +583,7 @@ textarea {
   align-items: center;
   width: 100%;
   height: 100vh;
-  background: linear-gradient(
-      to bottom,
-      rgb(04, 00, 08),
-      rgba(98, 0, 255, 0),
-      rgb(04, 00, 08)
-    ),
+  background: linear-gradient(to bottom, rgb(04, 00, 08), rgba(98, 0, 255, 0), rgb(04, 00, 08)),
     url("images/background.jpg") no-repeat center center/cover;
   position: relative;
 }
