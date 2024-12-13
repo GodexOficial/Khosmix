@@ -1,3 +1,16 @@
+//--------------------------------------------------------------------------//
+function smoothScrollTo(targetSelector) {
+  const targetElement = document.querySelector(targetSelector);
+
+  if (targetElement) {
+    targetElement.scrollIntoView({
+      behavior: "smooth", // Força o scroll suave
+      block: "start", // Alinha o topo do elemento
+    });
+  }
+}
+//--------------------------------------------------------------------------//
+
 document.addEventListener("DOMContentLoaded", () => {
   jobs[0].classList.add("selected"); // Adiciona a classe 'selected' ao primeiro item
   updateContent(jobs[0].dataset.key); // Atualiza o conteúdo com base no primeiro item
@@ -73,7 +86,9 @@ function scrollToJob(index) {
 
 // Monitorar mudanças na classe 'selected' e atualizar o carrossel
 const observer = new MutationObserver(() => {
-  const selectedJob = Array.from(netFlixButton00).find((job) => job.classList.contains("selected"));
+  const selectedJob = Array.from(netFlixButton00).find((job) =>
+    job.classList.contains("selected")
+  );
   const selectedIndex = Array.from(netFlixButton00).indexOf(selectedJob);
   if (selectedIndex !== -1) {
     scrollToJob(selectedIndex);
@@ -154,7 +169,7 @@ let autoScrollInterval;
 let inactivityTimer;
 let debounceTimer;
 let lastTimestamp;
-
+//----------------- FUNÇÃO SELECTED --------------------------//
 function updateContent(selectedKey) {
   const selected = data[selectedKey];
 
@@ -168,12 +183,15 @@ function updateContent(selectedKey) {
     netflixSection.style.backgroundImage = selected.background;
 
     // Adiciona a classe de animação
-    netflixSection.classList.add("background-animate");
 
-    // Remove a classe após o tempo necessário para reiniciar a animação
-    setTimeout(() => {
-      netflixSection.classList.remove("background-animate");
-    }, 5000); // Tempo de animação (sincronizado com o CSS)
+    // Animação de fundo
+    if (netFlixBackground.classList.contains("animateBackground")) {
+      netFlixBackground.classList.remove("animateBackground");
+      netflixSection.style.backgroundImage = selected.background;
+    } else {
+      netflixSection.style.backgroundImage = selected.background;
+      netFlixBackground.classList.add("animateBackground");
+    }
   }
 }
 
@@ -207,12 +225,12 @@ function startAutoScroll() {
 function stopAutoScroll() {
   cancelAnimationFrame(autoScrollInterval);
 }
-
+//----------------- FUNÇÃO RETORNA ROTAÇAO AUTO --------------------------//
 function resetInactivityTimer() {
   clearTimeout(inactivityTimer);
   inactivityTimer = setTimeout(() => {
-    startAutoScroll(); // Retorna à rotação automática após 20 segundos de inatividade
-  }, 20000);
+    startAutoScroll();
+  }, 20000); // Retorna à rotação automática após 20 segundos de inatividade
 }
 
 function debounceResetInactivity() {
@@ -328,23 +346,13 @@ document.addEventListener("DOMContentLoaded", () => {
 //--------------------------------------------------------------------------//
 
 //--------------------------------------------------------------------------//
-function smoothScrollTo(targetSelector) {
-  const targetElement = document.querySelector(targetSelector);
-
-  if (targetElement) {
-    targetElement.scrollIntoView({
-      behavior: "smooth", // Força o scroll suave
-      block: "start", // Alinha o topo do elemento
-    });
-  }
-}
-//--------------------------------------------------------------------------//
-
-//--------------------------------------------------------------------------//
 // Evento para mostrar/esconder o formulário
 document.getElementById("openForm").addEventListener("click", function () {
   var formContainer = document.getElementById("formContainer");
-  if (formContainer.style.display === "none" || formContainer.style.display === "") {
+  if (
+    formContainer.style.display === "none" ||
+    formContainer.style.display === ""
+  ) {
     formContainer.style.display = "flex";
   } else {
     formContainer.style.display = "none";
@@ -352,7 +360,10 @@ document.getElementById("openForm").addEventListener("click", function () {
 });
 document.getElementById("closeForm").addEventListener("click", function () {
   var formContainer = document.getElementById("formContainer");
-  if (formContainer.style.display === "none" || formContainer.style.display === "") {
+  if (
+    formContainer.style.display === "none" ||
+    formContainer.style.display === ""
+  ) {
     formContainer.style.display = "flex";
   } else {
     formContainer.style.display = "none";
@@ -360,37 +371,39 @@ document.getElementById("closeForm").addEventListener("click", function () {
 });
 
 // Evento de submissão do formulário
-document.getElementById("contractForm").addEventListener("submit", function (event) {
-  event.preventDefault();
+document
+  .getElementById("contractForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
 
-  // Obtendo os dados do formulário
-  const name = document.getElementById("nameform").value;
-  const email = document.getElementById("emailform").value;
-  const service = document.getElementById("service").value;
+    // Obtendo os dados do formulário
+    const name = document.getElementById("nameform").value;
+    const email = document.getElementById("emailform").value;
+    const service = document.getElementById("service").value;
 
-  // Criando o objeto de dados a serem armazenados
-  const formData = {
-    nameform,
-    emailform,
-    service,
-  };
+    // Criando o objeto de dados a serem armazenados
+    const formData = {
+      nameform,
+      emailform,
+      service,
+    };
 
-  // Convertendo o objeto para uma string JSON
-  const jsonData = JSON.stringify(formData);
+    // Convertendo o objeto para uma string JSON
+    const jsonData = JSON.stringify(formData);
 
-  // Armazenando os dados em um arquivo no diretório "clientes"
-  const blob = new Blob([jsonData], { type: "application/txt" });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = `clientes/formulario_${new Date().toISOString()}.txt`;
-  link.click();
+    // Armazenando os dados em um arquivo no diretório "clientes"
+    const blob = new Blob([jsonData], { type: "application/txt" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `clientes/formulario_${new Date().toISOString()}.txt`;
+    link.click();
 
-  // Mostrando a mensagem de confirmação
-  document.getElementById("confirmationMessage").style.display = "block";
+    // Mostrando a mensagem de confirmação
+    document.getElementById("confirmationMessage").style.display = "block";
 
-  // Limpar o formulário após o envio
-  document.getElementById("contractForm").reset();
-});
+    // Limpar o formulário após o envio
+    document.getElementById("contractForm").reset();
+  });
 //--------------------------------------------------------------------------//
 
 //--------------------------------------------------------------------------//
@@ -450,7 +463,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 //--------------------------------------------------------------------------//
-// Lock Scroll
+/* Lock Scroll
 document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll(
     ".background, .backgroundnet, .timesection, .footerpro"
@@ -502,4 +515,4 @@ document.addEventListener("DOMContentLoaded", () => {
       nextSectionIndex = currentSectionIndex - 1; // Seção anterior
     }
   });
-});
+});*/

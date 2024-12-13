@@ -320,15 +320,17 @@ textarea {
   height: 100vh;
   overflow: hidden;
 }
-#netFlixBackground.animateBackground {
-  transition: background-image 5s ease-in-out;
+#netFlixBackground {
+  transition: 1s ease !important;
+}
+.animateBackground {
+  transition: 1s ease !important;
   /* Ou qualquer outra animação que você queira aplicar */
+  background-size: 130% !important;
 }
 
 /*---------------------- Section 2 Netflix-----------------------*/
-.animateBackground {
-  background-size: 150%;
-}
+
 /* Seção Netflix */
 .netflix {
   position: relative;
@@ -343,10 +345,10 @@ textarea {
   padding-bottom: 20rem;
   border-radius: 35px;
   overflow: hidden;
-  background-size: 125%;
+  background-size: 140%;
   background-repeat: no-repeat;
   background-position: center;
-  transition: background-size 5s ease !important;
+  transition: background-image 1s easy !important;
   animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   -webkit-transition: background-size 1000ms linear;
   -moz-transition: background-size 1000 linear;
