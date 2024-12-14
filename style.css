@@ -323,9 +323,14 @@ textarea {
   height: 100vh;
   overflow: hidden;
 }
+#netFlixBackground.animateBackground {
+  transition: background-image 1s ease-in-out;
+  /* Ou qualquer outra animação que você queira aplicar */
+}
+
 /*---------------------- Section 2 Netflix-----------------------*/
 .animateBackground {
-  background-size: 150% !important;
+  background-size: 150%;
 }
 /* Seção Netflix */
 .netflix {
@@ -346,11 +351,11 @@ textarea {
   background-position: center;
   transition: background-size 5s ease !important;
   animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  -webkit-transition: background-size 1500ms linear;
-  -moz-transition: background-size 1500 linear;
-  -o-transition: background-size 1500 linear;
-  -ms-transition: background-size 1500ms linear;
-  transition: background-size 1500ms linear;
+  -webkit-transition: background-size 1000ms linear;
+  -moz-transition: background-size 1000 linear;
+  -o-transition: background-size 1000 linear;
+  -ms-transition: background-size 1000ms linear;
+  transition: background-size 1000ms linear;
 }
 
 /* Camada de escurecimento */
@@ -422,34 +427,37 @@ textarea {
   width: 100%;
   max-width: 100%;
   height: 200px;
+  overflow: auto;
   border-radius: 10px;
   margin: 0 auto;
   gap: 2px; /* Aumenta o espaçamento entre os itens */
   bottom: 0;
+  left: 0;
 }
-.trabalho > div {
-  width: 1000px !important;
+.trabalhos > div {
+  min-width: 420px !important;
+  max-width: 120px !important;
 }
 /* -------------------------- Scroll Bar ----------------------*/
-.buttonsContainer > button {
+.trabalhos > button {
   min-width: 500px;
   height: 50px;
 }
-.buttonsContainer::-webkit-scrollbar {
+.trabalhos::-webkit-scrollbar {
   height: 0px !important;
   width: 0px !important;
 }
-.buttonsContainer {
+.trabalhos {
   scrollbar-width: none;
   scrollbar-color: #8f54a0 #ffffff;
 }
 
 /* Chrome, Edge, and Safari */
-.buttonsContainer::-webkit-scrollbar {
+.trabalhos::-webkit-scrollbar {
   width: 0px;
 }
 
-.buttonsContainer::-webkit-scrollbar-track {
+.trabalhos::-webkit-scrollbar-track {
   background: #ffffff;
 }
 /* -------------------------- Scroll Bar ----------------------*/
@@ -474,12 +482,12 @@ textarea {
   background-position: center;
 }
 #progkhosmix {
-  background: url(images/Miniaturas\ IDV.jpg);
+  background: url(images/Miniaturas\ prog.jpg);
   background-size: cover;
   background-position: center;
 }
-#animakhosmix {
-  background: url(images/Miniaturas\ IDV.jpg);
+#motionkhosmix {
+  background: url(images/Miniaturas\ Motion.jpg);
   background-size: cover;
   background-position: center;
 }
