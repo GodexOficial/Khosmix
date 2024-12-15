@@ -485,7 +485,7 @@ document
 
     // Armazenando os dados em um arquivo no diretório "clientes"
     const blob = new Blob([jsonData], { type: "application/txt" });
-    const link = document.createElement("a");
+    const link = document.Element("a");
     link.href = URL.createObjectURL(blob);
     link.download = `clientes/formulario_${new Date().toISOString()}.txt`;
     link.click();
@@ -555,7 +555,7 @@ dots.forEach((dot, index) => {
 window.addEventListener("scroll", () => {
   sections.forEach((section, index) => {
     const rect = section.getBoundingClientRect();
-    // Verifica se a seç��o está visível na tela (mais de 50% dela)
+    // Verifica se a seção está visível na tela (mais de 50% dela)
     if (rect.top >= 0 && rect.top < window.innerHeight / 2) {
       activateDot(index);
     }
@@ -739,18 +739,19 @@ const projectData = {
   design: {
     title: "Design",
     subtitle: "Social Media, Identidade Visual",
+    description: "A Bells Beach é uma praia icônica localizada na região de Torquay, no estado de Victoria, na Austrália. Reconhecida mundialmente como um dos melhores destinos para surfe, ela é famosa por suas ondas poderosas e consistentes, que atraem surfistas profissionais e amadores de todo o mundo.",
     projects: [
       {
         title: "Bells Beach",
         desc: "Social Media, Identidade Visual, 3D",
-        image: "images/Miniatura Design.jpg",
+        image: "images/Miniatura Design.jpg"
       },
       {
         title: "Hero Burger",
         desc: "Branding, Social Media, Identidade Visual",
-        image: "images/Miniaturas IDV.jpg",
-      },
-    ],
+        image: "images/Miniaturas IDV.jpg"
+      }
+    ]
   },
   modelagem: {
     title: "Modelagem 3D",
@@ -773,52 +774,74 @@ const closeModalBtn = document.querySelector(".close-modal-btn");
 const searchInput = document.querySelector(".search-input");
 const projectList = document.querySelector(".project-list");
 
-// Função para abrir o modal
-function openModal() {
-  console.log("selectedJob");
-  const selectedJob = document.querySelector(".job.selected");
-  if (selectedJob) {
-    updateModalContent(selectedJob.dataset.key);
-  }
-  modal.classList.add("active");
-}
-
-// Função para fechar o modal
-function closeModal() {
-  modal.classList.remove("active");
+// Função para criar elemento de projeto
+function createProjectElement(project) {
+    const div = document.createElement('div');
+    div.className = 'project-item';
+    div.innerHTML = `
+        <img src="${project.image}" alt="${project.title}">
+        <div class="project-item-content">
+            <h3>${project.title}</h3>
+            <p>${project.desc}</p>
+        </div>
+    `;
+    return div;
 }
 
 // Função para atualizar o conteúdo do modal
 function updateModalContent(key) {
-  const content = projectData[key];
-  if (!content) return;
+    const content = projectData[key];
+    if (!content) return;
 
-  modal.querySelector(".info-title h2").textContent = content.title;
-  modal.querySelector(".info-title p").textContent = content.subtitle;
+    // Atualiza o título e subtítulo
+    const titleElement = modal.querySelector(".info-title h2");
+    const subtitleElement = modal.querySelector(".info-title p");
+    const descriptionElement = modal.querySelector(".description-text");
+    
+    if (titleElement && subtitleElement) {
+        titleElement.textContent = content.title;
+        subtitleElement.textContent = content.subtitle;
+    }
 
-  projectList.innerHTML = "";
-  content.projects.forEach((project) => {
-    const projectElement = createProjectElement(project);
-    projectList.appendChild(projectElement);
-  });
+    // Atualiza a descrição
+    if (descriptionElement) {
+        descriptionElement.textContent = content.description;
+    }
+
+    // Atualiza a lista de projetos
+    if (projectList) {
+        projectList.innerHTML = "";
+        content.projects.forEach((project) => {
+            const projectElement = createProjectElement(project);
+            projectList.appendChild(projectElement);
+        });
+    }
 }
 
-// Event Listeners
+// Função para fechar o modal
+function closeModal() {
+    modal.classList.remove("active");
+}
+
+// Event listeners
 maisInfoBtn?.addEventListener("click", () => {
-  console.log("selectedJob");
-  const selectedJob = document.querySelector(".job.selected");
-  if (selectedJob) {
-    updateModalContent(selectedJob.dataset.key);
-  }
-  modal.classList.add("active");
+    const selectedJob = document.querySelector(".job.selected");
+    if (selectedJob) {
+        updateModalContent(selectedJob.dataset.key);
+    }
+    modal.classList.add("active");
 });
-closeModalBtn.addEventListener("click", closeModal);
-console.log("maisInfoBtn", maisInfoBtn);
+
+// Adicione este event listener para o botão de fechar
+closeModalBtn?.addEventListener("click", () => {
+    closeModal();
+});
+
 // Fechar modal ao clicar fora
 window.addEventListener("click", (e) => {
-  if (e.target === modal) {
-    closeModal();
-  }
+    if (e.target === modal) {
+        closeModal();
+    }
 });
 
 // Atualizar conteúdo do modal quando um job for selecionado
