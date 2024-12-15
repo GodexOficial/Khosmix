@@ -241,6 +241,7 @@ nav a:hover {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   padding: 0;
   opacity: 0;
+  z-index: 1000;
 }
 
 .form-content {
@@ -280,7 +281,7 @@ nav a:hover {
 }
 .dadosform {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   width: 50%;
   height: 100%;
@@ -289,8 +290,7 @@ nav a:hover {
 }
 /* Lado direito - Formulário */
 #contractForm {
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
   width: 80%;
   height: auto;
   background: var(--cor-gradiente-end);
@@ -298,7 +298,7 @@ nav a:hover {
   flex-direction: column;
   gap: 15px;
   margin: 0;
-  padding: 20px;
+  padding: 40px;
 }
 
 #preenchaTitulo {
@@ -313,15 +313,20 @@ nav a:hover {
   color: white;
   font-size: 12px;
   margin-bottom: 5px;
-  width: 90%;
+  width: 100%;
   text-align: left;
+}
+
+/* Espaçamento específico para o label do tipo de serviço */
+label[for="tipo_servico"] {
+  margin-bottom: 15px; /* Aumentando o espaçamento inferior do label */
 }
 
 #contractForm input,
 #contractForm select,
 #contractForm textarea {
-  margin: 0 auto;
-  width: 90%;
+  margin: 0;
+  width: 100%;
   padding: 8px 0;
   background: transparent;
   border: none;
@@ -339,19 +344,101 @@ nav a:hover {
   outline: none;
 }
 
-/* Estilo do select */
+/* Estilização do select e suas opções */
 #tipo_servico {
-  color: rgba(255, 255, 255, 0.7);
-  border-radius: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  padding: 8px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  font-family: "Quicksand";
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
+/* Estilo para a opção placeholder */
+#tipo_servico option[value=""][disabled] {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Estilo para as opções */
 #tipo_servico option {
-  background: #000000;
+  background: rgba(4, 0, 8, 0.95);
   color: white;
+  padding: 12px;
+}
+
+/* Estilo quando uma opção está selecionada */
+#tipo_servico:not(:placeholder-shown) {
+  color: white; /* Cor do texto quando selecionado */
+}
+
+/* Remove a seta padrão do select */
+#tipo_servico::-ms-expand {
+  display: none;
+}
+
+/* Estilo quando o select está focado */
+#tipo_servico:focus {
+  border-bottom-color: var(--cor-rox);
+  outline: none;
+}
+
+/* Estilo das opções do select */
+#tipo_servico option {
+  background: rgba(4, 0, 8, 0.95);
+  color: white;
+  padding: 12px;
+}
+
+/* Estilo quando passa o mouse sobre as opções */
+#tipo_servico option:hover {
+  background-color: var(--cor-rox);
+}
+
+/* Adiciona uma seta customizada */
+#tipo_servico {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding-right: 30px; /* Espaço para a seta */
+}
+
+/* Remove a seta padrão no IE/Edge */
+#tipo_servico::-ms-expand {
+  display: none;
+}
+
+/* Estilo quando o select está aberto */
+#tipo_servico:focus {
+  border-bottom-color: var(--cor-rox);
+}
+
+/* Container personalizado para o select */
+.select-container {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  margin-top: 10px; /* Adicionando margem superior ao container */
+}
+
+/* Estilo para o texto placeholder do select */
+#tipo_servico option[value=""][disabled] {
+  color: rgba(255, 255, 255, 0.5);
+  font-family: "Quicksand";
+  font-size: 14px;
+  font-weight: 400;
 }
 
 /* Botão de enviar */
 .submit-btn {
+  align-self: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -360,7 +447,7 @@ nav a:hover {
   color: black;
   padding: 12px;
   border: none;
-  border-radius: 0;
+  border-radius: 15px;
   font-size: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -386,20 +473,108 @@ nav a:hover {
   border-radius: 0;
 }
 
-/* Mensagem de confirmação */
+/* Animações para a mensagem de confirmação */
+@keyframes messageIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes messageOut {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -60%) scale(0.8);
+  }
+}
+
 #confirmationMessage {
-  position: absolute;
-  bottom: 20px;
+  position: fixed;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  background: var(--cor-gre);
-  padding: 10px 20px;
-  border-radius: 20px;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 40px 30px 25px; /* Aumentando o padding superior */
+  border-radius: 15px;
   display: none;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  z-index: 9999;
 }
 
 #confirmationMessage.show {
   display: block;
+  animation: messageIn 0.5s ease forwards;
+}
+
+#confirmationMessage.closing {
+  animation: messageOut 0.8s ease forwards; /* Aumentando a duração da animação */
+}
+
+/* Adicionando o retângulo verde abaixo */
+#confirmationMessage::before {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 15px;
+  background: var(--cor-gre);
+  border-radius: 0 0 10px 10px;
+  z-index: -1;
+}
+
+/* Círculo com check */
+#confirmationMessage .check-circle {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 80px;
+  background: var(--cor-gre);
+  border-radius: 50%;
+  margin: -40px auto 20px;
+  position: relative;
+  box-shadow: 0 0 20px rgba(87, 255, 184, 0.3);
+}
+
+/* Ícone de check */
+#confirmationMessage .check-circle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 32px; /* Aumentando o tamanho do check */
+  height: 20px; /* Aumentando o tamanho do check */
+  border: 5px solid white; /* Aumentando a espessura da borda */
+  border-top: 0;
+  border-right: 0;
+  transform: translate(-50%, -70%) rotate(-45deg);
+}
+
+#confirmationMessage p {
+  margin: 0;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  width: 100%;
+}
+
+#confirmationMessage p:first-of-type {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  text-align: center;
 }
 
 /* Responsivo */
@@ -429,162 +604,6 @@ nav a:hover {
   }
 }
 
-/* ----------------------- Estilização do formulário ------------------------- */
-#formContainer {
-  width: 80%; /* Aumenta a largura para ocupar uma proporção maior da tela */
-  height: 95%;
-  position: fixed;
-  margin: 0 auto;
-}
-.background-form {
-  top: 50%;
-  left: 50%; /* Centralizando o formulário na metade da tela horizontalmente */
-  transform: translate(-50%, -50%); /* Movendo o formulário para o centro */
-  background: var(--cor-gradient-job);
-  backdrop-filter: blur(30px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 25px;
-  display: none; /* Inicia com o formulário escondido */
-  z-index: 1000; /* Certificando-se de que o formulário sobreponha outros elementos */
-  position: absolute; /* Garantir que o botão de fechar esteja dentro da posição do formulário */
-  width: 100%; /* Largura do formulário ajustada para ocupar toda a área do background roxo */
-  height: 90%; /* Reduzindo a altura do formulário para que ele não exceda os limites do background roxo */
-}
-
-.form-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Botão de fechar formulário */
-.close-btn {
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: white;
-  border: none;
-  border-radius: 1000px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: black;
-}
-
-/* Estilização do conteúdo do formulário */
-.form-book {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.image-container {
-  display: flex;
-  width: 200px; /* Reduzindo a largura da imagem para 250px */
-  height: 100%; /* Mantendo a altura para preencher a área do formulário */
-}
-
-.image-container img {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Para manter a imagem de forma proporcional */
-}
-
-form {
-  flex: 1;
-}
-
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-}
-
-input[type="text"],
-input[type="email"],
-textarea,
-select#tipo_servico,
-input[type="tel"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 20px;
-  font-size: 1rem;
-  box-sizing: border-box;
-  outline: none; /* Remove o contorno padrão ao foco */
-}
-
-textarea {
-  height: 100px;
-}
-
-/* Estilização do campo "Tipo de Serviço" */
-select#tipo_servico {
-  appearance: none; /* Remove o estilo padrão da seta */
-  -webkit-appearance: none; /* Para navegadores WebKit (Chrome, Safari) */
-  border: none; /* Remove o contorno ao passar o mouse */
-  outline: none; /* Remove o contorno ao foco */
-}
-
-select#tipo_servico option {
-  padding: 10px;
-}
-
-/* Estilização do botão de envio */
-.submit-btn {
-  background-color: var(--cor-rox);
-  color: white;
-  padding: 10px 50px;
-  border: none;
-  border-radius: 1000px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.submit-btn:hover {
-  background-color: var(--cor-gre);
-  color: black;
-}
-
-/* Mensagem de confirmação */
-#confirmationMessage {
-  display: none;
-  text-align: center;
-  margin-top: 20px;
-  font-size: 1.2rem;
-  color: var(--cor-rox-escuro);
-}
-
-/* Título "Preencha para Contratar" */
-.form-content h2 {
-  margin-bottom: 20px;
-}
-
-/* Ajustando o espaçamento entre os campos */
-label + input[type="tel"] {
-  margin-top: 15px; /* Ajusta o espaçamento entre o campo de email e telefone */
-}
-
-/* Estilização de borda ao foco */
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="tel"]:focus,
-select:focus,
-textarea:focus,
-button:focus {
-  border: 2px solid var(--cor-rox); /* Estilo de borda ao focar nos campos */
-  outline: none; /* Remove o outline padrão do navegador */
-}
-
-/* Ajusta a borda para o campo tipo de serviço ao foco */
-select#tipo_servico:focus {
-  border: 2px solid var(--cor-rox); /* Estilo de borda ao focar nos campos */
-}
 
 /*------------------------Fim Section 1 --------------------------*/
 /*---------------------- Section 2 Background-----------------------*/
@@ -822,7 +841,7 @@ select#tipo_servico:focus {
   flex: 1;
   background-size: cover;
   background-position: center;
-  transition: flex 0.4s ease, transform 0.4s ease, margin 0.4s ease, 0.2s all ease-in-out; /* Adicionando transições de margin */
+  transition: flex 0.4s ease, transform 0.4s ease, margin 0.4s ease, 0.2s all ease-in-out; /* Adicionando transiç��es de margin */
   cursor: pointer;
   border-radius: 8px;
   margin: 0 2px; /* Define margem entre os itens */
@@ -1218,8 +1237,8 @@ select#tipo_servico:focus {
 }
 
 .dot.active {
-  background-color: var(--cor-rox); /* Cor para o ponto ativo */
-  transform: scale(1.5); /* Aumenta o tamanho do ponto ativo */
+  background-color: var(--cor-rox);
+  transform: scale(1.5);
 }
 
 .section {

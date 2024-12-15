@@ -408,22 +408,39 @@ document.getElementById("openForm").addEventListener("click", function () {
   formContainer.classList.add("active");
 });
 
+// Função para fechar a mensagem de confirmação
+function closeConfirmationMessage() {
+  const confirmationMessage = document.getElementById('confirmationMessage');
+  confirmationMessage.classList.add('closing');
+  
+  // Aguarda a animação terminar antes de esconder
+  setTimeout(() => {
+    confirmationMessage.classList.remove('show');
+    confirmationMessage.classList.remove('closing');
+    confirmationMessage.classList.add('hidden');
+  }, 800); // Aumentando o tempo da animação de fechamento
+}
+
+// Evento para fechar o formulário
 document.getElementById("closeForm").addEventListener("click", function () {
   var formContainer = document.getElementById("formContainer");
   formContainer.classList.remove("active");
   formContainer.classList.add("closing");
 
-  // Aguarda a animação terminar antes de esconder completamente
+  // Fecha a mensagem de confirmação também
+  closeConfirmationMessage();
+
   setTimeout(() => {
     formContainer.style.display = "none";
-    formContainer.classList.remove("closing"); // Remove a classe após a animação
+    formContainer.classList.remove("closing");
   }, 500);
 });
 
-// Fechar o formulário quando clicar fora dele
+// Fechar o formulário e a mensagem quando clicar fora
 document.addEventListener("click", function (event) {
   var formContainer = document.getElementById("formContainer");
   var openFormButton = document.getElementById("openForm");
+  var confirmationMessage = document.getElementById('confirmationMessage');
 
   if (
     !formContainer.contains(event.target) &&
@@ -432,6 +449,9 @@ document.addEventListener("click", function (event) {
   ) {
     formContainer.classList.remove("active");
     formContainer.classList.add("closing");
+    
+    // Fecha a mensagem de confirmação
+    closeConfirmationMessage();
 
     setTimeout(() => {
       formContainer.style.display = "none";
@@ -466,11 +486,26 @@ document.getElementById("contractForm").addEventListener("submit", function (eve
   link.download = `clientes/formulario_${new Date().toISOString()}.txt`;
   link.click();
 
-  // Mostrando a mensagem de confirmação
-  document.getElementById("confirmationMessage").style.display = "block";
+  // Mostra a mensagem de confirmação com animação
+  const confirmationMessage = document.getElementById("confirmationMessage");
+  confirmationMessage.classList.remove('hidden');
+  confirmationMessage.classList.remove('closing');
+  confirmationMessage.classList.add('show');
 
   // Limpar o formulário após o envio
   document.getElementById("contractForm").reset();
+});
+
+// Adicionar evento de clique para fechar a mensagem
+document.addEventListener('click', function(event) {
+  const confirmationMessage = document.getElementById('confirmationMessage');
+  const formContainer = document.getElementById('formContainer');
+  
+  // Se a mensagem estiver visível e o clique for fora dela ou no botão de fechar
+  if (!confirmationMessage.classList.contains('hidden') && 
+      (!confirmationMessage.contains(event.target) || event.target.classList.contains('close-btn'))) {
+    closeConfirmationMessage();
+  }
 });
 //--------------------------------------------------------------------------//
 

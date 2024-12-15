@@ -83,19 +83,24 @@
               <label for="service">Descrição do Serviço:</label>
               <textarea id="service" name="service" maxlength="200" required></textarea>
 
-              <label for="tipo_servico">Tipo de Serviço:</label>
-              <select id="tipo_servico" name="tipo_servico" required>
-                <option value="design">Design</option>
-                <option value="modelagem">Modelagem</option>
-                <option value="producao">Produção</option>
-                <option value="identidade">Identidade</option>
-                <option value="programacao">Programação</option>
-                <option value="motion">Motion</option>
-              </select>
+              <div class="select-container">
+                <label for="tipo_servico">Tipo de Serviço:</label>
+                <select id="tipo_servico" name="tipo_servico" required>
+                  <option value="" disabled selected style="color: rgba(255, 255, 255, 0.5);">Selecione um serviço</option>
+                  <option value="design">Design</option>
+                  <option value="modelagem">Modelagem</option>
+                  <option value="producao">Produção</option>
+                  <option value="identidade">Identidade</option>
+                  <option value="programacao">Programação</option>
+                  <option value="motion">Motion</option>
+                </select>
+              </div>
               <button type="submit" class="submit-btn">Enviar</button>
             </form>
           </div>
           <div id="confirmationMessage" class="hidden">
+            <div class="check-circle"></div>
+            <p>Enviado!</p>
             <p>Formulário enviado com sucesso!</p>
           </div>
         </div>
@@ -339,7 +344,7 @@
           <h2>Eliabe Santos</h2>
           <p>
             Sou Eliabe, designer visual com paixão por detalhes e soluções
-            criativas. Amo criar experiências únicas...
+            criativas. Amo criar experiências ��nicas...
           </p>
         </div>
         <img src="images/Astronaut.png" alt="Eliabe" class="large-image" />
