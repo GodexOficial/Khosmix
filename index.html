@@ -11,25 +11,31 @@
 
 <body>
   <!-- Background section 1 -->
-  <div class="background">
-    <div class="backgroundsobre" id="sectionsobre">
-      <!-- Header section 1 -->
-      <div class="headermenu">
-        <header class="container">
-          <!-- Header Logo section 1 -->
-          <div class="logo">
-            <a href="#"><img src="Khosmix Assets/Images/Khosmix Logo.png" alt="Logotipo" /></a>
-          </div>
-          <!-- Header Nav section 1 -->
-          <nav class="navmenu">
-            <a href="#trabalhos">TRABALHOS</a>
-            <a href="#nossotime">TIME</a>
-            <a href="#rodape">CONTATO</a>
-          </nav>
-        </header>
-      </div>
-      <!-- Sobre section 1 -->
-      <section class="sobre">
+  <div class="fundosobre" id="sectionsobre">
+    <!-- Header section 1 -->
+    <div class="headermenu">
+      <header class="container">
+        <!-- Header Logo section 1 -->
+        <div class="logo">
+          <a href="#"><img src="Khosmix Assets/Images/Khosmix Logo.png" alt="Logotipo" /></a>
+        </div>
+        <!-- Header Nav section 1 -->
+        <nav class="navmenu">
+          <a href="#trabalhos">TRABALHOS</a>
+          <a href="#nossotime">TIME</a>
+          <a href="#rodape">CONTATO</a>
+        </nav>
+        <!-- Adicione no header -->
+        <button class="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </header>
+    </div>
+    <!-- Sobre section 1 -->
+    <section class="sobre">
+      <div class="sobrediv">
         <h1>Sobre a Khosmix</h1>
         <p>
           Em um mundo cada vez mais interconectado, nossa empresa se destaca
@@ -50,47 +56,50 @@
         <div class="contratar">
           <button id="openForm" class="input">Contratar</button>
         </div>
-      </section>
-<!-- Formulário de contratação -->
-<div id="formContainer" class="sobre background-form">
-    <button id="closeForm" class="close-btn">&times;</button>
-    <div class="form-content">
+      </div>
+    </section>
+    <!-- Formulário de contratação -->
+    <div id="formContainer" class="sobre background-form">
+      <button id="closeForm" class="close-btn">&times;</button>
+      <div class="form-content">
         <h2 id="preenchaTitulo">Preencha para Contratar</h2>
         <div class="form-book">
-            <div class="background-image">
-                <img src="https://cdn2.pixelcut.app/temp/upscale/e7b20fd9-cd69-4046-b932-59055b4df92d.png" alt="Imagem" />
-            </div>
-            <form id="contractForm">
-                <label for="nameform">Nome:</label>
-                <input type="text" id="nameform" name="Seu nome" required />
+          <div class="background-image">
+            <img
+              src="https://cdn2.pixelcut.app/temp/upscale/e7b20fd9-cd69-4046-b932-59055b4df92d.png"
+              alt="Imagem" />
+          </div>
+          <form id="contractForm">
+            <label for="nameform">Nome:</label>
+            <input type="text" id="nameform" name="Seu nome" required />
 
-                <label for="emailform">Email:</label>
-                <input type="email" id="emailform" name="Seu e-mail" required />
+            <label for="emailform">Email:</label>
+            <input type="email" id="emailform" name="Seu e-mail" required />
 
-                <label for="telefone">Telefone:</label>
-                <input type="tel" id="phone" name="phone" placeholder="Digite seu telefone" required>
+            <label id="telefone">Telefone:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Digite seu telefone" required>
 
-                <label for="service">Descrição do Serviço:</label>
-                <textarea id="service" name="service" required></textarea>
+            <label for="service">Descrição do Serviço:</label>
+            <textarea id="service" name="service" required></textarea>
 
-                <label for="tipo_servico">Tipo de Serviço:</label>
-                <select id="tipo_servico" name="tipo_servico" required>
-                    <option value="design">Design</option>
-                    <option value="modelagem">Modelagem</option>
-                    <option value="producao">Produção</option>
-                    <option value="identidade">Identidade</option>
-                    <option value="programacao">Programação</option>
-                    <option value="motion">Motion</option>
-                </select>
-                <button type="submit" class="submit-btn">Enviar</button>
-            </form>
-            <div id="confirmationMessage" class="hidden">
-                <p>Formulário enviado com sucesso!</p>
-            </div>
+            <label for="tipo_servico">Tipo de Serviço:</label>
+            <select id="tipo_servico" name="tipo_servico" required>
+              <option value="design">Design</option>
+              <option value="modelagem">Modelagem</option>
+              <option value="producao">Produção</option>
+              <option value="identidade">Identidade</option>
+              <option value="programacao">Programação</option>
+              <option value="motion">Motion</option>
+            </select>
+            <button type="submit" class="submit-btn">Enviar</button>
+          </form>
+          <div id="confirmationMessage" class="hidden">
+            <p>Formulário enviado com sucesso!</p>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-
+  </div>
   <!-- Netflix Content -->
   <div class="backgroundnet" id="trabalhos">
     <section class="netflix" id="netFlixBackground">
@@ -252,14 +261,19 @@
         <div class="infolarge">
           <h2>Julio Galdino</h2>
           <p>
-            Meu nome é Julio Caetano Galdino, sou um designer de 20 anos apaixonado por criatividade e inovação. 
-            Minha jornada começou em 2022, inspirado por um amigo, Matheus da Costa Silva, que despertou meu 
-            interesse pelo design. Desde então, dedico-me a criar soluções visuais que comunicam ideias de 
-            forma impactante e funcional.  
-            Meu trabalho envolve entender as necessidades dos clientes e transformar suas ideias em designs 
-            únicos e cativantes. Com foco em evolução constante, busco superar expectativas e agregar valor 
+            Meu nome é Julio Caetano Galdino, sou um designer de 20 anos apaixonado por
+            criatividade e inovação.
+            Minha jornada começou em 2022, inspirado por um amigo, Matheus da Costa Silva, que
+            despertou meu
+            interesse pelo design. Desde então, dedico-me a criar soluções visuais que comunicam
+            ideias de
+            forma impactante e funcional.
+            Meu trabalho envolve entender as necessidades dos clientes e transformar suas ideias
+            em designs
+            únicos e cativantes. Com foco em evolução constante, busco superar expectativas e
+            agregar valor
             a cada projeto que desenvolvo.
-          </p>     
+          </p>
         </div>
         <img src="images/Astronaut.png" alt="Julio" class="large-image" />
       </div>
@@ -381,8 +395,8 @@
     <div class="dot" data-target="#trabalhos"></div>
     <div class="dot" data-target="#nossotime"></div>
     <div class="dot" data-target="#rodape"></div>
+    <script src="script.js"></script>
   </div>
-  <script src="script.js"></script>
 </body>
 
 </html>

@@ -165,12 +165,18 @@ nav a:hover {
 }
 
 /* ------------------ Background section 1 (Sobre)------------------- */
-.backgroundsobre {
+.background {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.fundosobre {
   width: 90%;
   border-radius: var(--border-radius-lg);
-  background: linear-gradient(180deg, #101010, transparent);
+
   height: 100vh;
-  margin: 0.5rem auto;
+  margin: 0 auto;
 }
 
 /* -- --------------------------section 1 Sobre--------------------- -- */
@@ -180,17 +186,18 @@ nav a:hover {
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  width: 50%;
+  width: 40%;
   height: 60%;
-  margin: 5rem auto 1rem auto;
   gap: 30px;
   color: var(--cor-whi);
+  margin: 0 auto;
 }
 
 /* -- --------------------------section 1 Sobre H1--------------------- -- */
 .sobre h1 {
   font-weight: 300;
   font-size: 2vw;
+  margin-bottom: 1.8rem;
 }
 
 /* -- --------------------------section 1 Sobre P--------------------- -- */
@@ -221,76 +228,76 @@ nav a:hover {
 
 /* ----------------------- Estilização do formulário ------------------------- */
 #formContainer {
-    width: 80%; /* Aumenta a largura para ocupar uma proporção maior da tela */
-    height: 95%;
-    position: fixed;
-    margin: 0 auto;
+  width: 80%; /* Aumenta a largura para ocupar uma proporção maior da tela */
+  height: 95%;
+  position: fixed;
+  margin: 0 auto;
 }
 .background-form {
-    top: 50%;
-    left: 50%; /* Centralizando o formulário na metade da tela horizontalmente */
-    transform: translate(-50%, -50%); /* Movendo o formulário para o centro */
-    background: var(--cor-gradient-job);
-    backdrop-filter: blur(30px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 25px;
-    display: none; /* Inicia com o formulário escondido */
-    z-index: 1000; /* Certificando-se de que o formulário sobreponha outros elementos */
-    position: absolute; /* Garantir que o botão de fechar esteja dentro da posição do formulário */
-    width: 100%; /* Largura do formulário ajustada para ocupar toda a área do background roxo */
-    height: 90%; /* Reduzindo a altura do formulário para que ele não exceda os limites do background roxo */
+  top: 50%;
+  left: 50%; /* Centralizando o formulário na metade da tela horizontalmente */
+  transform: translate(-50%, -50%); /* Movendo o formulário para o centro */
+  background: var(--cor-gradient-job);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  display: none; /* Inicia com o formulário escondido */
+  z-index: 1000; /* Certificando-se de que o formulário sobreponha outros elementos */
+  position: absolute; /* Garantir que o botão de fechar esteja dentro da posição do formulário */
+  width: 100%; /* Largura do formulário ajustada para ocupar toda a área do background roxo */
+  height: 90%; /* Reduzindo a altura do formulário para que ele não exceda os limites do background roxo */
 }
 
 .form-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Botão de fechar formulário */
 .close-btn {
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: white;
-    border: none;
-    border-radius: 1000px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: black;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  border: none;
+  border-radius: 1000px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: black;
 }
 
 /* Estilização do conteúdo do formulário */
 .form-book {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .image-container {
-    display: flex;
-    width: 200px; /* Reduzindo a largura da imagem para 250px */
-    height: 100%; /* Mantendo a altura para preencher a área do formulário */
+  display: flex;
+  width: 200px; /* Reduzindo a largura da imagem para 250px */
+  height: 100%; /* Mantendo a altura para preencher a área do formulário */
 }
 
 .image-container img {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Para manter a imagem de forma proporcional */
+  display: flex;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Para manter a imagem de forma proporcional */
 }
 
 form {
-    flex: 1;
+  flex: 1;
 }
 
 label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
 }
 
 input[type="text"],
@@ -298,66 +305,66 @@ input[type="email"],
 textarea,
 select#tipo_servico,
 input[type="tel"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    font-size: 1rem;
-    box-sizing: border-box;
-    outline: none; /* Remove o contorno padrão ao foco */
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  outline: none; /* Remove o contorno padrão ao foco */
 }
 
 textarea {
-    height: 100px;
+  height: 100px;
 }
 
 /* Estilização do campo "Tipo de Serviço" */
 select#tipo_servico {
-    appearance: none; /* Remove o estilo padrão da seta */
-    -webkit-appearance: none; /* Para navegadores WebKit (Chrome, Safari) */
-    border: none; /* Remove o contorno ao passar o mouse */
-    outline: none; /* Remove o contorno ao foco */
+  appearance: none; /* Remove o estilo padrão da seta */
+  -webkit-appearance: none; /* Para navegadores WebKit (Chrome, Safari) */
+  border: none; /* Remove o contorno ao passar o mouse */
+  outline: none; /* Remove o contorno ao foco */
 }
 
 select#tipo_servico option {
-    padding: 10px;
+  padding: 10px;
 }
 
 /* Estilização do botão de envio */
 .submit-btn {
-    background-color: var(--cor-rox);
-    color: white;
-    padding: 10px 50px;
-    border: none;
-    border-radius: 1000px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  background-color: var(--cor-rox);
+  color: white;
+  padding: 10px 50px;
+  border: none;
+  border-radius: 1000px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .submit-btn:hover {
-    background-color: var(--cor-gre);
-    color: black;
+  background-color: var(--cor-gre);
+  color: black;
 }
 
 /* Mensagem de confirmação */
 #confirmationMessage {
-    display: none;
-    text-align: center;
-    margin-top: 20px;
-    font-size: 1.2rem;
-    color: var(--cor-rox-escuro);
+  display: none;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: var(--cor-rox-escuro);
 }
 
 /* Título "Preencha para Contratar" */
 .form-content h2 {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 /* Ajustando o espaçamento entre os campos */
 label + input[type="tel"] {
-    margin-top: 15px; /* Ajusta o espaçamento entre o campo de email e telefone */
+  margin-top: 15px; /* Ajusta o espaçamento entre o campo de email e telefone */
 }
 
 /* Estilização de borda ao foco */
@@ -367,13 +374,13 @@ input[type="tel"]:focus,
 select:focus,
 textarea:focus,
 button:focus {
-    border: 2px solid var(--cor-rox); /* Estilo de borda ao focar nos campos */
-    outline: none; /* Remove o outline padrão do navegador */
+  border: 2px solid var(--cor-rox); /* Estilo de borda ao focar nos campos */
+  outline: none; /* Remove o outline padrão do navegador */
 }
 
 /* Ajusta a borda para o campo tipo de serviço ao foco */
 select#tipo_servico:focus {
-    border: 2px solid var(--cor-rox); /* Estilo de borda ao focar nos campos */
+  border: 2px solid var(--cor-rox); /* Estilo de borda ao focar nos campos */
 }
 
 /*------------------------Fim Section 1 --------------------------*/
@@ -392,9 +399,10 @@ select#tipo_servico:focus {
   transition: 1s ease !important;
 }
 .animateBackground {
-  transition: 1s ease !important;
+  transition: 1s ease-in !important;
   /* Ou qualquer outra animação que você queira aplicar */
   background-size: 130% !important;
+  transition: background-image 1s ease;
 }
 
 /*---------------------- Section 2 Netflix-----------------------*/
@@ -416,7 +424,7 @@ select#tipo_servico:focus {
   background-size: 140%;
   background-repeat: no-repeat;
   background-position: center;
-  transition: background-image 1s easy !important;
+  transition: background-image 1s ease;
   animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   -webkit-transition: background-size 1000ms linear;
   -moz-transition: background-size 1000 linear;
@@ -611,8 +619,7 @@ select#tipo_servico:focus {
   flex: 1;
   background-size: cover;
   background-position: center;
-  transition: flex 0.4s ease, transform 0.4s ease, margin 0.4s ease,
-    0.2s all ease-in-out; /* Adicionando transições de margin */
+  transition: flex 0.4s ease, transform 0.4s ease, margin 0.4s ease, 0.2s all ease-in-out; /* Adicionando transições de margin */
   cursor: pointer;
   border-radius: 8px;
   margin: 0 2px; /* Define margem entre os itens */
@@ -633,18 +640,6 @@ select#tipo_servico:focus {
   z-index: 1;
   scale: 95%;
 }
-
-.fade-out {
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.fade-in {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
 /*---------------------- SECTION 2 Netflix FIM-----------------------*/
 
 /*-------------------------------------------SECTION 3 Times----------------------------------*/
@@ -654,12 +649,7 @@ select#tipo_servico:focus {
   align-items: center;
   width: 100%;
   height: 100vh;
-  background: linear-gradient(
-      to bottom,
-      rgb(04, 00, 08),
-      rgba(98, 0, 255, 0),
-      rgb(04, 00, 08)
-    ),
+  background: linear-gradient(to bottom, rgb(04, 00, 08), rgba(98, 0, 255, 0), rgb(04, 00, 08)),
     url("images/background.jpg") no-repeat center center/cover;
   position: relative;
 }
@@ -1036,4 +1026,391 @@ select#tipo_servico:focus {
   align-items: center;
   font-size: 2rem;
   color: white;
+}
+
+/* Media Queries para Mobile (iPhone 12 Pro - 390x844) */
+@media screen and (max-width: 390px) {
+  /* Header */
+  header {
+    height: 8rem;
+    padding: 0 5%;
+  }
+
+  .logo a img {
+    width: 100px;
+  }
+
+  .navmenu {
+    display: none; /* Considere adicionar um menu hamburguer para mobile */
+  }
+
+  /* Seção Sobre */
+  .fundosobre {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+  }
+
+  .sobre {
+    width: 90%;
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .sobre h1 {
+    font-size: 24px;
+    margin-bottom: 1rem;
+  }
+
+  .sobre p {
+    font-size: 16px;
+    text-align: left;
+  }
+
+  .contratar button {
+    width: 12rem;
+    height: 3.5rem;
+    font-size: 1rem;
+    margin-top: 2rem;
+  }
+
+  /* Formulário */
+  #formContainer {
+    width: 95%;
+    height: auto;
+    padding: 20px;
+  }
+
+  .form-book {
+    flex-direction: column;
+  }
+
+  .background-image {
+    display: none; /* Remove a imagem no mobile */
+  }
+
+  /* Seção Netflix */
+  .backgroundnet {
+    height: auto;
+  }
+
+  .netflix {
+    width: 95%;
+    height: auto;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .netflix h1 {
+    font-size: 24px;
+  }
+
+  .netflix h2 {
+    font-size: 18px;
+  }
+
+  .netflix p {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  /* Icons */
+  .icons {
+    gap: 10px;
+  }
+
+  .icons a {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* Trabalhos/Jobs */
+  .trabalhos {
+    height: 150px;
+  }
+
+  .job {
+    min-width: 280px !important;
+    height: 120px;
+  }
+
+  /* Seção Time */
+  .timesection {
+    height: auto;
+    padding: 40px 0;
+  }
+
+  .cards-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .glass-card {
+    width: 90%;
+    height: 300px;
+  }
+
+  /* Modal de Detalhes */
+  .details-modal {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .glass-small {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .glass-large {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+  }
+
+  .infolarge {
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  .infolarge h2 {
+    font-size: 24px;
+  }
+
+  .infolarge p {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .large-image {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Footer */
+  .footerpro {
+    height: auto;
+    padding: 40px 20px;
+  }
+
+  .footer-container {
+    padding: 0;
+  }
+
+  .footer-top h2 {
+    font-size: 20px;
+  }
+
+  .subfooter {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-item {
+    text-align: center;
+  }
+
+  .footer-item h3::after {
+    margin: 10px auto;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  /* Navegação por pontos */
+  .dot-navigation {
+    right: 10px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* Seção Time - Cards */
+  .cards-container {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .glass-card {
+    flex-direction: row;
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .glass-card .profile-pic {
+    width: 70px;
+    height: 70px;
+    margin: 0;
+  }
+
+  .glass-card h3 {
+    text-align: left;
+    margin: 0;
+    font-size: 16px;
+  }
+
+  .skills-icons {
+    display: none; /* Esconde os ícones no card principal */
+  }
+
+  /* Modal de Detalhes */
+  .details-modal {
+    flex-direction: column;
+    padding: 0;
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  .glass-small {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 30px 20px;
+    border-radius: 25px 25px 0 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(#30044d3a, #12012738);
+    backdrop-filter: blur(20px);
+  }
+
+  .glass-small .profile-pic-large {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 20px;
+  }
+
+  .glass-small .skills {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .glass-small .skill {
+    margin-bottom: 15px;
+  }
+
+  .glass-small .progress-bar {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-large {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    border-radius: 0;
+    background: white;
+  }
+
+  .glass-large .infolarge {
+    margin: 0;
+    padding: 20px 0;
+  }
+
+  .glass-large .infolarge h2 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .glass-large .infolarge p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .large-image {
+    display: none; /* Remove a imagem grande no mobile */
+  }
+
+  .back-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    z-index: 10;
+  }
+
+  /* Barra de progresso das skills */
+  .skill {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .skill img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  }
+
+  .progress-bar {
+    flex: 1;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .progress {
+    height: 100%;
+    background: var(--cor-gre);
+    border-radius: 3px;
+  }
+}
+
+/* Estilo do menu hamburguer */
+.menu-toggle {
+  display: none;
+}
+
+@media screen and (max-width: 390px) {
+  .menu-toggle {
+    display: block;
+    width: 30px;
+    height: 25px;
+    position: relative;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--cor-gre);
+    position: absolute;
+    transition: 0.3s;
+  }
+
+  .menu-toggle span:nth-child(1) {
+    top: 0;
+  }
+  .menu-toggle span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .menu-toggle span:nth-child(3) {
+    bottom: 0;
+  }
 }
