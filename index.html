@@ -44,6 +44,7 @@
           promover os profissionais mais talentosos em uma ampla gama de
           disciplinas criativas.
         </p>
+        <br>
         <p>
           Com um foco incansável na excelência e na inovação, nossa equipe
           trabalha arduamente para oferecer serviços de qualidade
@@ -62,37 +63,38 @@
     <div id="formContainer" class="sobre background-form">
       <button id="closeForm" class="close-btn">&times;</button>
       <div class="form-content">
-        <h2 id="preenchaTitulo">Preencha para Contratar</h2>
         <div class="form-book">
-          <div class="background-image">
-            <img
-              src="https://cdn2.pixelcut.app/temp/upscale/e7b20fd9-cd69-4046-b932-59055b4df92d.png"
-              alt="Imagem" />
+          <div class="imageformback">
+            <div class="formbackimage">
+            </div>
           </div>
-          <form id="contractForm">
-            <label for="nameform">Nome:</label>
-            <input type="text" id="nameform" name="Seu nome" required />
+          <div class="dadosform">
+            <form id="contractForm">
+              <label for="nameform">Nome:</label>
+              <input type="text" id="nameform" name="Seu nome" maxlength="200" required />
 
-            <label for="emailform">Email:</label>
-            <input type="email" id="emailform" name="Seu e-mail" required />
+              <label for="emailform">Email:</label>
+              <input type="email" id="emailform" name="Seu e-mail" maxlength="200" required />
 
-            <label id="telefone">Telefone:</label>
-            <input type="tel" id="phone" name="phone" placeholder="Digite seu telefone" required>
+              <label id="telefone">Telefone:</label>
+              <input type="tel" id="phone" name="phone" placeholder="Digite seu telefone"
+                maxlength="15" required>
 
-            <label for="service">Descrição do Serviço:</label>
-            <textarea id="service" name="service" required></textarea>
+              <label for="service">Descrição do Serviço:</label>
+              <textarea id="service" name="service" maxlength="200" required></textarea>
 
-            <label for="tipo_servico">Tipo de Serviço:</label>
-            <select id="tipo_servico" name="tipo_servico" required>
-              <option value="design">Design</option>
-              <option value="modelagem">Modelagem</option>
-              <option value="producao">Produção</option>
-              <option value="identidade">Identidade</option>
-              <option value="programacao">Programação</option>
-              <option value="motion">Motion</option>
-            </select>
-            <button type="submit" class="submit-btn">Enviar</button>
-          </form>
+              <label for="tipo_servico">Tipo de Serviço:</label>
+              <select id="tipo_servico" name="tipo_servico" required>
+                <option value="design">Design</option>
+                <option value="modelagem">Modelagem</option>
+                <option value="producao">Produção</option>
+                <option value="identidade">Identidade</option>
+                <option value="programacao">Programação</option>
+                <option value="motion">Motion</option>
+              </select>
+              <button type="submit" class="submit-btn">Enviar</button>
+            </form>
+          </div>
           <div id="confirmationMessage" class="hidden">
             <p>Formulário enviado com sucesso!</p>
           </div>
@@ -152,6 +154,43 @@
     </section>
   </div>
   <!-- Fim Netflix -->
+  <!-- Adicione após a div trabalhos -->
+  <div class="info-modal hidden">
+    <div class="info-header">
+      <div class="info-title">
+        <h2>Design</h2>
+        <p>Social Media, Identidade Visual</p>
+      </div>
+      <button class="close-info-btn">&times;</button>
+    </div>
+
+    <div class="info-search">
+      <input type="text" placeholder="Project images" class="search-input">
+    </div>
+
+    <div class="info-content">
+      <div class="project-item">
+        <div class="project-thumb">
+          <img src="images/Miniatura Design.jpg" alt="Bells Beach">
+        </div>
+        <div class="project-info">
+          <h3>Bells Beach</h3>
+          <p>Social Media, Identidade Visual, 3D</p>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-thumb">
+          <img src="images/Miniaturas IDV.jpg" alt="Hero Burger">
+        </div>
+        <div class="project-info">
+          <h3>Hero Burger</h3>
+          <p>Branding, Social Media, Identidade Visual</p>
+        </div>
+      </div>
+      <!-- Adicione mais itens conforme necessário -->
+    </div>
+  </div>
   <!-- INICIO TIME SECTION -->
 
   <div class="timesection" id="nossotime">

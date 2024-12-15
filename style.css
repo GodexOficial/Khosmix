@@ -192,12 +192,14 @@ nav a:hover {
   color: var(--cor-whi);
   margin: 0 auto;
 }
-
+.sobrediv {
+  margin-top: 150px;
+}
 /* -- --------------------------section 1 Sobre H1--------------------- -- */
 .sobre h1 {
   font-weight: 300;
   font-size: 2vw;
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.2rem;
 }
 
 /* -- --------------------------section 1 Sobre P--------------------- -- */
@@ -217,13 +219,214 @@ nav a:hover {
   border: none;
   border-radius: 100px;
   transition: var(--transition);
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 
 .contratar button:hover {
   cursor: pointer;
   color: var(--cor-whi);
   background-color: var(--cor-rox);
+}
+
+/* ----------------------- Estilização do formulário ------------------------- */
+#formContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: none;
+  border-radius: 20px;
+  overflow: hidden;
+  display: none; /* Começa escondido */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  padding: 0;
+  opacity: 0;
+}
+
+.form-content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.form-book {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+}
+
+/* Lado esquerdo - Imagem */
+.imageformback {
+  overflow: hidden;
+  width: 50%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.formbackimage {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-image: url(images/Khosmix.png);
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+}
+.dadosform {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+/* Lado direito - Formulário */
+#contractForm {
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: auto;
+  background: var(--cor-gradiente-end);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 0;
+  padding: 20px;
+}
+
+#preenchaTitulo {
+  font-size: 28px;
+  color: white;
+  margin-bottom: 30px;
+  font-weight: 500;
+}
+
+/* Estilo dos campos */
+#contractForm label {
+  color: white;
+  font-size: 12px;
+  margin-bottom: 5px;
+  width: 90%;
+  text-align: left;
+}
+
+#contractForm input,
+#contractForm select,
+#contractForm textarea {
+  margin: 0 auto;
+  width: 90%;
+  padding: 8px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  border-radius: 0;
+}
+
+#contractForm input:focus,
+#contractForm select:focus,
+#contractForm textarea:focus {
+  border-bottom-color: var(--cor-rox);
+  outline: none;
+}
+
+/* Estilo do select */
+#tipo_servico {
+  color: rgba(255, 255, 255, 0.7);
+  border-radius: 0;
+}
+
+#tipo_servico option {
+  background: #000000;
+  color: white;
+}
+
+/* Botão de enviar */
+.submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  background: var(--cor-gre);
+  color: black;
+  padding: 12px;
+  border: none;
+  border-radius: 0;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.submit-btn:hover {
+  background: var(--cor-rox);
+  color: white;
+}
+
+/* Botão de fechar */
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 0;
+}
+
+/* Mensagem de confirmação */
+#confirmationMessage {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--cor-gre);
+  padding: 10px 20px;
+  border-radius: 20px;
+  display: none;
+}
+
+#confirmationMessage.show {
+  display: block;
+}
+
+/* Responsivo */
+@media screen and (max-width: 390px) {
+  #formContainer {
+    width: 95%;
+    height: auto;
+    max-height: 90vh;
+  }
+
+  .form-book {
+    flex-direction: column;
+  }
+
+  .background-image {
+    display: none;
+  }
+
+  #contractForm {
+    width: 100%;
+    padding: 20px;
+  }
+
+  #preenchaTitulo {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
 }
 
 /* ----------------------- Estilização do formulário ------------------------- */
@@ -1413,4 +1616,76 @@ select#tipo_servico:focus {
   .menu-toggle span:nth-child(3) {
     bottom: 0;
   }
+}
+
+/* Animação do formulário */
+@keyframes formAppear {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes formBackdrop {
+  from {
+    backdrop-filter: blur(0px);
+    background: rgba(0, 0, 0, 0);
+  }
+  to {
+    backdrop-filter: blur(30px);
+    background: var(--cor-gradient-job);
+  }
+}
+
+/* Classe para quando o formulário está visível */
+#formContainer.active {
+  display: flex;
+  animation: formAppear 0.5s ease forwards, formBackdrop 0.5s ease forwards;
+}
+
+/* Animação para os elementos internos do formulário */
+.form-content,
+.form-book {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+#formContainer.active .form-content,
+#formContainer.active .form-book {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+/* Adicione estas animações */
+@keyframes formClose {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+}
+
+@keyframes formBackdropClose {
+  from {
+    backdrop-filter: blur(30px);
+    background: var(--cor-gradient-job);
+  }
+  to {
+    backdrop-filter: blur(0px);
+    background: rgba(0, 0, 0, 0);
+  }
+}
+
+/* Adicione esta classe para animação de fechamento */
+#formContainer.closing {
+  animation: formClose 0.5s ease forwards, formBackdropClose 0.5s ease forwards;
 }

@@ -293,25 +293,57 @@ document.addEventListener("keydown", debounceResetInactivity);
 // Iniciando evento de clique no botão veja mais
 
 function openDetails(id) {
-  // Ocultar os cards
-  document.querySelector(".cards-container").style.display = "none";
-
-  // Mostrar o modal de detalhes
+  const cardsContainer = document.querySelector(".cards-container");
   const modal = document.getElementById(id);
+
   if (modal) {
+    // Previne a propagação do evento de clique
+    event.stopPropagation();
+
+    cardsContainer.style.display = "none";
+    modal.classList.remove("closing");
     modal.classList.remove("hidden");
+    modal.classList.add("active");
   }
 }
 
 function closeDetails() {
-  // Ocultar os modais de detalhes
-  document.querySelectorAll(".details-modal").forEach((modal) => {
-    modal.classList.add("hidden");
-  });
+  const cardsContainer = document.querySelector(".cards-container");
+  const modals = document.querySelectorAll(".details-modal");
 
-  // Mostrar os cards novamente
-  document.querySelector(".cards-container").style.display = "flex";
+  modals.forEach((modal) => {
+    if (modal.classList.contains("active")) {
+      modal.classList.remove("active");
+      modal.classList.add("closing");
+
+      // Aguarda a animação terminar
+      setTimeout(() => {
+        modal.classList.add("hidden");
+        modal.classList.remove("closing");
+        cardsContainer.style.display = "flex";
+      }, 500);
+    }
+  });
 }
+
+// Fechar modal ao clicar fora
+document.addEventListener("click", function (event) {
+  const modals = document.querySelectorAll(".details-modal");
+  const cards = document.querySelectorAll(".glass-card");
+
+  // Verifica se o clique foi em um card ou no botão de fechar
+  const isCard = Array.from(cards).some((card) => card.contains(event.target));
+  const isCloseButton = event.target.classList.contains("back-button");
+
+  // Se não for um card e não for o botão de fechar, então verifica se deve fechar o modal
+  if (!isCard && !isCloseButton) {
+    modals.forEach((modal) => {
+      if (modal.classList.contains("active") && !modal.contains(event.target)) {
+        closeDetails();
+      }
+    });
+  }
+});
 //--------------------------------------------------------------------------//
 
 //--------------------------------------------------------------------------//
@@ -371,18 +403,40 @@ document.addEventListener("DOMContentLoaded", () => {
 // Evento para mostrar/esconder o formulário
 document.getElementById("openForm").addEventListener("click", function () {
   var formContainer = document.getElementById("formContainer");
-  if (formContainer.style.display === "none" || formContainer.style.display === "") {
-    formContainer.style.display = "flex";
-  } else {
-    formContainer.style.display = "none";
-  }
+  formContainer.style.display = "flex"; // Garante que o formulário está visível
+  formContainer.classList.remove("closing"); // Remove classe de fechamento se existir
+  formContainer.classList.add("active");
 });
+
 document.getElementById("closeForm").addEventListener("click", function () {
   var formContainer = document.getElementById("formContainer");
-  if (formContainer.style.display === "none" || formContainer.style.display === "") {
-    formContainer.style.display = "flex";
-  } else {
+  formContainer.classList.remove("active");
+  formContainer.classList.add("closing");
+
+  // Aguarda a animação terminar antes de esconder completamente
+  setTimeout(() => {
     formContainer.style.display = "none";
+    formContainer.classList.remove("closing"); // Remove a classe após a animação
+  }, 500);
+});
+
+// Fechar o formulário quando clicar fora dele
+document.addEventListener("click", function (event) {
+  var formContainer = document.getElementById("formContainer");
+  var openFormButton = document.getElementById("openForm");
+
+  if (
+    !formContainer.contains(event.target) &&
+    event.target !== openFormButton &&
+    formContainer.classList.contains("active")
+  ) {
+    formContainer.classList.remove("active");
+    formContainer.classList.add("closing");
+
+    setTimeout(() => {
+      formContainer.style.display = "none";
+      formContainer.classList.remove("closing");
+    }, 500);
   }
 });
 
@@ -574,4 +628,67 @@ trabalho.addEventListener(
 
 trabalho.addEventListener("touchend", () => {
   stopDragging();
+});
+
+// Adicione este código junto com os outros eventos do formulário
+document.getElementById("openFormFooter").addEventListener("click", function (e) {
+  e.preventDefault(); // Previne qualquer comportamento padrão
+
+  var formContainer = document.getElementById("formContainer");
+
+  // Primeiro abrimos o formulário
+  formContainer.style.display = "flex";
+  formContainer.classList.remove("closing");
+  formContainer.classList.add("active");
+
+  // Depois de um pequeno delay, fazemos o scroll
+  setTimeout(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, 100); // Pequeno delay para garantir que o formulário esteja visível
+});
+
+document.querySelector(".maisinfo").addEventListener("click", function () {
+  const modal = document.querySelector(".info-modal");
+  const overlay = document.querySelector(".modal-overlay");
+  const selectedJob = document.querySelector(".job.selected");
+
+  if (selectedJob) {
+    const key = selectedJob.dataset.key;
+    const info = data[key];
+
+    // Atualiza o título e subtítulo
+    document.querySelector(".info-title h2").textContent = info.title;
+    document.querySelector(".info-title p").textContent = info.subtitle;
+  }
+
+  modal.classList.add("active");
+  overlay.classList.add("active");
+});
+
+document.querySelector(".close-info-btn").addEventListener("click", function () {
+  const modal = document.querySelector(".info-modal");
+  const overlay = document.querySelector(".modal-overlay");
+
+  modal.classList.remove("active");
+  overlay.classList.remove("active");
+});
+
+// Funcionalidade de pesquisa
+document.querySelector(".search-input").addEventListener("input", function (e) {
+  const searchTerm = e.target.value.toLowerCase();
+  const projectItems = document.querySelectorAll(".project-item");
+
+  projectItems.forEach((item) => {
+    const title = item.querySelector("h3").textContent.toLowerCase();
+    const desc = item.querySelector("p").textContent.toLowerCase();
+
+    if (title.includes(searchTerm) || desc.includes(searchTerm)) {
+      item.style.display = "flex";
+    } else {
+      item.style.display = "none";
+    }
+  });
 });
