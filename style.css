@@ -299,7 +299,7 @@ nav a:hover {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  margin: 0;
+  margin: auto 0;
   padding: 40px;
 }
 
