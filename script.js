@@ -548,7 +548,7 @@ dots.forEach((dot, index) => {
 window.addEventListener("scroll", () => {
   sections.forEach((section, index) => {
     const rect = section.getBoundingClientRect();
-    // Verifica se a seção está visível na tela (mais de 50% dela)
+    // Verifica se a seç��o está visível na tela (mais de 50% dela)
     if (rect.top >= 0 && rect.top < window.innerHeight / 2) {
       activateDot(index);
     }
@@ -685,24 +685,6 @@ document.getElementById("openFormFooter").addEventListener("click", function (e)
   }, 100); // Pequeno delay para garantir que o formulário esteja visível
 });
 
-document.querySelector(".maisinfo").addEventListener("click", function () {
-  const modal = document.querySelector(".info-modal");
-  const overlay = document.querySelector(".modal-overlay");
-  const selectedJob = document.querySelector(".job.selected");
-
-  if (selectedJob) {
-    const key = selectedJob.dataset.key;
-    const info = data[key];
-
-    // Atualiza o título e subtítulo
-    document.querySelector(".info-title h2").textContent = info.title;
-    document.querySelector(".info-title p").textContent = info.subtitle;
-  }
-
-  modal.classList.add("active");
-  overlay.classList.add("active");
-});
-
 document.querySelector(".close-info-btn").addEventListener("click", function () {
   const modal = document.querySelector(".info-modal");
   const overlay = document.querySelector(".modal-overlay");
@@ -728,12 +710,6 @@ document.querySelector(".search-input").addEventListener("input", function (e) {
   });
 });
 
-// Abrir modal de informações
-document.querySelector('.maisinfo').addEventListener('click', function() {
-  const modal = document.querySelector('.info-modal');
-  modal.classList.add('active');
-});
-
 // Fechar modal ao clicar fora
 window.addEventListener('click', function(event) {
   const modal = document.querySelector('.info-modal');
@@ -747,62 +723,122 @@ document.querySelector('.info-modal').addEventListener('click', function(e) {
   e.stopPropagation();
 });
 
-// Atualizar conteúdo do modal baseado no job selecionado
-function updateModalContent(key) {
-  const modal = document.querySelector('.info-modal');
-  const data = {
+// Dados dos projetos
+const projectData = {
     design: {
-      title: "Design",
-      subtitle: "Social Media, Identidade Visual",
-      projects: [
-        {
-          title: "Bells Beach",
-          desc: "Social Media, Identidade Visual, 3D",
-          image: "images/Miniatura Design.jpg"
-        },
-        {
-          title: "Hero Burger",
-          desc: "Branding, Social Media, Identidade Visual",
-          image: "images/Miniaturas IDV.jpg"
-        }
-      ]
+        title: "Design",
+        subtitle: "Social Media, Identidade Visual",
+        projects: [
+            {
+                title: "Bells Beach",
+                desc: "Social Media, Identidade Visual, 3D",
+                image: "images/Miniatura Design.jpg"
+            },
+            {
+                title: "Hero Burger",
+                desc: "Branding, Social Media, Identidade Visual",
+                image: "images/Miniaturas IDV.jpg"
+            }
+        ]
     },
+    modelagem: {
+        title: "Modelagem 3D",
+        subtitle: "Criação de Personagens, Cenários",
+        projects: [
+            {
+                title: "Modelagem 3D",
+                desc: "Modelagem de personagens e cenários",
+                image: "images/Miniaturas Modelagem.jpg"
+            }
+        ]
+    }
     // Adicione mais categorias conforme necessário
-  };
+};
 
-  const content = data[key];
-  if (content) {
-    modal.querySelector('.info-title h2').textContent = content.title;
-    modal.querySelector('.info-title p').textContent = content.subtitle;
-  }
+// Seleção de elementos
+const modal = document.querySelector('.info-modal');
+const maisInfoBtn = document.getElementById('maisinfo');
+const closeModalBtn = document.querySelector('.close-modal-btn');
+const searchInput = document.querySelector('.search-input');
+const projectList = document.querySelector('.project-list');
+
+// Função para abrir o modal
+function openModal() {
+  console.log('selectedJob');
+    const selectedJob = document.querySelector('.job.selected');
+    if (selectedJob) {
+        updateModalContent(selectedJob.dataset.key);
+    }
+    modal.classList.add('active');
 }
 
-// Adicionar ao evento de clique existente do botão mais info
-document.querySelector('.maisinfo').addEventListener('click', function() {
+// Função para fechar o modal
+function closeModal() {
+    modal.classList.remove('active');
+}
+
+// Função para atualizar o conteúdo do modal
+function updateModalContent(key) {
+    const content = projectData[key];
+    if (!content) return;
+
+    modal.querySelector('.info-title h2').textContent = content.title;
+    modal.querySelector('.info-title p').textContent = content.subtitle;
+
+    projectList.innerHTML = '';
+    content.projects.forEach(project => {
+        const projectElement = createProjectElement(project);
+        projectList.appendChild(projectElement);
+    });
+}
+
+// Event Listeners
+maisInfoBtn.addEventListener('click', ()=>{  console.log('selectedJob');
   const selectedJob = document.querySelector('.job.selected');
   if (selectedJob) {
-    updateModalContent(selectedJob.dataset.key);
+      updateModalContent(selectedJob.dataset.key);
   }
-});
+  modal.classList.add('active');});
+closeModalBtn.addEventListener('click', closeModal);
 
-// Seleciona os elementos
-const modal = document.querySelector('.info-modal');
-const openModalBtn = document.querySelector('.maisinfo');
-const closeModalBtn = document.querySelector('.close-modal-btn');
-
-// Abre o modal
-openModalBtn.addEventListener('click', () => {
-    modal.classList.add('active');
-});
-
-// Fecha o modal
-closeModalBtn.addEventListener('click', () => {
-    modal.classList.remove('active');
-});
-
-// Fecha o modal quando clica fora
+// Fechar modal ao clicar fora
 window.addEventListener('click', (e) => {
     if (e.target === modal) {
-        modal.classList.remove('active');
+        closeModal();
+    }
+});
+
+// Atualizar conteúdo do modal quando um job for selecionado
+document.querySelectorAll('.job').forEach(job => {
+    job.addEventListener('click', () => {
+        updateModalContent(job.dataset.key);
+        if (modal.classList.contains('active')) {
+            updateModalContent(job.dataset.key);
+        }
+    });
+});
+
+// Funcionalidade de pesquisa
+searchInput.addEventListener('input', (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    const projectItems = document.querySelectorAll('.project-item');
+    
+    projectItems.forEach(item => {
+        const title = item.querySelector('h3').textContent.toLowerCase();
+        const desc = item.querySelector('p').textContent.toLowerCase();
+        
+        if (title.includes(searchTerm) || desc.includes(searchTerm)) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+});
+
+// Inicialização
+document.addEventListener('DOMContentLoaded', () => {
+    const selectedJob = document.querySelector('.job.selected');
+    if (selectedJob) {
+        updateModalContent(selectedJob.dataset.key);
     }
 });

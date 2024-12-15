@@ -756,6 +756,7 @@ label[for="tipo_servico"] {
 }
 .contratar2,
 .maisinfo {
+  z-index: 1000;
   font-family: "Quicksand";
   font-size: 1.5ch;
   font-weight: 500;
@@ -1740,24 +1741,24 @@ label[for="tipo_servico"] {
 
 /* Modal de informações */
 .info-modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%; /* Largura do modal */
-  height: 300px; /* Altura do modal */
-  background: #FF1155;
-  display: none;
-  z-index: 9999;
-  border-radius: 20px; /* Bordas arredondadas */
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); /* Sombra suave */
+  position: absolute;
+  width: 400px;
+  height: 80vh;
+  background: linear-gradient(135deg, rgba(23, 68, 158, 0.3), rgba(50, 19, 175, 0.23));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+  overflow: hidden;
+  transition: opacity 0.3s ease;
 }
 
-.info-modal.active {
-  display: block;
+.active {
+  display: block !important;
+  opacity: 1 !important;
 }
 
-/* Conteúdo do modal */
 .info-header {
   padding: 40px;
   color: white;
@@ -1766,9 +1767,121 @@ label[for="tipo_servico"] {
 .info-title h2 {
   font-size: 32px;
   margin-bottom: 10px;
+  font-weight: 500;
 }
 
 .info-title p {
   font-size: 18px;
   opacity: 0.9;
+}
+
+.info-search {
+  padding: 0 40px;
+  margin-bottom: 30px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.project-list {
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  overflow-y: auto;
+  max-height: calc(80vh - 200px);
+}
+
+.close-modal-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.close-modal-btn:hover {
+  background: var(--cor-rox);
+  color: white;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Estilização da barra de rolagem do project-list */
+.project-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.project-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.project-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.project-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.project-item {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 15px;
+  transition: all 0.3s ease;
+}
+
+.project-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.project-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.project-item h3 {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.project-item p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
 }
