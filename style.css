@@ -483,7 +483,7 @@ label[for="tipo_servico"] {
 
 /* Círculo branco atrás do X */
 .close-btn::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 32px;
   height: 32px;
@@ -871,7 +871,8 @@ label[for="tipo_servico"] {
   flex: 1;
   background-size: cover;
   background-position: center;
-  transition: flex 0.4s ease, transform 0.4s ease, margin 0.4s ease, 0.2s all ease-in-out; /* Adicionando transiç��es de margin */
+  transition: flex 0.4s ease, transform 0.4s ease, margin 0.4s ease,
+    0.2s all ease-in-out; /* Adicionando transiç��es de margin */
   cursor: pointer;
   border-radius: 8px;
   margin: 0 2px; /* Define margem entre os itens */
@@ -901,7 +902,12 @@ label[for="tipo_servico"] {
   align-items: center;
   width: 100%;
   height: 100vh;
-  background: linear-gradient(to bottom, rgb(04, 00, 08), rgba(98, 0, 255, 0), rgb(04, 00, 08)),
+  background: linear-gradient(
+      to bottom,
+      rgb(04, 00, 08),
+      rgba(98, 0, 255, 0),
+      rgb(04, 00, 08)
+    ),
     url("images/background.jpg") no-repeat center center/cover;
   position: relative;
 }
@@ -1744,13 +1750,18 @@ label[for="tipo_servico"] {
   position: absolute;
   width: 400px;
   height: 80vh;
-  background: linear-gradient(135deg, rgba(23, 68, 158, 0.3), rgba(50, 19, 175, 0.23));
+  background: linear-gradient(
+    135deg,
+    rgba(23, 68, 158, 0.3),
+    rgba(50, 19, 175, 0.23)
+  );
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 25px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 1000;
   overflow: hidden;
+  opacity: 0;
   transition: opacity 0.3s ease;
 }
 

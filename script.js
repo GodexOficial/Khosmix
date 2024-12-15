@@ -110,7 +110,9 @@ function scrollToJob(index) {
 
 // Monitorar mudanças na classe 'selected' e atualizar o carrossel
 const observer = new MutationObserver(() => {
-  const selectedJob = Array.from(netFlixButton00).find((job) => job.classList.contains("selected"));
+  const selectedJob = Array.from(netFlixButton00).find((job) =>
+    job.classList.contains("selected")
+  );
   const selectedIndex = Array.from(netFlixButton00).indexOf(selectedJob);
   if (selectedIndex !== -1) {
     scrollToJob(selectedIndex);
@@ -410,14 +412,14 @@ document.getElementById("openForm").addEventListener("click", function () {
 
 // Função para fechar a mensagem de confirmação
 function closeConfirmationMessage() {
-  const confirmationMessage = document.getElementById('confirmationMessage');
-  confirmationMessage.classList.add('closing');
-  
+  const confirmationMessage = document.getElementById("confirmationMessage");
+  confirmationMessage.classList.add("closing");
+
   // Aguarda a animação terminar antes de esconder
   setTimeout(() => {
-    confirmationMessage.classList.remove('show');
-    confirmationMessage.classList.remove('closing');
-    confirmationMessage.classList.add('hidden');
+    confirmationMessage.classList.remove("show");
+    confirmationMessage.classList.remove("closing");
+    confirmationMessage.classList.add("hidden");
   }, 800); // Aumentando o tempo da animação de fechamento
 }
 
@@ -440,7 +442,7 @@ document.getElementById("closeForm").addEventListener("click", function () {
 document.addEventListener("click", function (event) {
   var formContainer = document.getElementById("formContainer");
   var openFormButton = document.getElementById("openForm");
-  var confirmationMessage = document.getElementById('confirmationMessage');
+  var confirmationMessage = document.getElementById("confirmationMessage");
 
   if (
     !formContainer.contains(event.target) &&
@@ -449,7 +451,7 @@ document.addEventListener("click", function (event) {
   ) {
     formContainer.classList.remove("active");
     formContainer.classList.add("closing");
-    
+
     // Fecha a mensagem de confirmação
     closeConfirmationMessage();
 
@@ -461,49 +463,54 @@ document.addEventListener("click", function (event) {
 });
 
 // Evento de submissão do formulário
-document.getElementById("contractForm").addEventListener("submit", function (event) {
-  event.preventDefault();
+document
+  .getElementById("contractForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
 
-  // Obtendo os dados do formulário
-  const name = document.getElementById("nameform").value;
-  const email = document.getElementById("emailform").value;
-  const service = document.getElementById("service").value;
+    // Obtendo os dados do formulário
+    const name = document.getElementById("nameform").value;
+    const email = document.getElementById("emailform").value;
+    const service = document.getElementById("service").value;
 
-  // Criando o objeto de dados a serem armazenados
-  const formData = {
-    nameform,
-    emailform,
-    service,
-  };
+    // Criando o objeto de dados a serem armazenados
+    const formData = {
+      nameform,
+      emailform,
+      service,
+    };
 
-  // Convertendo o objeto para uma string JSON
-  const jsonData = JSON.stringify(formData);
+    // Convertendo o objeto para uma string JSON
+    const jsonData = JSON.stringify(formData);
 
-  // Armazenando os dados em um arquivo no diretório "clientes"
-  const blob = new Blob([jsonData], { type: "application/txt" });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = `clientes/formulario_${new Date().toISOString()}.txt`;
-  link.click();
+    // Armazenando os dados em um arquivo no diretório "clientes"
+    const blob = new Blob([jsonData], { type: "application/txt" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `clientes/formulario_${new Date().toISOString()}.txt`;
+    link.click();
 
-  // Mostra a mensagem de confirmação com animação
-  const confirmationMessage = document.getElementById("confirmationMessage");
-  confirmationMessage.classList.remove('hidden');
-  confirmationMessage.classList.remove('closing');
-  confirmationMessage.classList.add('show');
+    // Mostra a mensagem de confirmação com animação
+    const confirmationMessage = document.getElementById("confirmationMessage");
+    confirmationMessage.classList.remove("hidden");
+    confirmationMessage.classList.remove("closing");
+    confirmationMessage.classList.add("show");
 
-  // Limpar o formulário após o envio
-  document.getElementById("contractForm").reset();
-});
+    // Limpar o formulário após o envio
+    document.getElementById("contractForm").reset();
+  });
 
 // Adicionar evento de clique para fechar a mensagem
-document.addEventListener('click', function(event) {
-  const confirmationMessage = document.getElementById('confirmationMessage');
-  const formContainer = document.getElementById('formContainer');
-  
+document.addEventListener("click", function (event) {
+  const confirmationMessage = document.getElementById("confirmationMessage");
+  const formContainer = document.getElementById("formContainer");
+
   // Se a mensagem estiver visível e o clique for fora dela ou no botão de fechar
-  if (!confirmationMessage.classList.contains('hidden') && 
-      (!confirmationMessage.contains(event.target) || event.target.classList.contains('close-btn'))) {
+  if (
+    !confirmationMessage.classList.contains("hidden") &&
+    (!confirmationMessage.contains(event.target) ||
+      event.target.classList.contains("close-btn"))
+  ) {
     closeConfirmationMessage();
   }
 });
@@ -666,32 +673,36 @@ trabalho.addEventListener("touchend", () => {
 });
 
 // Adicione este código junto com os outros eventos do formulário
-document.getElementById("openFormFooter").addEventListener("click", function (e) {
-  e.preventDefault(); // Previne qualquer comportamento padrão
+document
+  .getElementById("openFormFooter")
+  ?.addEventListener("click", function (e) {
+    e.preventDefault(); // Previne qualquer comportamento padrão
 
-  var formContainer = document.getElementById("formContainer");
+    var formContainer = document.getElementById("formContainer");
 
-  // Primeiro abrimos o formulário
-  formContainer.style.display = "flex";
-  formContainer.classList.remove("closing");
-  formContainer.classList.add("active");
+    // Primeiro abrimos o formulário
+    formContainer.style.display = "flex";
+    formContainer.classList.remove("closing");
+    formContainer.classList.add("active");
 
-  // Depois de um pequeno delay, fazemos o scroll
-  setTimeout(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }, 100); // Pequeno delay para garantir que o formulário esteja visível
-});
+    // Depois de um pequeno delay, fazemos o scroll
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }, 100); // Pequeno delay para garantir que o formulário esteja visível
+  });
 
-document.querySelector(".close-info-btn").addEventListener("click", function () {
-  const modal = document.querySelector(".info-modal");
-  const overlay = document.querySelector(".modal-overlay");
+document
+  .querySelector(".close-info-btn")
+  ?.addEventListener("click", function () {
+    const modal = document.querySelector(".info-modal");
+    const overlay = document.querySelector(".modal-overlay");
 
-  modal.classList.remove("active");
-  overlay.classList.remove("active");
-});
+    modal.classList.remove("active");
+    overlay.classList.remove("active");
+  });
 
 // Funcionalidade de pesquisa
 document.querySelector(".search-input").addEventListener("input", function (e) {
@@ -711,134 +722,136 @@ document.querySelector(".search-input").addEventListener("input", function (e) {
 });
 
 // Fechar modal ao clicar fora
-window.addEventListener('click', function(event) {
-  const modal = document.querySelector('.info-modal');
+window.addEventListener("click", function (event) {
+  const modal = document.querySelector(".info-modal");
   if (event.target === modal) {
-    modal.classList.remove('active');
+    modal.classList.remove("active");
   }
 });
 
 // Prevenir que cliques dentro do modal fechem ele
-document.querySelector('.info-modal').addEventListener('click', function(e) {
+document.querySelector(".info-modal").addEventListener("click", function (e) {
   e.stopPropagation();
 });
 
 // Dados dos projetos
 const projectData = {
-    design: {
-        title: "Design",
-        subtitle: "Social Media, Identidade Visual",
-        projects: [
-            {
-                title: "Bells Beach",
-                desc: "Social Media, Identidade Visual, 3D",
-                image: "images/Miniatura Design.jpg"
-            },
-            {
-                title: "Hero Burger",
-                desc: "Branding, Social Media, Identidade Visual",
-                image: "images/Miniaturas IDV.jpg"
-            }
-        ]
-    },
-    modelagem: {
+  design: {
+    title: "Design",
+    subtitle: "Social Media, Identidade Visual",
+    projects: [
+      {
+        title: "Bells Beach",
+        desc: "Social Media, Identidade Visual, 3D",
+        image: "images/Miniatura Design.jpg",
+      },
+      {
+        title: "Hero Burger",
+        desc: "Branding, Social Media, Identidade Visual",
+        image: "images/Miniaturas IDV.jpg",
+      },
+    ],
+  },
+  modelagem: {
+    title: "Modelagem 3D",
+    subtitle: "Criação de Personagens, Cenários",
+    projects: [
+      {
         title: "Modelagem 3D",
-        subtitle: "Criação de Personagens, Cenários",
-        projects: [
-            {
-                title: "Modelagem 3D",
-                desc: "Modelagem de personagens e cenários",
-                image: "images/Miniaturas Modelagem.jpg"
-            }
-        ]
-    }
-    // Adicione mais categorias conforme necessário
+        desc: "Modelagem de personagens e cenários",
+        image: "images/Miniaturas Modelagem.jpg",
+      },
+    ],
+  },
+  // Adicione mais categorias conforme necessário
 };
 
 // Seleção de elementos
-const modal = document.querySelector('.info-modal');
-const maisInfoBtn = document.getElementById('maisinfo');
-const closeModalBtn = document.querySelector('.close-modal-btn');
-const searchInput = document.querySelector('.search-input');
-const projectList = document.querySelector('.project-list');
+const modal = document.querySelector(".info-modal");
+const maisInfoBtn = document.getElementById("maisinfo");
+const closeModalBtn = document.querySelector(".close-modal-btn");
+const searchInput = document.querySelector(".search-input");
+const projectList = document.querySelector(".project-list");
 
 // Função para abrir o modal
 function openModal() {
-  console.log('selectedJob');
-    const selectedJob = document.querySelector('.job.selected');
-    if (selectedJob) {
-        updateModalContent(selectedJob.dataset.key);
-    }
-    modal.classList.add('active');
+  console.log("selectedJob");
+  const selectedJob = document.querySelector(".job.selected");
+  if (selectedJob) {
+    updateModalContent(selectedJob.dataset.key);
+  }
+  modal.classList.add("active");
 }
 
 // Função para fechar o modal
 function closeModal() {
-    modal.classList.remove('active');
+  modal.classList.remove("active");
 }
 
 // Função para atualizar o conteúdo do modal
 function updateModalContent(key) {
-    const content = projectData[key];
-    if (!content) return;
+  const content = projectData[key];
+  if (!content) return;
 
-    modal.querySelector('.info-title h2').textContent = content.title;
-    modal.querySelector('.info-title p').textContent = content.subtitle;
+  modal.querySelector(".info-title h2").textContent = content.title;
+  modal.querySelector(".info-title p").textContent = content.subtitle;
 
-    projectList.innerHTML = '';
-    content.projects.forEach(project => {
-        const projectElement = createProjectElement(project);
-        projectList.appendChild(projectElement);
-    });
+  projectList.innerHTML = "";
+  content.projects.forEach((project) => {
+    const projectElement = createProjectElement(project);
+    projectList.appendChild(projectElement);
+  });
 }
 
 // Event Listeners
-maisInfoBtn.addEventListener('click', ()=>{  console.log('selectedJob');
-  const selectedJob = document.querySelector('.job.selected');
+maisInfoBtn?.addEventListener("click", () => {
+  console.log("selectedJob");
+  const selectedJob = document.querySelector(".job.selected");
   if (selectedJob) {
-      updateModalContent(selectedJob.dataset.key);
+    updateModalContent(selectedJob.dataset.key);
   }
-  modal.classList.add('active');});
-closeModalBtn.addEventListener('click', closeModal);
-
+  modal.classList.add("active");
+});
+closeModalBtn.addEventListener("click", closeModal);
+console.log("maisInfoBtn", maisInfoBtn);
 // Fechar modal ao clicar fora
-window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        closeModal();
-    }
+window.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    closeModal();
+  }
 });
 
 // Atualizar conteúdo do modal quando um job for selecionado
-document.querySelectorAll('.job').forEach(job => {
-    job.addEventListener('click', () => {
-        updateModalContent(job.dataset.key);
-        if (modal.classList.contains('active')) {
-            updateModalContent(job.dataset.key);
-        }
-    });
+document.querySelectorAll(".job").forEach((job) => {
+  job.addEventListener("click", () => {
+    updateModalContent(job.dataset.key);
+    if (modal.classList.contains("active")) {
+      updateModalContent(job.dataset.key);
+    }
+  });
 });
 
 // Funcionalidade de pesquisa
-searchInput.addEventListener('input', (e) => {
-    const searchTerm = e.target.value.toLowerCase();
-    const projectItems = document.querySelectorAll('.project-item');
-    
-    projectItems.forEach(item => {
-        const title = item.querySelector('h3').textContent.toLowerCase();
-        const desc = item.querySelector('p').textContent.toLowerCase();
-        
-        if (title.includes(searchTerm) || desc.includes(searchTerm)) {
-            item.style.display = 'block';
-        } else {
-            item.style.display = 'none';
-        }
-    });
+searchInput.addEventListener("input", (e) => {
+  const searchTerm = e.target.value.toLowerCase();
+  const projectItems = document.querySelectorAll(".project-item");
+
+  projectItems.forEach((item) => {
+    const title = item.querySelector("h3").textContent.toLowerCase();
+    const desc = item.querySelector("p").textContent.toLowerCase();
+
+    if (title.includes(searchTerm) || desc.includes(searchTerm)) {
+      item.style.display = "block";
+    } else {
+      item.style.display = "none";
+    }
+  });
 });
 
 // Inicialização
-document.addEventListener('DOMContentLoaded', () => {
-    const selectedJob = document.querySelector('.job.selected');
-    if (selectedJob) {
-        updateModalContent(selectedJob.dataset.key);
-    }
+document.addEventListener("DOMContentLoaded", () => {
+  const selectedJob = document.querySelector(".job.selected");
+  if (selectedJob) {
+    updateModalContent(selectedJob.dataset.key);
+  }
 });
