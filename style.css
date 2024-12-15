@@ -242,6 +242,8 @@ nav a:hover {
   padding: 0;
   opacity: 0;
   z-index: 1000;
+  width: 90%;
+  height: 90%;
 }
 
 .form-content {
@@ -522,7 +524,7 @@ label[for="tipo_servico"] {
 
 /* Adicionando o retângulo verde abaixo */
 #confirmationMessage::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -15px;
   left: 50%;
@@ -536,7 +538,7 @@ label[for="tipo_servico"] {
 
 /* Círculo com check */
 #confirmationMessage .check-circle {
-  content: '';
+  content: "";
   display: block;
   width: 80px;
   height: 80px;
@@ -549,7 +551,7 @@ label[for="tipo_servico"] {
 
 /* Ícone de check */
 #confirmationMessage .check-circle::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -603,7 +605,6 @@ label[for="tipo_servico"] {
     margin-bottom: 20px;
   }
 }
-
 
 /*------------------------Fim Section 1 --------------------------*/
 /*---------------------- Section 2 Background-----------------------*/
