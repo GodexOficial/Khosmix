@@ -727,3 +727,82 @@ document.querySelector(".search-input").addEventListener("input", function (e) {
     }
   });
 });
+
+// Abrir modal de informações
+document.querySelector('.maisinfo').addEventListener('click', function() {
+  const modal = document.querySelector('.info-modal');
+  modal.classList.add('active');
+});
+
+// Fechar modal ao clicar fora
+window.addEventListener('click', function(event) {
+  const modal = document.querySelector('.info-modal');
+  if (event.target === modal) {
+    modal.classList.remove('active');
+  }
+});
+
+// Prevenir que cliques dentro do modal fechem ele
+document.querySelector('.info-modal').addEventListener('click', function(e) {
+  e.stopPropagation();
+});
+
+// Atualizar conteúdo do modal baseado no job selecionado
+function updateModalContent(key) {
+  const modal = document.querySelector('.info-modal');
+  const data = {
+    design: {
+      title: "Design",
+      subtitle: "Social Media, Identidade Visual",
+      projects: [
+        {
+          title: "Bells Beach",
+          desc: "Social Media, Identidade Visual, 3D",
+          image: "images/Miniatura Design.jpg"
+        },
+        {
+          title: "Hero Burger",
+          desc: "Branding, Social Media, Identidade Visual",
+          image: "images/Miniaturas IDV.jpg"
+        }
+      ]
+    },
+    // Adicione mais categorias conforme necessário
+  };
+
+  const content = data[key];
+  if (content) {
+    modal.querySelector('.info-title h2').textContent = content.title;
+    modal.querySelector('.info-title p').textContent = content.subtitle;
+  }
+}
+
+// Adicionar ao evento de clique existente do botão mais info
+document.querySelector('.maisinfo').addEventListener('click', function() {
+  const selectedJob = document.querySelector('.job.selected');
+  if (selectedJob) {
+    updateModalContent(selectedJob.dataset.key);
+  }
+});
+
+// Seleciona os elementos
+const modal = document.querySelector('.info-modal');
+const openModalBtn = document.querySelector('.maisinfo');
+const closeModalBtn = document.querySelector('.close-modal-btn');
+
+// Abre o modal
+openModalBtn.addEventListener('click', () => {
+    modal.classList.add('active');
+});
+
+// Fecha o modal
+closeModalBtn.addEventListener('click', () => {
+    modal.classList.remove('active');
+});
+
+// Fecha o modal quando clica fora
+window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.classList.remove('active');
+    }
+});

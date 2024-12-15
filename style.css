@@ -299,7 +299,7 @@ nav a:hover {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  margin: 0;
+  margin: auto 0;
   padding: 40px;
 }
 
@@ -468,11 +468,38 @@ label[for="tipo_servico"] {
   right: 20px;
   background: transparent;
   border: none;
-  color: white;
-  font-size: 24px;
+  color: #000;
+  font-size: 28px;
+  font-weight: 300;
   cursor: pointer;
   z-index: 10;
-  border-radius: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease; /* Mantendo apenas a transição da cor */
+}
+
+/* Círculo branco atrás do X */
+.close-btn::before {
+  content: '';
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: white;
+  border-radius: 50%;
+  z-index: -1;
+  transition: background-color 0.3s ease; /* Transição apenas para a cor de fundo */
+}
+
+/* Efeito hover */
+.close-btn:hover {
+  color: white; /* X muda para branco */
+}
+
+.close-btn:hover::before {
+  background: var(--cor-rox); /* Círculo muda para roxo */
 }
 
 /* Animações para a mensagem de confirmação */
@@ -504,12 +531,12 @@ label[for="tipo_servico"] {
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
-  padding: 40px 30px 25px; /* Aumentando o padding superior */
-  border-radius: 15px;
+  padding: 50px 40px 35px; /* Aumentando o padding */
+  border-radius: 20px; /* Aumentando o border-radius */
   display: none;
   text-align: center;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  width: 300px;
+  width: 400px; /* Aumentando a largura */
   z-index: 9999;
 }
 
@@ -540,11 +567,11 @@ label[for="tipo_servico"] {
 #confirmationMessage .check-circle {
   content: "";
   display: block;
-  width: 80px;
-  height: 80px;
+  width: 100px; /* Aumentando o tamanho do círculo */
+  height: 100px; /* Aumentando o tamanho do círculo */
   background: var(--cor-gre);
   border-radius: 50%;
-  margin: -40px auto 20px;
+  margin: -50px auto 30px; /* Ajustando a margem negativa */
   position: relative;
   box-shadow: 0 0 20px rgba(87, 255, 184, 0.3);
 }
@@ -555,27 +582,28 @@ label[for="tipo_servico"] {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 32px; /* Aumentando o tamanho do check */
-  height: 20px; /* Aumentando o tamanho do check */
-  border: 5px solid white; /* Aumentando a espessura da borda */
+  width: 40px; /* Aumentando o tamanho do check */
+  height: 25px; /* Aumentando o tamanho do check */
+  border: 6px solid white; /* Aumentando a espessura da borda */
   border-top: 0;
   border-right: 0;
   transform: translate(-50%, -70%) rotate(-45deg);
 }
 
+/* Textos */
 #confirmationMessage p {
   margin: 0;
   color: #333;
-  font-size: 16px;
+  font-size: 20px; /* Aumentando o tamanho da fonte */
   line-height: 1.4;
   text-align: center;
   width: 100%;
 }
 
 #confirmationMessage p:first-of-type {
-  font-size: 18px;
+  font-size: 24px; /* Aumentando o tamanho da fonte do título */
   font-weight: 500;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   text-align: center;
 }
 
@@ -1708,4 +1736,39 @@ label[for="tipo_servico"] {
 /* Adicione esta classe para animação de fechamento */
 #formContainer.closing {
   animation: formClose 0.5s ease forwards, formBackdropClose 0.5s ease forwards;
+}
+
+/* Modal de informações */
+.info-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%; /* Largura do modal */
+  height: 300px; /* Altura do modal */
+  background: #FF1155;
+  display: none;
+  z-index: 9999;
+  border-radius: 20px; /* Bordas arredondadas */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); /* Sombra suave */
+}
+
+.info-modal.active {
+  display: block;
+}
+
+/* Conteúdo do modal */
+.info-header {
+  padding: 40px;
+  color: white;
+}
+
+.info-title h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.info-title p {
+  font-size: 18px;
+  opacity: 0.9;
 }
