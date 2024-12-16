@@ -1751,9 +1751,35 @@ label[for="tipo_servico"] {
   background: #ff0066;
   border-radius: 20px;
   overflow: hidden;
-  display: flex;
+  display: none; /* Começa oculto */
+  opacity: 0; /* Começa invisível */
   flex-direction: column;
   z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+/* Adicionar classe para quando o modal estiver ativo */
+.info-modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+/* Adicionar overlay para o fundo */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* Cabeçalho */

@@ -730,96 +730,152 @@ const projectData = {
   design: {
     title: "Design",
     subtitle: "Social Media, Identidade Visual",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     projects: [
       {
         title: "Bells Beach",
         desc: "Social Media, Identidade Visual, 3D",
         image: "images/Miniatura Design.jpg",
-        description:
-          "Projeto desenvolvido para a Bells Beach, focando na criação de uma identidade visual moderna e autêntica que reflete a essência do surfe e a beleza natural da região.",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
       {
         title: "Hero Burger",
-        desc: "Branding, Social Media, Identidade Visual",
+        desc: "Branding, Social Media",
         image: "images/Miniaturas IDV.jpg",
-        description:
-          "Hero Burger é um projeto de branding completo para uma hamburgueria artesanal. O conceito visual foi desenvolvido para transmitir a ideia de hambúrgueres heroicos.",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+    ],
+  },
+  modelagem: {
+    title: "Modelagem 3D",
+    subtitle: "Personagens, Cenários, Objetos",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    projects: [
+      {
+        title: "Projeto Personagem",
+        desc: "Modelagem de Personagem, Texturização",
+        image: "images/Miniaturas Modelagem.jpg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+      {
+        title: "Cenário Fantasy",
+        desc: "Modelagem de Ambiente, Iluminação",
+        image: "images/Blender.jpg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+    ],
+  },
+  musica: {
+    title: "Produção Musical",
+    subtitle: "Composição, Mixagem, Masterização",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    projects: [
+      {
+        title: "Album Projeto",
+        desc: "Produção Musical, Mixagem",
+        image: "images/Miniaturas PROD.jpg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+    ],
+  },
+  identidade: {
+    title: "Identidade Visual",
+    subtitle: "Branding, Logo Design, Guidelines",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    projects: [
+      {
+        title: "Projeto Branding",
+        desc: "Logo Design, Brand Guidelines",
+        image: "images/Miniaturas IDV.jpg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+      {
+        title: "Identidade Corporativa",
+        desc: "Visual Identity, Stationery",
+        image: "images/idv.jpg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+    ],
+  },
+  programacao: {
+    title: "Programação",
+    subtitle: "Web Development, Apps, Sistemas",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    projects: [
+      {
+        title: "Website Responsivo",
+        desc: "Frontend, UI/UX, Development",
+        image: "images/Miniaturas prog.jpg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+      {
+        title: "Sistema Web",
+        desc: "Full Stack Development",
+        image: "images/prog.jpg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+    ],
+  },
+  animacao: {
+    title: "Motion Design",
+    subtitle: "Animação 2D/3D, VFX, Motion Graphics",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    projects: [
+      {
+        title: "Motion Graphics",
+        desc: "Animação 2D, Visual Effects",
+        image: "images/Miniaturas Motion.jpg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+      {
+        title: "VFX Project",
+        desc: "Visual Effects, Compositing",
+        image: "images/blackhole.jpg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
     ],
   },
 };
 
-// Função para criar elemento de projeto
+// Atualizar função de criação de projeto
 function createProjectElement(project) {
   const div = document.createElement("div");
   div.className = "project-item";
   div.innerHTML = `
-        <div class="project-thumb"></div>
-        <div class="project-item-content">
-            <h3>${project.title}</h3>
-            <p>${project.desc}</p>
-        </div>
-    `;
-
-  // Adiciona evento de clique para atualizar a descrição
-  div.addEventListener("click", () => {
-    // Remove seleção anterior
-    document.querySelectorAll(".project-item").forEach((item) => {
-      item.classList.remove("selected");
-    });
-
-    // Adiciona seleção ao item clicado
-    div.classList.add("selected");
-
-    // Atualiza a descrição
-    const titleEl = document.querySelector(".project-details-title");
-    const descEl = document.querySelector(".project-details-description");
-
-    if (titleEl && descEl) {
-      titleEl.textContent = project.title;
-      descEl.textContent = project.description;
-
-      // Adiciona animação
-      titleEl.classList.remove("fade-in");
-      descEl.classList.remove("fade-in");
-      void titleEl.offsetWidth;
-      titleEl.classList.add("fade-in");
-      descEl.classList.add("fade-in");
-    }
-  });
+    <div class="project-thumb" style="background-image: url('${project.image}')"></div>
+    <div class="project-item-content">
+      <h3>${project.title}</h3>
+      <p>${project.desc}</p>
+      <p class="project-description">${project.description}</p>
+    </div>
+  `;
 
   return div;
 }
 
-// Seleção de elementos
-const modal = document.querySelector(".info-modal");
-const maisInfoBtn = document.getElementById("maisinfo");
-const closeModalBtn = document.querySelector(".close-modal-btn");
-const searchInput = document.querySelector(".search-input");
-const projectList = document.querySelector(".project-list");
-
-// Função para atualizar o conteúdo do modal
+// Atualizar função de conteúdo do modal
 function updateModalContent(key) {
   const content = projectData[key];
   if (!content) return;
 
-  // Atualiza o título e subtítulo
+  // Atualiza título e subtítulo
   const titleElement = modal.querySelector(".info-title h2");
   const subtitleElement = modal.querySelector(".info-title p");
-  const descriptionElement = modal.querySelector(".description-text");
 
   if (titleElement && subtitleElement) {
     titleElement.textContent = content.title;
     subtitleElement.textContent = content.subtitle;
   }
 
-  // Atualiza a descrição
+  // Atualiza descrição do projeto
+  const descriptionElement = modal.querySelector(".project-details-description");
   if (descriptionElement) {
     descriptionElement.textContent = content.description;
   }
 
-  // Atualiza a lista de projetos
-  if (projectList) {
+  // Atualiza lista de projetos
+  const projectList = modal.querySelector(".project-list");
+  if (projectList && content.projects) {
     projectList.innerHTML = "";
     content.projects.forEach((project) => {
       const projectElement = createProjectElement(project);
@@ -828,13 +884,34 @@ function updateModalContent(key) {
   }
 }
 
-// Função para fechar o modal
-function closeModal() {
-  const modal = document.querySelector(".info-modal");
-  if (modal) {
-    modal.classList.remove("active");
-  }
-}
+// Seleção de elementos
+const modal = document.querySelector(".info-modal");
+const overlay = document.querySelector(".modal-overlay");
+const maisInfoBtn = document.querySelector(".maisinfo");
+const closeModalBtn = document.querySelector(".close-modal-btn");
+
+// Abrir modal
+maisInfoBtn?.addEventListener("click", () => {
+  modal.classList.add("active");
+  overlay.classList.add("active");
+});
+
+// Fechar modal
+closeModalBtn?.addEventListener("click", () => {
+  modal.classList.remove("active");
+  overlay.classList.remove("active");
+});
+
+// Fechar ao clicar no overlay
+overlay?.addEventListener("click", () => {
+  modal.classList.remove("active");
+  overlay.classList.remove("active");
+});
+
+// Prevenir que cliques dentro do modal o fechem
+modal?.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
 
 // Event listeners
 maisInfoBtn?.addEventListener("click", () => {
