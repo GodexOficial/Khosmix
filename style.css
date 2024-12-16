@@ -1745,208 +1745,218 @@ label[for="tipo_servico"] {
   animation: formClose 0.5s ease forwards, formBackdropClose 0.5s ease forwards;
 }
 
-/* Modal de informações */
+/* Modal */
 .info-modal {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
-  max-width: 800px;
-  height: 70vh;
-  background: linear-gradient(
-    135deg,
-    rgba(23, 68, 158, 0.3),
-    rgba(50, 19, 175, 0.23)
-  );
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 25px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  z-index: 1000;
+  width: 90%;
+  max-width: 450px;
+  height: 85vh;
+  background: #FF0066;
+  border-radius: 20px;
   overflow: hidden;
-  display: none;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
 }
 
-.info-modal.active {
-  display: block;
-}
-
+/* Cabeçalho */
 .info-header {
-  padding: 40px;
-  color: white;
+  padding: 30px;
+  background: #FF0066;
 }
 
 .info-title h2 {
+  font-family: var(--font-Quick);
+  color: white;
   font-size: 32px;
-  margin-bottom: 10px;
-  font-weight: 500;
+  font-weight: 600;
+  margin-bottom: 5px;
+  letter-spacing: -0.5px;
 }
 
 .info-title p {
-  font-size: 18px;
+  font-family: var(--font-Quick);
+  color: white;
+  font-size: 16px;
   opacity: 0.9;
 }
 
+/* Detalhes do projeto */
+.project-details {
+  padding: 25px 30px;
+  background: #000000;
+  color: white;
+}
+
+.project-details-title {
+  font-family: var(--font-Quick);
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  letter-spacing: -0.3px;
+}
+
+.project-details-description {
+  font-family: var(--font-Quick);
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+/* Área de pesquisa */
 .info-search {
-  padding: 0 40px;
-  margin-bottom: 30px;
+  padding: 20px 30px;
+  background: #000000;
+}
+
+.info-search h3 {
+  font-family: var(--font-Quick);
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 15px;
 }
 
 .search-input {
   width: 100%;
   padding: 12px 20px;
-  background: rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
   color: white;
-  font-size: 16px;
+  font-size: 14px;
 }
 
-.search-input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-
+/* Lista de projetos */
 .project-list {
-  padding: 0 20px;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 15px;
+  flex: 1;
+  background: #000000;
+  padding: 0 30px 30px;
   overflow-y: auto;
-  max-height: calc(80vh - 200px);
 }
 
+.project-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.project-item:hover,
+.project-item.selected {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.project-item img {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Botão de fechar */
 .close-modal-btn {
   position: absolute;
   top: 20px;
   right: 20px;
-  background: white;
+  width: 30px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.2);
   border: none;
-  width: 32px;
-  height: 32px;
   border-radius: 50%;
-  font-size: 24px;
+  color: white;
+  font-size: 18px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  z-index: 1001; /* Garante que o botão fique acima do conteúdo do modal */
+  z-index: 2;
 }
 
 .close-modal-btn:hover {
-  background: var(--cor-rox);
-  color: white;
-}
-
-@keyframes modalFadeIn {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -48%);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%);
-  }
-}
-
-/* Estilização da barra de rolagem do project-list */
-.project-list::-webkit-scrollbar {
-  width: 8px;
-}
-
-.project-list::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-}
-
-.project-list::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.3);
-  border-radius: 4px;
 }
 
-.project-list::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.4);
-}
-
+/* Estilo dos projetos */
 .project-item {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
+  display: flex;
+  gap: 15px;
   padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.project-item:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
-}
-
-.project-item img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
+/* Thumbnail dos projetos */
+.project-thumb {
+  width: 120px;
+  height: 80px;
   border-radius: 10px;
-  margin-bottom: 10px;
+  flex-shrink: 0;
 }
 
-.project-item h3 {
+/* Cores específicas para cada projeto */
+.project-item:nth-child(1) .project-thumb {
+  background-color: #6C5CE7; /* Roxo para Bells Beach */
+}
+
+.project-item:nth-child(2) .project-thumb {
+  background-color: #FF7675; /* Laranja para Hero Burger */
+}
+
+/* Conteúdo do projeto */
+.project-item-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.project-item-content h3 {
+  font-family: var(--font-Quick);
   color: white;
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 500;
   margin-bottom: 5px;
+  letter-spacing: -0.2px;
 }
 
-.project-item p {
+.project-item-content p {
+  font-family: var(--font-Quick);
   color: rgba(255, 255, 255, 0.7);
   font-size: 14px;
-}
-/* Ajuste o posicionamento do modal */
-.info-modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  max-width: 800px;
-  height: 70vh;
-  background: linear-gradient(
-    135deg,
-    rgba(23, 68, 158, 0.3),
-    rgba(50, 19, 175, 0.23)
-  );
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 25px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  z-index: 1000;
-  overflow: hidden;
-  display: none;
+  line-height: 1.4;
 }
 
-/* Ajuste a classe active */
-.info-modal.active {
-  display: block;
-}
-
-/* Ajuste o container do Netflix para posicionamento relativo */
-.netflix {
-  position: relative;
-  /* ... resto das propriedades existentes ... */
-}
-
-/* Ajuste o overlay para o fundo do modal */
-.modal-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px);
-  display: none;
-  z-index: 999;
-}
-
-.modal-overlay.active {
-  display: block;
+/* Hover e seleção */
+.project-item:hover,
+.project-item.selected {
+  background: rgba(255, 255, 255, 0.1);
 }
 

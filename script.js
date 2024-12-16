@@ -734,38 +734,69 @@ document.querySelector(".info-modal").addEventListener("click", function (e) {
   e.stopPropagation();
 });
 
-// Dados dos projetos
+// Atualizar os dados dos projetos
 const projectData = {
   design: {
     title: "Design",
     subtitle: "Social Media, Identidade Visual",
-    description: "A Bells Beach é uma praia icônica localizada na região de Torquay, no estado de Victoria, na Austrália. Reconhecida mundialmente como um dos melhores destinos para surfe, ela é famosa por suas ondas poderosas e consistentes, que atraem surfistas profissionais e amadores de todo o mundo.",
     projects: [
       {
         title: "Bells Beach",
         desc: "Social Media, Identidade Visual, 3D",
-        image: "images/Miniatura Design.jpg"
+        image: "images/Miniatura Design.jpg",
+        description: "Projeto desenvolvido para a Bells Beach, focando na criação de uma identidade visual moderna e autêntica que reflete a essência do surfe e a beleza natural da região."
       },
       {
         title: "Hero Burger",
         desc: "Branding, Social Media, Identidade Visual",
-        image: "images/Miniaturas IDV.jpg"
+        image: "images/Miniaturas IDV.jpg",
+        description: "Hero Burger é um projeto de branding completo para uma hamburgueria artesanal. O conceito visual foi desenvolvido para transmitir a ideia de hambúrgueres heroicos."
       }
     ]
-  },
-  modelagem: {
-    title: "Modelagem 3D",
-    subtitle: "Criação de Personagens, Cenários",
-    projects: [
-      {
-        title: "Modelagem 3D",
-        desc: "Modelagem de personagens e cenários",
-        image: "images/Miniaturas Modelagem.jpg",
-      },
-    ],
-  },
-  // Adicione mais categorias conforme necessário
+  }
 };
+
+// Função para criar elemento de projeto
+function createProjectElement(project) {
+    const div = document.createElement('div');
+    div.className = 'project-item';
+    div.innerHTML = `
+        <div class="project-thumb"></div>
+        <div class="project-item-content">
+            <h3>${project.title}</h3>
+            <p>${project.desc}</p>
+        </div>
+    `;
+    
+    // Adiciona evento de clique para atualizar a descrição
+    div.addEventListener('click', () => {
+        // Remove seleção anterior
+        document.querySelectorAll('.project-item').forEach(item => {
+            item.classList.remove('selected');
+        });
+        
+        // Adiciona seleção ao item clicado
+        div.classList.add('selected');
+        
+        // Atualiza a descrição
+        const titleEl = document.querySelector('.project-details-title');
+        const descEl = document.querySelector('.project-details-description');
+        
+        if (titleEl && descEl) {
+            titleEl.textContent = project.title;
+            descEl.textContent = project.description;
+            
+            // Adiciona animação
+            titleEl.classList.remove('fade-in');
+            descEl.classList.remove('fade-in');
+            void titleEl.offsetWidth;
+            titleEl.classList.add('fade-in');
+            descEl.classList.add('fade-in');
+        }
+    });
+    
+    return div;
+}
 
 // Seleção de elementos
 const modal = document.querySelector(".info-modal");
@@ -773,20 +804,6 @@ const maisInfoBtn = document.getElementById("maisinfo");
 const closeModalBtn = document.querySelector(".close-modal-btn");
 const searchInput = document.querySelector(".search-input");
 const projectList = document.querySelector(".project-list");
-
-// Função para criar elemento de projeto
-function createProjectElement(project) {
-    const div = document.createElement('div');
-    div.className = 'project-item';
-    div.innerHTML = `
-        <img src="${project.image}" alt="${project.title}">
-        <div class="project-item-content">
-            <h3>${project.title}</h3>
-            <p>${project.desc}</p>
-        </div>
-    `;
-    return div;
-}
 
 // Função para atualizar o conteúdo do modal
 function updateModalContent(key) {
@@ -820,7 +837,10 @@ function updateModalContent(key) {
 
 // Função para fechar o modal
 function closeModal() {
-    modal.classList.remove("active");
+    const modal = document.querySelector('.info-modal');
+    if (modal) {
+        modal.classList.remove('active');
+    }
 }
 
 // Event listeners
@@ -832,8 +852,8 @@ maisInfoBtn?.addEventListener("click", () => {
     modal.classList.add("active");
 });
 
-// Adicione este event listener para o botão de fechar
-closeModalBtn?.addEventListener("click", () => {
+// Adiciona evento de clique no botão fechar
+document.querySelector('.close-modal-btn')?.addEventListener('click', () => {
     closeModal();
 });
 
