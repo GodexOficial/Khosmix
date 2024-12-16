@@ -891,35 +891,3 @@ document.addEventListener("DOMContentLoaded", () => {
     updateModalContent(selectedJob.dataset.key);
   }
 });
-
-document.getElementById("maisinfo").addEventListener("click", () => {
-  const modal = document.querySelector(".info-modal");
-  const overlay = document.querySelector(".modal-overlay");
-
-  // Atualiza o conteúdo do modal com base no job selecionado
-  const selectedJob = document.querySelector(".job.selected");
-  if (selectedJob) {
-    updateModalContent(selectedJob.dataset.key);
-  }
-
-  modal.classList.add("active");
-  overlay.classList.add("active");
-});
-
-// Fechar o modal quando clicar no botão de fechar
-document.querySelector(".close-modal-btn").addEventListener("click", () => {
-  const modal = document.querySelector(".info-modal");
-  const overlay = document.querySelector(".modal-overlay");
-
-  modal.classList.remove("active");
-  overlay.classList.remove("active");
-});
-
-// Fechar o modal quando clicar fora dele
-window.addEventListener("click", (e) => {
-  const modal = document.querySelector(".info-modal");
-  if (e.target.classList.contains("modal-overlay")) {
-    modal.classList.remove("active");
-    e.target.classList.remove("active");
-  }
-});

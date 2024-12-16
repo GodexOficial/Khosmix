@@ -32,6 +32,7 @@
   --cor-gradiente-end: rgba(20, 20, 20, 0);
   --cor-modal-bg: rgba(0, 0, 0, 0.8);
   --font-Quick: "Quicksand";
+
   /* -----------------------Tamanhos-------------------- */
   --border-radius-lg: 35px;
   --spacing-md: 10px;
@@ -790,84 +791,6 @@ label[for="tipo_servico"] {
   transition: filter 0.3s ease;
   filter: invert(0) brightness(1);
 }
-/*-----------------------MODAL-----------------------*/
-.info-modal.active {
-  display: flex;
-  opacity: 1;
-  visibility: visible;
-}
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.modal-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
-.hidden {
-  display: none;
-}
-/* Modal de Detalhes */
-.details-modal {
-  flex-direction: column;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.8);
-}
-
-/* Modal */
-.info-modal {
-  /* ... mantenha as outras propriedades ... */
-  display: none; /* Começa oculto */
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 450px;
-  height: 85vh;
-  background: #ff0066;
-  border-radius: 20px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  z-index: 1000;
-}
-/* Botão de fechar */
-.close-modal-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 30px;
-  height: 30px;
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  border-radius: 50%;
-  color: white;
-  font-size: 18px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  z-index: 2;
-}
-
-.close-modal-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-/*--------------------------MODAL FIM-------------------------*/
 /*---------------------- Section 2 Netflix CARROSSEL-----------------------*/
 .trabalhos {
   position: absolute;
@@ -1057,6 +980,23 @@ label[for="tipo_servico"] {
 }
 
 /*---------------Janela de Detalhes TIME SECTION--------------*/
+.details-modal {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.hidden {
+  display: none;
+}
 
 .glass-small,
 .glass-large {
@@ -1462,6 +1402,12 @@ label[for="tipo_servico"] {
     height: 300px;
   }
 
+  /* Modal de Detalhes */
+  .details-modal {
+    flex-direction: column;
+    padding: 20px;
+  }
+
   .glass-small {
     width: 100%;
     height: auto;
@@ -1569,6 +1515,13 @@ label[for="tipo_servico"] {
 
   .skills-icons {
     display: none; /* Esconde os ícones no card principal */
+  }
+
+  /* Modal de Detalhes */
+  .details-modal {
+    flex-direction: column;
+    padding: 0;
+    background: rgba(0, 0, 0, 0.8);
   }
 
   .glass-small {
@@ -1786,6 +1739,23 @@ label[for="tipo_servico"] {
   animation: formClose 0.5s ease forwards, formBackdropClose 0.5s ease forwards;
 }
 
+/* Modal */
+.info-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 450px;
+  height: 85vh;
+  background: #ff0066;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
 /* Cabeçalho */
 .info-header {
   padding: 30px;
@@ -1900,6 +1870,30 @@ label[for="tipo_servico"] {
 
 .fade-in {
   animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Botão de fechar */
+.close-modal-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.close-modal-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 /* Estilo dos projetos */
