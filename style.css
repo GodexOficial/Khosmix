@@ -1,7 +1,6 @@
-/* -------------------- IMPORTS E KEYFRAMES ------------------- */
+/* ---------------- ROOT Import ------------------- */
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&family=Quicksand:wght@300..700&display=swap");
-
 @-webkit-keyframes scale-up-center {
   0% {
     -webkit-transform: scale(0.1);
@@ -22,9 +21,7 @@
     transform: scale(1);
   }
 }
-/* -------------------- FIM IMPORTS E KEYFRAMES ------------------- */
-
-/* -------------------- VARIÁVEIS GLOBAIS -------------------- */
+/* ---------------------------Variáveis Globais ------------------------ */
 :root {
   /*--------------------------------- Cores------------------- */
   --cor-rox: #cb75ff; /* Roxo */
@@ -42,19 +39,35 @@
   /* --------------------Transição ----------------*/
   --transition: ease 0.4s;
 }
-/* -------------------- FIM VARIÁVEIS GLOBAIS -------------------- */
 
-/* -------------------- RESET E CONFIGURAÇÕES GLOBAIS -------------------- */
+/* ---------------------- Reset e Estilo Global ----------------- */
+@media (prefers-reduced-motion: no-preference) {
+  .animacao {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+}
+.scroll-container {
+  scroll-snap-type: y mandatory; /* Ativa o snap na rolagem vertical */
+  overflow-y: scroll; /* Certifica-se de que a rolagem vertical está ativada */
+  height: 100vh; /* Limita o container */
+}
+
+.scroll-item {
+  scroll-snap-align: start; /* Cada item se alinha ao início do container */
+  height: 100vh; /* Cada item ocupa a altura total da viewport */
+}
+/* ------------------Suaviza o comportamento do scroll---------------- */
+html {
+  scroll-behavior: smooth;
+}
+
+/* -------------------Reseta os estilos básicos------------------ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-html {
-  scroll-behavior: smooth;
-}
-
+/* ------------Configurações do Body------------------ */
 body {
   font-family: "Quicksand";
   width: 100%;
@@ -62,9 +75,40 @@ body {
   background-color: #040008;
   height: 400vh;
 }
-/* -------------------- FIM RESET E CONFIGURAÇÕES GLOBAIS -------------------- */
+/* ------------------- Botão de voltar para o topo ------------------- */
+#backToTop {
+  position: fixed;
+  bottom: 10%;
+  right: 15px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--cor-gre);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 10;
+}
 
-/* -------------------- HEADER -------------------- */
+#backToTop img {
+  width: 24px; /* Tamanho do ícone */
+  height: 24px;
+}
+
+#backToTop:hover {
+  filter: invert(1);
+}
+
+#backToTop.show {
+  opacity: 1;
+  visibility: visible;
+}
+/* ------------------- Header / Cabeçalho ------------------- */
 header {
   display: flex;
   align-items: center;
@@ -75,13 +119,7 @@ header {
   overflow: hidden;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 300px;
-}
-
+/* ---------------- Navegação do Header------------------- */
 nav {
   display: flex;
   gap: var(--spacing-md);
@@ -107,9 +145,31 @@ nav a:hover {
   color: var(--cor-rox);
   cursor: pointer;
 }
-/* -------------------- FIM HEADER -------------------- */
 
-/* -------------------- SEÇÃO SOBRE -------------------- */
+/* ---------------------- Logo do header -------------------- */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+}
+
+.logo a img {
+  width: 150px;
+  transition: var(--transition);
+}
+
+.logo a img:hover {
+  cursor: pointer;
+}
+
+/* ------------------ Background section 1 (Sobre)------------------- */
+.background {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
 .fundosobre {
   width: 90%;
   border-radius: var(--border-radius-lg);
@@ -118,6 +178,7 @@ nav a:hover {
   margin: 0 auto;
 }
 
+/* -- --------------------------section 1 Sobre--------------------- -- */
 .sobre {
   display: flex;
   align-items: center;
@@ -130,23 +191,24 @@ nav a:hover {
   color: var(--cor-whi);
   margin: 0 auto;
 }
-
 .sobrediv {
   margin-top: 150px;
 }
-
+/* -- --------------------------section 1 Sobre H1--------------------- -- */
 .sobre h1 {
   font-weight: 300;
   font-size: 2vw;
   margin-bottom: 1.2rem;
 }
 
+/* -- --------------------------section 1 Sobre P--------------------- -- */
 .sobre p {
   font-size: 1.2vw;
   text-align: justify;
   font-weight: 100;
 }
 
+/* --------------------- section 1 Botão Contratar (Sobre) ---------------------- */
 .contratar button {
   font-family: "Quicksand";
   font-size: 1.2rem;
@@ -164,9 +226,8 @@ nav a:hover {
   color: var(--cor-whi);
   background-color: var(--cor-rox);
 }
-/* -------------------- FIM SEÇÃO SOBRE -------------------- */
 
-/* -------------------- FORMULÁRIO DE CONTRATAÇÃO -------------------- */
+/* ----------------------- Estilização do formulário ------------------------- */
 #formContainer {
   position: fixed;
   top: 50%;
@@ -201,6 +262,7 @@ nav a:hover {
   gap: 0;
 }
 
+/* Lado esquerdo - Imagem */
 .imageformback {
   overflow: hidden;
   width: 50%;
@@ -208,7 +270,6 @@ nav a:hover {
   margin: 0;
   padding: 0;
 }
-
 .formbackimage {
   width: 100%;
   height: 100%;
@@ -219,7 +280,6 @@ nav a:hover {
   margin: 0;
   padding: 0;
 }
-
 .dadosform {
   display: flex;
   align-items: flex-start;
@@ -229,7 +289,7 @@ nav a:hover {
   margin: 0;
   padding: 0;
 }
-
+/* Lado direito - Formulário */
 #contractForm {
   align-items: flex-start;
   width: 80%;
@@ -249,6 +309,7 @@ nav a:hover {
   font-weight: 500;
 }
 
+/* Estilo dos campos */
 #contractForm label {
   color: white;
   font-size: 12px;
@@ -257,6 +318,7 @@ nav a:hover {
   text-align: left;
 }
 
+/* Espaçamento específico para o label do tipo de serviço */
 label[for="tipo_servico"] {
   margin-bottom: 15px; /* Aumentando o espaçamento inferior do label */
 }
@@ -283,6 +345,7 @@ label[for="tipo_servico"] {
   outline: none;
 }
 
+/* Estilização do select e suas opções */
 #tipo_servico {
   appearance: none;
   -webkit-appearance: none;
@@ -300,39 +363,47 @@ label[for="tipo_servico"] {
   transition: all 0.3s ease;
 }
 
+/* Estilo para a opção placeholder */
 #tipo_servico option[value=""][disabled] {
   color: rgba(255, 255, 255, 0.5);
 }
 
+/* Estilo para as opções */
 #tipo_servico option {
   background: rgba(4, 0, 8, 0.95);
   color: white;
   padding: 12px;
 }
 
+/* Estilo quando uma opção está selecionada */
 #tipo_servico:not(:placeholder-shown) {
   color: white; /* Cor do texto quando selecionado */
 }
 
+/* Remove a seta padrão do select */
 #tipo_servico::-ms-expand {
   display: none;
 }
 
+/* Estilo quando o select está focado */
 #tipo_servico:focus {
   border-bottom-color: var(--cor-rox);
   outline: none;
 }
 
+/* Estilo das opções do select */
 #tipo_servico option {
   background: rgba(4, 0, 8, 0.95);
   color: white;
   padding: 12px;
 }
 
+/* Estilo quando passa o mouse sobre as opções */
 #tipo_servico option:hover {
   background-color: var(--cor-rox);
 }
 
+/* Adiciona uma seta customizada */
 #tipo_servico {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
   background-repeat: no-repeat;
@@ -340,14 +411,17 @@ label[for="tipo_servico"] {
   padding-right: 30px; /* Espaço para a seta */
 }
 
+/* Remove a seta padrão no IE/Edge */
 #tipo_servico::-ms-expand {
   display: none;
 }
 
+/* Estilo quando o select está aberto */
 #tipo_servico:focus {
   border-bottom-color: var(--cor-rox);
 }
 
+/* Container personalizado para o select */
 .select-container {
   position: relative;
   width: 100%;
@@ -355,6 +429,7 @@ label[for="tipo_servico"] {
   margin-top: 10px; /* Adicionando margem superior ao container */
 }
 
+/* Estilo para o texto placeholder do select */
 #tipo_servico option[value=""][disabled] {
   color: rgba(255, 255, 255, 0.5);
   font-family: "Quicksand";
@@ -362,6 +437,7 @@ label[for="tipo_servico"] {
   font-weight: 400;
 }
 
+/* Botão de enviar */
 .submit-btn {
   align-self: center;
   display: flex;
@@ -384,6 +460,7 @@ label[for="tipo_servico"] {
   color: white;
 }
 
+/* Botão de fechar */
 .close-btn {
   position: absolute;
   top: 20px;
@@ -403,6 +480,7 @@ label[for="tipo_servico"] {
   transition: color 0.3s ease; /* Mantendo apenas a transição da cor */
 }
 
+/* Círculo branco atrás do X */
 .close-btn::before {
   content: "";
   position: absolute;
@@ -414,6 +492,7 @@ label[for="tipo_servico"] {
   transition: background-color 0.3s ease; /* Transição apenas para a cor de fundo */
 }
 
+/* Efeito hover */
 .close-btn:hover {
   color: white; /* X muda para branco */
 }
@@ -422,6 +501,7 @@ label[for="tipo_servico"] {
   background: var(--cor-rox); /* Círculo muda para roxo */
 }
 
+/* Animações para a mensagem de confirmação */
 @keyframes messageIn {
   from {
     opacity: 0;
@@ -468,6 +548,7 @@ label[for="tipo_servico"] {
   animation: messageOut 0.8s ease forwards; /* Aumentando a duração da animação */
 }
 
+/* Adicionando o retângulo verde abaixo */
 #confirmationMessage::before {
   content: "";
   position: absolute;
@@ -481,6 +562,7 @@ label[for="tipo_servico"] {
   z-index: -1;
 }
 
+/* Círculo com check */
 #confirmationMessage .check-circle {
   content: "";
   display: block;
@@ -493,6 +575,7 @@ label[for="tipo_servico"] {
   box-shadow: 0 0 20px rgba(87, 255, 184, 0.3);
 }
 
+/* Ícone de check */
 #confirmationMessage .check-circle::after {
   content: "";
   position: absolute;
@@ -506,6 +589,7 @@ label[for="tipo_servico"] {
   transform: translate(-50%, -70%) rotate(-45deg);
 }
 
+/* Textos */
 #confirmationMessage p {
   margin: 0;
   color: #333;
@@ -522,6 +606,7 @@ label[for="tipo_servico"] {
   text-align: center;
 }
 
+/* Responsivo */
 @media screen and (max-width: 390px) {
   #formContainer {
     width: 95%;
@@ -547,9 +632,9 @@ label[for="tipo_servico"] {
     margin-bottom: 20px;
   }
 }
-/* -------------------- FIM FORMULÁRIO DE CONTRATAÇÃO -------------------- */
 
-/* -------------------- SEÇÃO NETFLIX -------------------- */
+/*------------------------Fim Section 1 --------------------------*/
+/*---------------------- Section 2 Background-----------------------*/
 .backgroundnet {
   display: flex;
   flex-direction: column;
@@ -560,11 +645,9 @@ label[for="tipo_servico"] {
   height: 100vh;
   overflow: hidden;
 }
-
 #netFlixBackground {
   transition: 1s ease !important;
 }
-
 .animateBackground {
   transition: 1s ease-in !important;
   /* Ou qualquer outra animação que você queira aplicar */
@@ -572,6 +655,9 @@ label[for="tipo_servico"] {
   transition: background-image 1s ease;
 }
 
+/*---------------------- Section 2 Netflix-----------------------*/
+
+/* Seção Netflix */
 .netflix {
   position: relative;
   display: flex;
@@ -597,6 +683,7 @@ label[for="tipo_servico"] {
   transition: background-size 1000ms linear;
 }
 
+/* Camada de escurecimento */
 .netflix::before {
   content: "";
   position: absolute;
@@ -610,10 +697,13 @@ label[for="tipo_servico"] {
   background-size: cover;
 }
 
+/* Garantir que os conteúdos fiquem acima do overlay */
 .netflix > * {
   position: relative;
   z-index: 2;
 }
+
+/*---------------------- Section 2 Netflix Title-----------------------*/
 
 .netflix h1 {
   font-size: 32px;
@@ -624,12 +714,11 @@ label[for="tipo_servico"] {
   font-size: 24px;
   font-weight: 300;
 }
-
 .netflix p {
   width: 330px;
   text-align: justify;
 }
-
+/*---------------------- Section 2 Netflix Icons-----------------------*/
 .icons a {
   display: flex;
   align-items: center;
@@ -649,24 +738,21 @@ label[for="tipo_servico"] {
   transform: scale(1.2);
   filter: brightness(1.2);
 }
-
 .icons {
   display: flex;
   gap: 15px;
 }
-
+/*------------------------ Botões no Netflix ----------------------*/
 .buttonsnetflix {
   display: flex;
   width: 84%;
   gap: 15px;
   color: black;
 }
-
 .buttonsnetflix a {
   text-decoration: none;
   color: black;
 }
-
 .contratar2,
 .maisinfo {
   z-index: 1000;
@@ -687,26 +773,24 @@ label[for="tipo_servico"] {
   gap: 5px;
   margin-top: 70px;
 }
-
 .contratar2:hover,
 .maisinfo:hover {
   border-color: var(--cor-rox);
   color: var(--cor-whi);
   background-color: var(--cor-rox);
 }
-
 .contratar2:hover .infoicon,
 .maisinfo:hover .infoicon {
   filter: invert(1) brightness(2);
 }
-
+/*---------------------------------- Ícone de Informação Button ----------------------------------*/
 .infoicon {
   width: 20px;
   height: auto;
   transition: filter 0.3s ease;
   filter: invert(0) brightness(1);
 }
-
+/*-----------------------MODAL-----------------------*/
 .info-modal.active {
   display: flex;
   opacity: 1;
@@ -729,18 +813,19 @@ label[for="tipo_servico"] {
   opacity: 1;
   visibility: visible;
 }
-
 .hidden {
   display: none;
 }
-
+/* Modal de Detalhes */
 .details-modal {
   flex-direction: column;
   padding: 20px;
   background: rgba(0, 0, 0, 0.8);
 }
 
+/* Modal */
 .info-modal {
+  /* ... mantenha as outras propriedades ... */
   display: none; /* Começa oculto */
   opacity: 0;
   visibility: hidden;
@@ -759,7 +844,7 @@ label[for="tipo_servico"] {
   flex-direction: column;
   z-index: 1000;
 }
-
+/* Botão de fechar */
 .close-modal-btn {
   position: absolute;
   top: 20px;
@@ -782,7 +867,8 @@ label[for="tipo_servico"] {
 .close-modal-btn:hover {
   background: rgba(255, 255, 255, 0.3);
 }
-
+/*--------------------------MODAL FIM-------------------------*/
+/*---------------------- Section 2 Netflix CARROSSEL-----------------------*/
 .trabalhos {
   position: absolute;
   display: flex;
@@ -798,23 +884,20 @@ label[for="tipo_servico"] {
   bottom: 0;
   left: 0;
 }
-
 .trabalhos > div {
   min-width: 420px !important;
   max-width: 120px !important;
 }
-
+/* -------------------------- Scroll Bar ----------------------*/
 .trabalhos > button {
   min-width: 500px;
   height: 50px;
 }
-
 .trabalhos::-webkit-scrollbar {
   height: 0px !important;
   width: 0px !important;
   width: 0px !important;
 }
-
 .trabalhos {
   scrollbar-width: none;
   scrollbar-color: #8f54a0 #ffffff;
@@ -828,43 +911,37 @@ label[for="tipo_servico"] {
 .trabalhos::-webkit-scrollbar-track {
   background: #ffffff;
 }
-
+/* -------------------------- Scroll Bar ----------------------*/
 #designkhosmix {
   background: url(images/Miniatura\ Design.jpg);
   background-size: cover;
   background-position: center;
 }
-
 #modelagemnkhosmix {
   background: url(images/Miniaturas\ Modelagem.jpg);
   background-size: cover;
   background-position: center;
 }
-
 #musicakhosmix {
   background: url(images/Miniaturas\ PROD.jpg);
   background-size: cover;
   background-position: center;
 }
-
 #idvkhosmix {
   background: url(images/Miniaturas\ IDV.jpg);
   background-size: cover;
   background-position: center;
 }
-
 #progkhosmix {
   background: url(images/Miniaturas\ prog.jpg);
   background-size: cover;
   background-position: center;
 }
-
 #motionkhosmix {
   background: url(images/Miniaturas\ Motion.jpg);
   background-size: cover;
   background-position: center;
 }
-
 .job {
   width: 720px;
   height: 140px;
@@ -892,55 +969,9 @@ label[for="tipo_servico"] {
   z-index: 1;
   scale: 95%;
 }
-/* -------------------- FIM SEÇÃO NETFLIX -------------------- */
+/*---------------------- SECTION 2 Netflix FIM-----------------------*/
 
-/* -------------------- MODAL DE INFORMAÇÕES -------------------- */
-.info-modal {
-  /* ... mantenha as outras propriedades ... */
-  display: none; /* Começa oculto */
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 450px;
-  height: 85vh;
-  background: #ff0066;
-  border-radius: 20px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  z-index: 1000;
-}
-
-.close-modal-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 30px;
-  height: 30px;
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  border-radius: 50%;
-  color: white;
-  font-size: 18px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  z-index: 2;
-}
-
-.close-modal-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-/* -------------------- FIM MODAL DE INFORMAÇÕES -------------------- */
-
-/* -------------------- SEÇÃO TIME -------------------- */
+/*-------------------------------------------SECTION 3 Times----------------------------------*/
 .timesection {
   display: flex;
   justify-content: center;
@@ -952,6 +983,7 @@ label[for="tipo_servico"] {
   position: relative;
 }
 
+/*----------------------Cards Container-----------------------------*/
 .cards-container {
   display: flex;
   align-items: center;
@@ -961,6 +993,7 @@ label[for="tipo_servico"] {
   margin: 0 auto;
 }
 
+/*----------------------Estilos dos Cards--------------------------*/
 .glass-card {
   display: flex;
   flex-direction: column;
@@ -976,32 +1009,29 @@ label[for="tipo_servico"] {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: 0.3s all ease-in-out;
 }
-
 .glass-card h3 {
   font-family: "Quicksand";
   font-size: 1.1rem;
   font-weight: 400;
   color: #fff;
 }
-
 .glass-card:hover {
   transform: scale(1.1, 1.1);
   cursor: pointer;
 }
-
+/*----------------------Fotos dos Cards--------------------------*/
 .profile-pic {
   width: 170px;
   height: 170px;
   border-radius: 50%;
   margin-bottom: 10px;
 }
-
+/*----------------------Icons dos Cards--------------------------*/
 .skills-icons {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .skills-icons img {
   width: 10px;
   margin: 10px;
@@ -1026,6 +1056,8 @@ label[for="tipo_servico"] {
   color: #fff;
 }
 
+/*---------------Janela de Detalhes TIME SECTION--------------*/
+
 .glass-small,
 .glass-large {
   backdrop-filter: blur(20px);
@@ -1042,7 +1074,6 @@ label[for="tipo_servico"] {
   width: 200px;
   height: 570px;
 }
-
 .glass-small h2 {
   font-family: "Quicksand";
   font-weight: 200;
@@ -1057,7 +1088,6 @@ label[for="tipo_servico"] {
   align-items: center;
   justify-content: space-between;
 }
-
 .infolarge {
   margin-left: 50px;
   display: flex;
@@ -1065,28 +1095,24 @@ label[for="tipo_servico"] {
   justify-content: space-between;
   gap: 80px;
 }
-
 .infolarge h2 {
   font-size: 2.3rem;
   font-weight: 400;
   font-family: "Quicksand";
   color: #fff;
 }
-
 .infolarge p {
   font-weight: 200;
   width: 300px;
   color: #fff;
   text-align: justify;
 }
-
 .profile-pic-large {
   width: 150px;
   height: 150px;
   border-radius: 1000px;
   margin-bottom: 10px;
 }
-
 .large-image {
   width: 400px;
   height: auto;
@@ -1115,6 +1141,7 @@ label[for="tipo_servico"] {
   border-radius: 5px;
 }
 
+/* Botão de Voltar */
 .back-button {
   position: absolute;
   top: 5%;
@@ -1130,7 +1157,6 @@ label[for="tipo_servico"] {
   font-size: 14px;
   font-weight: bold;
 }
-
 @media (max-width: 768px) {
   .back-button {
     top: 5%; /* Ajusta posição em telas menores */
@@ -1139,14 +1165,12 @@ label[for="tipo_servico"] {
     padding: 8px 16px; /* Ajusta o espaçamento */
   }
 }
-
 .back-button:hover {
   background: black;
   color: white;
 }
-/* -------------------- FIM SEÇÃO TIME -------------------- */
-
-/* -------------------- FOOTER -------------------- */
+/*---------------------- Section 3 Time Fim-----------------------*/
+/*-------------------------------Footer principal--------------------------*/
 .footerpro {
   display: flex;
   background-color: #040008;
@@ -1160,6 +1184,7 @@ label[for="tipo_servico"] {
   margin: 0 auto;
 }
 
+/*----------------------------Container do footer------------------------*/
 .footer-container {
   display: flex;
   flex-direction: column;
@@ -1170,22 +1195,21 @@ label[for="tipo_servico"] {
   padding: 2rem;
 }
 
+/*-------------------------Parte superior (título) Footer-------------------------*/
 .footer-top h2 {
   font-size: 1.6rem;
 }
-
 .subfooter p {
   font-size: 1.6rem;
   font-weight: 600;
 }
-
 .subfooter {
   display: flex;
   gap: 10px;
   align-items: center;
   justify-content: center;
 }
-
+/*----------------------------Botão de contactar Footer------------------------*/
 .contact-btn {
   font-family: Quicksand;
   display: flex;
@@ -1209,6 +1233,7 @@ label[for="tipo_servico"] {
   color: #fff;
 }
 
+/*----------------------------Parte inferior Footer-----------------------*/
 .footer-bottom {
   display: flex;
   justify-content: space-between;
@@ -1220,7 +1245,7 @@ label[for="tipo_servico"] {
   flex: 1;
   min-width: 200px;
 }
-
+/*-----------------------------título "H3" e "p" Footer blocks Footer-----------------------*/
 .footer-item h3 {
   position: relative;
   text-align: left;
@@ -1235,18 +1260,17 @@ label[for="tipo_servico"] {
   height: 2px;
   background-color: var(--cor-whi);
 }
-
 .footer-item p {
   font-size: 0.9rem;
   line-height: 1.5rem;
   text-align: left;
 }
 
+/*----------------------------Ícones sociais Footer----------------------*/
 .social-icons {
   display: flex;
   gap: 0.5rem;
 }
-
 .social-icons a {
   text-decoration: none;
   cursor: pointer;
@@ -1254,7 +1278,6 @@ label[for="tipo_servico"] {
   padding: 10px 15px;
   border-radius: 50%;
 }
-
 .social-icons .icon {
   width: 40px;
   height: 40px;
@@ -1275,14 +1298,14 @@ label[for="tipo_servico"] {
   color: var(--cor-whi);
 }
 
+/*--------------------Copyright Footer----------------------*/
 .footer-copyright {
   margin-top: 2rem;
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.5);
 }
-/* -------------------- FIM FOOTER -------------------- */
-
-/* -------------------- NAVEGAÇÃO POR PONTOS -------------------- */
+/*--------------------BOTÕES DE NAVEGAÇÃO ENTRE SESSÕES-----------------*/
+/* Navegação por pontos */
 .dot-navigation {
   position: fixed;
   top: 50%;
@@ -1316,9 +1339,8 @@ label[for="tipo_servico"] {
   font-size: 2rem;
   color: white;
 }
-/* -------------------- FIM NAVEGAÇÃO POR PONTOS -------------------- */
 
-/* -------------------- RESPONSIVIDADE -------------------- */
+/* Media Queries para Mobile (iPhone 12 Pro - 390x844) */
 @media screen and (max-width: 390px) {
   /* Header */
   header {
@@ -1653,9 +1675,8 @@ label[for="tipo_servico"] {
     border-radius: 3px;
   }
 }
-/* -------------------- FIM RESPONSIVIDADE -------------------- */
 
-/* -------------------- ESTILO DO MENU HAMBURGUER -------------------- */
+/* Estilo do menu hamburguer */
 .menu-toggle {
   display: none;
 }
@@ -1692,9 +1713,8 @@ label[for="tipo_servico"] {
     bottom: 0;
   }
 }
-/* -------------------- FIM ESTILO DO MENU HAMBURGUER -------------------- */
 
-/* -------------------- ANIMAÇÃO DO FORMULÁRIO -------------------- */
+/* Animação do formulário */
 @keyframes formAppear {
   from {
     opacity: 0;
@@ -1939,4 +1959,3 @@ label[for="tipo_servico"] {
 .project-item.selected {
   background: rgba(255, 255, 255, 0.1);
 }
-/* -------------------- FIM ANIMAÇÃO DO FORMULÁRIO -------------------- */
