@@ -1752,19 +1752,17 @@ label[for="tipo_servico"] {
   border-radius: 20px;
   overflow: hidden;
   display: none; /* Começa oculto */
-  opacity: 0; /* Começa invisível */
+  opacity: 0;
   flex-direction: column;
   z-index: 1000;
   transition: opacity 0.3s ease;
 }
 
-/* Adicionar classe para quando o modal estiver ativo */
 .info-modal.active {
   display: flex;
   opacity: 1;
 }
 
-/* Adicionar overlay para o fundo */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -1775,6 +1773,7 @@ label[for="tipo_servico"] {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 999;
 }
 
 .modal-overlay.active {

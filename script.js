@@ -892,6 +892,10 @@ const closeModalBtn = document.querySelector(".close-modal-btn");
 
 // Abrir modal
 maisInfoBtn?.addEventListener("click", () => {
+  const selectedJob = document.querySelector(".job.selected");
+  if (selectedJob) {
+    updateModalContent(selectedJob.dataset.key);
+  }
   modal.classList.add("active");
   overlay.classList.add("active");
 });
