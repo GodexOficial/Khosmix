@@ -1,0 +1,102 @@
+.works {
+  min-height: 100vh;
+  padding: 6rem 2rem;
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.container h2 {
+  text-align: center;
+  font-size: 3rem;
+  color: var(--cor-gre);
+  margin-bottom: 3rem;
+  font-family: var(--font-primary);
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.filterButton {
+  background: none;
+  border: 1px solid var(--cor-gre);
+  color: var(--cor-whi);
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.filterButton:hover,
+.filterButton.active {
+  background: var(--cor-gre);
+  color: #000;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.work {
+  text-decoration: none;
+  color: var(--cor-whi);
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.imageWrapper {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.imageWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.work:hover .imageWrapper img {
+  transform: scale(1.1);
+}
+
+.work h3 {
+  padding: 1rem;
+  font-size: 1.2rem;
+  text-align: center;
+  color: var(--cor-gre);
+  font-family: var(--font-primary);
+}
+
+@media (max-width: 768px) {
+  .container h2 {
+    font-size: 2.5rem;
+  }
+
+  .filters {
+    gap: 0.5rem;
+  }
+
+  .filterButton {
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+} 

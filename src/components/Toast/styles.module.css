@@ -1,0 +1,29 @@
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 255, 136, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  color: var(--cor-gre);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  box-shadow: 0 4px 20px rgba(0, 255, 136, 0.2);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  z-index: 2000;
+}
+
+.icon {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .toast {
+    width: 90%;
+    text-align: center;
+    justify-content: center;
+  }
+} 

@@ -1,0 +1,35 @@
+.button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0.5rem;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+}
+
+.line {
+  background-color: var(--cor-gre);
+  height: 2px;
+  width: 100%;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.button.open .line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.button.open .line:nth-child(2) {
+  opacity: 0;
+}
+
+.button.open .line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.button:hover .line {
+  background-color: var(--cor-rox);
+} 

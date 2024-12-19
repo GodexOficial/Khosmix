@@ -1,0 +1,23 @@
+.toggle {
+  background: none;
+  border: none;
+  color: var(--cor-gre);
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.toggle:hover {
+  color: var(--cor-rox);
+  transform: scale(1.1);
+}
+
+.toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--cor-gre);
+  border-radius: 4px;
+} 

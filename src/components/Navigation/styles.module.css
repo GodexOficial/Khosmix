@@ -1,0 +1,69 @@
+.nav {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+}
+
+.dots {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.dot {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot span {
+  position: absolute;
+  right: calc(100% + 1rem);
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  color: var(--cor-whi);
+  font-size: 0.9rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.dot:hover {
+  background: var(--cor-gre);
+}
+
+.dot:hover span {
+  opacity: 1;
+  transform: translateY(-50%) translateX(-0.5rem);
+}
+
+.dot.active {
+  background: var(--cor-gre);
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .nav {
+    right: 1rem;
+  }
+
+  .dots {
+    gap: 1rem;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .dot span {
+    display: none;
+  }
+} 

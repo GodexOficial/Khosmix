@@ -1,0 +1,96 @@
+.fundosobre {
+  width: 90%;
+  border-radius: var(--border-radius-lg);
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.sobre {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  width: 40%;
+  height: 60%;
+  gap: 30px;
+  color: var(--cor-whi);
+  margin: 0 auto;
+}
+
+.sobrediv {
+  margin-top: 150px;
+}
+
+.sobre h1 {
+  font-weight: 300;
+  font-size: 2vw;
+  margin-bottom: 1.2rem;
+}
+
+.sobre p {
+  font-size: 1.2vw;
+  text-align: justify;
+  font-weight: 100;
+}
+
+.contratar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.input {
+  width: 200px;
+  height: 50px;
+  border-radius: 100px;
+  border: none;
+  background-color: var(--cor-gre);
+  color: black;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.input:hover {
+  background-color: var(--cor-rox);
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .sobre {
+    width: 80%;
+  }
+
+  .sobre h1 {
+    font-size: 4vw;
+  }
+
+  .sobre p {
+    font-size: 2.5vw;
+  }
+
+  .sobrediv {
+    margin-top: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sobre h1 {
+    font-size: 6vw;
+  }
+
+  .sobre p {
+    font-size: 3.5vw;
+  }
+
+  .input {
+    width: 150px;
+    height: 45px;
+    font-size: 0.9rem;
+  }
+}

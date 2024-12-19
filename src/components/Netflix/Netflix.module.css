@@ -1,0 +1,187 @@
+.backgroundnet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.netflix {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  height: 90vh;
+  flex-direction: column;
+  color: var(--cor-whi);
+  gap: 40px;
+  padding: 35px 50px;
+  padding-bottom: 20rem;
+  border-radius: 35px;
+  overflow: hidden;
+  background-size: 140%;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: background-image 1s ease;
+  animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title h1 {
+  font-size: 4rem;
+  font-weight: 500;
+}
+
+.title h2 {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.icons {
+  display: flex;
+  gap: 15px;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  filter: invert(1);
+  transition: transform 0.3s ease;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+}
+
+.buttonsnetflix {
+  display: flex;
+  gap: 20px;
+}
+
+.contratar2 {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 25px;
+  background: var(--cor-gre);
+  color: black;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contratar2:hover {
+  background: var(--cor-rox);
+  color: white;
+}
+
+.maisinfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 30px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.maisinfo:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.infoicon {
+  width: 20px;
+  height: 20px;
+  filter: invert(1);
+}
+
+.trabalhos {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 20px 0;
+  scroll-behavior: smooth;
+}
+
+.trabalhos::-webkit-scrollbar {
+  display: none;
+}
+
+.job {
+  min-width: 300px;
+  height: 180px;
+  border-radius: 15px;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.job:hover {
+  transform: scale(1.05);
+}
+
+.job.selected {
+  border: 2px solid var(--cor-gre);
+}
+
+/* Animações */
+@keyframes scale-up-center {
+  0% {
+    transform: scale(0.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animateBackground {
+  animation: backgroundTransition 1s ease;
+}
+
+@keyframes backgroundTransition {
+  0% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Estilos específicos para cada job */
+.job[data-key="design"] {
+  background-image: url("/images/Miniatura Design.jpg");
+}
+
+.job[data-key="modelagem"] {
+  background-image: url("/images/Miniaturas Modelagem.jpg");
+}
+
+.job[data-key="musica"] {
+  background-image: url("/images/producer.jpg");
+}
+
+.job[data-key="identidade"] {
+  background-image: url("/images/idv.jpg");
+}
+
+.job[data-key="programacao"] {
+  background-image: url("/images/prog.jpg");
+}
+
+.job[data-key="animacao"] {
+  background-image: url("/images/blackhole.jpg");
+}
+
+/* ... resto dos estilos ... */

@@ -1,0 +1,20 @@
+.logo {
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+.logo:hover {
+  opacity: 0.8;
+}
+
+.logo img {
+  height: auto;
+  max-width: 100%;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .logo img {
+    width: 120px;
+  }
+} 

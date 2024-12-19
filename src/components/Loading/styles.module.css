@@ -1,0 +1,40 @@
+.loadingContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.loading {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.circle {
+  width: 15px;
+  height: 15px;
+  background: var(--cor-gre);
+  border-radius: 50%;
+  display: block;
+}
+
+.text {
+  color: var(--cor-whi);
+  font-size: 1.2rem;
+  font-family: var(--font-primary);
+  letter-spacing: 2px;
+}
+
+@media (max-width: 768px) {
+  .circle {
+    width: 12px;
+    height: 12px;
+  }
+
+  .text {
+    font-size: 1rem;
+  }
+} 

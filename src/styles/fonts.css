@@ -1,0 +1,17 @@
+/* Importação das fontes */
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;700&family=Quicksand:wght@300;400;500;700&display=swap');
+
+/* Variáveis de fonte */
+:root {
+  --font-primary: 'Oxanium', sans-serif;
+  --font-secondary: 'Quicksand', sans-serif;
+}
+
+/* Classes utilitárias */
+.font-primary {
+  font-family: var(--font-primary);
+}
+
+.font-secondary {
+  font-family: var(--font-secondary);
+} 

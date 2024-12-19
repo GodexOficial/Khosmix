@@ -1,0 +1,124 @@
+.headermenu {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 10rem;
+  padding: 0 10%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+}
+
+.logo img {
+  width: 150px;
+  transition: var(--transition);
+}
+
+.logo img:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.navmenu {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.navmenu a {
+  display: flex;
+  width: 140px;
+  height: 50px;
+  border-radius: 100px;
+  align-items: center;
+  justify-content: center;
+  font-family: "Oxanium", "Quicksand";
+  font-weight: 300;
+  color: var(--cor-gre);
+  text-decoration: none;
+  font-size: 14px;
+  transition: var(--transition);
+}
+
+.navmenu a:hover {
+  background-color: rgba(31, 31, 31, 0.47);
+  color: var(--cor-rox);
+  cursor: pointer;
+}
+
+.menuToggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+.menuToggle span {
+  width: 30px;
+  height: 3px;
+  background: var(--cor-gre);
+  border-radius: 10px;
+  transition: all 0.3s linear;
+  position: relative;
+  transform-origin: 1px;
+}
+
+@media (max-width: 768px) {
+  .menuToggle {
+    display: flex;
+  }
+
+  .navmenu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    flex-direction: column;
+    padding-top: 120px;
+    transition: 0.3s;
+  }
+
+  .navmenu.active {
+    right: 0;
+  }
+
+  .navmenu a {
+    width: 100%;
+    height: 70px;
+    font-size: 1.2rem;
+  }
+
+  .menuToggle.active span:first-child {
+    transform: rotate(45deg);
+  }
+
+  .menuToggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menuToggle.active span:last-child {
+    transform: rotate(-45deg);
+  }
+}
