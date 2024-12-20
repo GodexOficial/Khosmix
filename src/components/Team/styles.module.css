@@ -54,6 +54,9 @@
   @supports not (backdrop-filter: blur(3px)) {
     background: rgba(0, 0, 0, 0.8);
   }
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 @-moz-document url-prefix() {
@@ -152,6 +155,8 @@
   gap: 1rem;
   padding-top: 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .skill {
@@ -167,6 +172,8 @@
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 0.05);
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .skill:hover {
@@ -221,4 +228,146 @@
   .skill {
     font-size: 1.3rem;
   }
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  will-change: backdrop-filter;
+}
+
+.modal {
+  background: rgba(18, 18, 18, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--cor-whi);
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  animation: slideIn 0.3s ease-out;
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  will-change: backdrop-filter;
+}
+
+@supports not (backdrop-filter: blur(10px)) {
+  .modal {
+    background: rgba(18, 18, 18, 0.95);
+  }
+}
+
+@-moz-document url-prefix() {
+  .modal {
+    background: rgba(18, 18, 18, 0.95);
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: var(--cor-whi);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.3s ease;
+}
+
+.closeButton:hover {
+  color: var(--cor-gre);
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.modalContent img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--cor-gre);
+}
+
+.modalContent h3 {
+  font-size: 1.5rem;
+  color: var(--cor-gre);
+}
+
+.modalContent .skills {
+  width: 100%;
+  text-align: left;
+}
+
+.modalContent .skills h4 {
+  color: var(--cor-gre);
+  margin-bottom: 0.5rem;
+}
+
+.modalContent .skills ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.modalContent .skills li {
+  background: rgba(0, 255, 136, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  border: 1px solid var(--cor-gre);
+}
+
+.modalContent .bio {
+  text-align: justify;
+  line-height: 1.6;
+  margin-top: 1rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.teamCard {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.teamCard:hover {
+  transform: translateY(-5px);
 }
